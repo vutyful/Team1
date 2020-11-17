@@ -1,6 +1,6 @@
 # Team1
 
-<h1>Kosmo 20-11-12 WebProject Team 1</h1>
+<h3>Kosmo 20-11-12 WebProject Team 1</h3>
 
 -11/17
                         현재             미래지향
