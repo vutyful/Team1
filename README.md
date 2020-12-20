@@ -1,6 +1,7 @@
 # Team1
 
 <h3>Kosmo 20-11-12 WebProject Team 1</h3>
+<hr>
 <h4>구성원</h4>
 <pre>
 PM  김혜인 : ~ 및 css 총괄
