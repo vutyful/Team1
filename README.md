@@ -13,7 +13,8 @@ PL  한승탁 : 컨텐츠, 회원관리 구현 및 구현 총괄
 <h5>-12/20</h5>
 <pre>
 기본 구성 완료.
-https://all-record.tistory.com/163 참고 할 것.
+https://all-record.tistory.com/163 참고하여 프로젝트 받으세요.
+내부 readme.txt 읽어주세요.
 </pre>
 
 <h5>-11/17</h5>
