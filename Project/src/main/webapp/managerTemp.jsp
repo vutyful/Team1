@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<a href=''>회원 관리 페이지</a><br/>
-<a href=''>콘텐츠 관리 목록</a><br/>
-<a href=''>콘텐츠 등록 페이지</a><br/>
-<a href=''>콘텐츠 수정, 삭제 페이지</a><br/>
+<a href='manageMem/main.do'>회원 관리 페이지</a><br/>
+<a href='manageContents/main.do'>콘텐츠 관리 목록</a><br/>
+<a href='manageContents/save.do'>콘텐츠 등록 페이지</a><br/>
+<a href='manageContents/'>콘텐츠 수정, 삭제 페이지</a><br/>
 
 
 </body>
