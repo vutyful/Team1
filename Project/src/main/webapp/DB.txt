@@ -7,6 +7,7 @@ CREATE TABLE Member (
 	age NUMBER, /* 연령 */
 	gender CHAR(4), /* 성별 */
 	email VARCHAR2(30), /* 이메일 */
+	pic VARCHAR2(50), /* 프로필사진*/
 	joindate DATE, /* 가입일 */
 	state VARCHAR2(10), /* 상태 */
 	outdate DATE, /* 탈퇴일 */
@@ -29,6 +30,8 @@ COMMENT ON COLUMN Member.age IS '연령';
 COMMENT ON COLUMN Member.gender IS '성별';
 
 COMMENT ON COLUMN Member.email IS '이메일';
+
+COMMENT ON COLUMN Member.pic IS '프로필사진';
 
 COMMENT ON COLUMN Member.joindate IS '가입일';
 
