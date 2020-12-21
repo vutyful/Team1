@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ContentMAP">
+
+	<insert id="saveContent" parameterType="content">
+		INSERT INTO content(connum, title, ccontent, postdate, cview, creco, cstate, memnum
+		<if test="img != null">
+		, img, imgsize
+		</if>
+		) 
+		VALUES (seq_content_connum.nextval, #{title}, #{ccontent}, sysdate, 0, 0, 'none', #{memnum}
+		<if test="img != null">
+		, #{img}, #{imgsize}
+		</if>
+		)
+	</insert>
+
+</mapper>
