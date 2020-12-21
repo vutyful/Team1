@@ -8,10 +8,9 @@
 </head>
 <body>
 
-<a href=''>회원 관리 페이지</a><br/>
-<a href=''>콘텐츠 관리 목록</a><br/>
-<a href=''>콘텐츠 등록 페이지</a><br/>
-<a href=''>콘텐츠 수정, 삭제 페이지</a><br/>
+<a href='hjview/profile.do'>프로필</a><br/>
+<a href='hjview/login.do'>로그인</a><br/>
+<a href='hjview/join.do'>회원가입</a><br/>
 
 
 </body>

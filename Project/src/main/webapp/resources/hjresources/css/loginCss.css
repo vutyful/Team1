@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.text-info {
+	color: #357ebd  !important;
+}
+
+
+
+.btn-info {
+	color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+}

@@ -7,6 +7,7 @@ CREATE TABLE MY_SCHEMA.Member (
 	age NUMBER, /* 연령 */
 	gender CHAR(4), /* 성별 */
 	email VARCHAR2(30), /* 이메일 */
+	pic VARCHAR2(50), /* 프로필사진*/
 	joindate DATE, /* 가입일 */
 	state VARCHAR2(10), /* 상태 */
 	outdate DATE, /* 탈퇴일 */
@@ -29,6 +30,8 @@ COMMENT ON COLUMN MY_SCHEMA.Member.age IS '연령';
 COMMENT ON COLUMN MY_SCHEMA.Member.gender IS '성별';
 
 COMMENT ON COLUMN MY_SCHEMA.Member.email IS '이메일';
+
+COMMENT ON COLUMN MY_SCHEMA.Member.pic IS '프로필사진';
 
 COMMENT ON COLUMN MY_SCHEMA.Member.joindate IS '가입일';
 
@@ -59,7 +62,7 @@ CREATE TABLE MY_SCHEMA.Content (
 	ccontent VARCHAR2(200), /* 컨텐츠내용 */
 	img VARCHAR2(50), /* 컨텐츠사진 */
 	postdate DATE, /* 날짜 */
-	view NUMBER, /* 컨텐츠조회수 */
+	cview NUMBER, /* 컨텐츠조회수 */
 	creco NUMBER, /* 컨텐츠추천수 */
 	cstate VARCHAR2(10), /* 상태 */
 	memnum NUMBER /* 작성자 */
