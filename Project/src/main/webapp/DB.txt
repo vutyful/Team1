@@ -1,5 +1,5 @@
 /* 회원 */
-CREATE TABLE MY_SCHEMA.Member (
+CREATE TABLE Member (
 	memnum NUMBER NOT NULL, /* 회원번호 */
 	id VARCHAR2(20), /* 아이디 */
 	pass VARCHAR2(20), /* 비밀번호 */
@@ -15,40 +15,40 @@ CREATE TABLE MY_SCHEMA.Member (
 	bookmark VARCHAR2(100) /* 북마크 */
 );
 
-COMMENT ON TABLE MY_SCHEMA.Member IS '회원';
+COMMENT ON TABLE Member IS '회원';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.memnum IS '회원번호';
+COMMENT ON COLUMN Member.memnum IS '회원번호';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.id IS '아이디';
+COMMENT ON COLUMN Member.id IS '아이디';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.pass IS '비밀번호';
+COMMENT ON COLUMN Member.pass IS '비밀번호';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.name IS '이름';
+COMMENT ON COLUMN Member.name IS '이름';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.age IS '연령';
+COMMENT ON COLUMN Member.age IS '연령';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.gender IS '성별';
+COMMENT ON COLUMN Member.gender IS '성별';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.email IS '이메일';
+COMMENT ON COLUMN Member.email IS '이메일';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.pic IS '프로필사진';
+COMMENT ON COLUMN Member.pic IS '프로필사진';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.joindate IS '가입일';
+COMMENT ON COLUMN Member.joindate IS '가입일';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.state IS '상태';
+COMMENT ON COLUMN Member.state IS '상태';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.outdate IS '탈퇴일';
+COMMENT ON COLUMN Member.outdate IS '탈퇴일';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.auth IS '권한';
+COMMENT ON COLUMN Member.auth IS '권한';
 
-COMMENT ON COLUMN MY_SCHEMA.Member.bookmark IS '북마크';
+COMMENT ON COLUMN Member.bookmark IS '북마크';
 
-CREATE UNIQUE INDEX MY_SCHEMA.PK_Member
-	ON MY_SCHEMA.Member (
+CREATE UNIQUE INDEX PK_Member
+	ON Member (
 		memnum ASC
 	);
 
-ALTER TABLE MY_SCHEMA.Member
+ALTER TABLE Member
 	ADD
 		CONSTRAINT PK_Member
 		PRIMARY KEY (
@@ -56,7 +56,7 @@ ALTER TABLE MY_SCHEMA.Member
 		);
 
 /* 컨텐츠 */
-CREATE TABLE MY_SCHEMA.Content (
+CREATE TABLE Content (
 	connum NUMBER NOT NULL, /* 컨텐츠번호 */
 	title VARCHAR2(50), /* 컨텐츠이름 */
 	ccontent VARCHAR2(200), /* 컨텐츠내용 */
@@ -68,32 +68,32 @@ CREATE TABLE MY_SCHEMA.Content (
 	memnum NUMBER /* 작성자 */
 );
 
-COMMENT ON TABLE MY_SCHEMA.Content IS '컨텐츠';
+COMMENT ON TABLE Content IS '컨텐츠';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.connum IS '컨텐츠번호';
+COMMENT ON COLUMN Content.connum IS '컨텐츠번호';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.title IS '컨텐츠이름';
+COMMENT ON COLUMN Content.title IS '컨텐츠이름';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.ccontent IS '컨텐츠내용';
+COMMENT ON COLUMN Content.ccontent IS '컨텐츠내용';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.img IS '컨텐츠사진';
+COMMENT ON COLUMN Content.img IS '컨텐츠사진';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.postdate IS '날짜';
+COMMENT ON COLUMN Content.postdate IS '날짜';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.view IS '컨텐츠조회수';
+COMMENT ON COLUMN Content.view IS '컨텐츠조회수';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.creco IS '컨텐츠추천수';
+COMMENT ON COLUMN Content.creco IS '컨텐츠추천수';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.cstate IS '상태';
+COMMENT ON COLUMN Content.cstate IS '상태';
 
-COMMENT ON COLUMN MY_SCHEMA.Content.memnum IS '작성자';
+COMMENT ON COLUMN Content.memnum IS '작성자';
 
-CREATE UNIQUE INDEX MY_SCHEMA.PK_Content
-	ON MY_SCHEMA.Content (
+CREATE UNIQUE INDEX PK_Content
+	ON Content (
 		connum ASC
 	);
 
-ALTER TABLE MY_SCHEMA.Content
+ALTER TABLE Content
 	ADD
 		CONSTRAINT PK_Content
 		PRIMARY KEY (
@@ -101,7 +101,7 @@ ALTER TABLE MY_SCHEMA.Content
 		);
 
 /* 광고 */
-CREATE TABLE MY_SCHEMA.AD (
+CREATE TABLE AD (
 	adnum NUMBER NOT NULL, /* 광고번호 */
 	adname VARCHAR2(20), /* 광고이름 */
 	adimg VARCHAR2(50), /* 광고사진 */
@@ -118,42 +118,42 @@ CREATE TABLE MY_SCHEMA.AD (
 	enddate DATE /* 끝날짜 */
 );
 
-COMMENT ON TABLE MY_SCHEMA.AD IS '광고';
+COMMENT ON TABLE AD IS '광고';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.adnum IS '광고번호';
+COMMENT ON COLUMN AD.adnum IS '광고번호';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.adname IS '광고이름';
+COMMENT ON COLUMN AD.adname IS '광고이름';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.adimg IS '광고사진';
+COMMENT ON COLUMN AD.adimg IS '광고사진';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.adlink IS '광고링크';
+COMMENT ON COLUMN AD.adlink IS '광고링크';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.click10 IS '10대';
+COMMENT ON COLUMN AD.click10 IS '10대';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.click20 IS '20대';
+COMMENT ON COLUMN AD.click20 IS '20대';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.click30 IS '30대';
+COMMENT ON COLUMN AD.click30 IS '30대';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.click40 IS '40대';
+COMMENT ON COLUMN AD.click40 IS '40대';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.click50ov IS '50대 이상';
+COMMENT ON COLUMN AD.click50ov IS '50대 이상';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.clickm IS '남';
+COMMENT ON COLUMN AD.clickm IS '남';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.clickf IS '여';
+COMMENT ON COLUMN AD.clickf IS '여';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.totalclick IS '총클릭수';
+COMMENT ON COLUMN AD.totalclick IS '총클릭수';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.startdate IS '시작날짜';
+COMMENT ON COLUMN AD.startdate IS '시작날짜';
 
-COMMENT ON COLUMN MY_SCHEMA.AD.enddate IS '끝날짜';
+COMMENT ON COLUMN AD.enddate IS '끝날짜';
 
-CREATE UNIQUE INDEX MY_SCHEMA.PK_AD
-	ON MY_SCHEMA.AD (
+CREATE UNIQUE INDEX PK_AD
+	ON AD (
 		adnum ASC
 	);
 
-ALTER TABLE MY_SCHEMA.AD
+ALTER TABLE AD
 	ADD
 		CONSTRAINT PK_AD
 		PRIMARY KEY (
@@ -161,7 +161,7 @@ ALTER TABLE MY_SCHEMA.AD
 		);
 
 /* 댓글 */
-CREATE TABLE MY_SCHEMA.Reply (
+CREATE TABLE Reply (
 	replynum NUMBER NOT NULL, /* 댓글번호 */
 	redate DATE, /* 댓글날짜 */
 	rcontent VARCHAR2(100), /* 댓글내용 */
@@ -170,58 +170,58 @@ CREATE TABLE MY_SCHEMA.Reply (
 	memnum NUMBER /* 작성자 */
 );
 
-COMMENT ON TABLE MY_SCHEMA.Reply IS '댓글';
+COMMENT ON TABLE Reply IS '댓글';
 
-COMMENT ON COLUMN MY_SCHEMA.Reply.replynum IS '댓글번호';
+COMMENT ON COLUMN Reply.replynum IS '댓글번호';
 
-COMMENT ON COLUMN MY_SCHEMA.Reply.redate IS '댓글날짜';
+COMMENT ON COLUMN Reply.redate IS '댓글날짜';
 
-COMMENT ON COLUMN MY_SCHEMA.Reply.rcontent IS '댓글내용';
+COMMENT ON COLUMN Reply.rcontent IS '댓글내용';
 
-COMMENT ON COLUMN MY_SCHEMA.Reply.rreco IS '추천수';
+COMMENT ON COLUMN Reply.rreco IS '추천수';
 
-COMMENT ON COLUMN MY_SCHEMA.Reply.connum IS '컨텐츠번호';
+COMMENT ON COLUMN Reply.connum IS '컨텐츠번호';
 
-COMMENT ON COLUMN MY_SCHEMA.Reply.memnum IS '작성자';
+COMMENT ON COLUMN Reply.memnum IS '작성자';
 
-CREATE UNIQUE INDEX MY_SCHEMA.PK_Reply
-	ON MY_SCHEMA.Reply (
+CREATE UNIQUE INDEX PK_Reply
+	ON Reply (
 		replynum ASC
 	);
 
-ALTER TABLE MY_SCHEMA.Reply
+ALTER TABLE Reply
 	ADD
 		CONSTRAINT PK_Reply
 		PRIMARY KEY (
 			replynum
 		);
 
-ALTER TABLE MY_SCHEMA.Content
+ALTER TABLE Content
 	ADD
 		CONSTRAINT FK_Member_TO_Content
 		FOREIGN KEY (
 			memnum
 		)
-		REFERENCES MY_SCHEMA.Member (
+		REFERENCES Member (
 			memnum
 		);
 
-ALTER TABLE MY_SCHEMA.Reply
+ALTER TABLE Reply
 	ADD
 		CONSTRAINT FK_Content_TO_Reply
 		FOREIGN KEY (
 			connum
 		)
-		REFERENCES MY_SCHEMA.Content (
+		REFERENCES Content (
 			connum
 		);
 
-ALTER TABLE MY_SCHEMA.Reply
+ALTER TABLE Reply
 	ADD
 		CONSTRAINT FK_Member_TO_Reply
 		FOREIGN KEY (
 			memnum
 		)
-		REFERENCES MY_SCHEMA.Member (
+		REFERENCES Member (
 			memnum
 		);
