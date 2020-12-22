@@ -15,5 +15,12 @@
 		</if>
 		)
 	</insert>
+	<select id="getContentsList" resultType="content">
+		SELECT * FROM content ORDER BY connum DESC
+	</select>
+	
+	<select id="getContent" parameterType="content" resultType="content">
+		SELECT * FROM content WHERE connum = #{connum}
+	</select>
 
 </mapper>
