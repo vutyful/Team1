@@ -32,6 +32,7 @@
     <filter-name>charEncoding</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
   <servlet>
     <description></description>
     <display-name>ContentMapper</display-name>
@@ -42,4 +43,16 @@
     <servlet-name>ContentMapper</servlet-name>
     <url-pattern>/ContentMapper</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <description></description>
+    <display-name>MemberMapper</display-name>
+    <servlet-name>MemberMapper</servlet-name>
+    <servlet-class>mappers.MemberMapper</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MemberMapper</servlet-name>
+    <url-pattern>/MemberMapper</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

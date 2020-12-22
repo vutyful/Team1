@@ -1,17 +1,63 @@
 package project.simsim.systems.domains;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class ContentVO {
+	private int connum;
+	private String title;
+	private String ccontent;
+	private String img;
+	private long imgsize;
+	private String postdate;
+	private int cview;
+	private int creco;
+	private int memnum;
 	
-	private int connum;  /* 컨텐츠번호 */
-	private String 	title; /* 컨텐츠이름 */
-	private String ccontent; /* 컨텐츠내용 */
-	private String img; /* 컨텐츠사진 */
-	private String postdate; /* 날짜 */
-	private int cview;  /* 컨텐츠조회수 */
-	private int creco;  /* 컨텐츠추천수 */
-	private String cstate; /* 상태 */
-	private int memnum;  /* 작성자 */
+	MultipartFile file;	// write.jsp에 파일첨부시 name="file"과 동일한 변수명
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+		
+		// 업로드 파일 접근
+		if(! file.isEmpty()){
+			this.img = file.getOriginalFilename();
+			this.imgsize = file.getSize();
+			
+			//***********************************************
+			// 해당 경로로 변경
+			File f = new File("D:\\java\\git\\Team1\\Project\\src\\main\\webapp\\resources\\upload\\"+ img);
+			
+			try {
+				file.transferTo(f);
+				
+			} catch (IllegalStateException e) {				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	public long getImgsize() {
+		return imgsize;
+	}
+	public void setImgsize(long imgsize) {
+		this.imgsize = imgsize;
+	}
 	public int getConnum() {
 		return connum;
 	}
@@ -29,12 +75,6 @@ public class ContentVO {
 	}
 	public void setCcontent(String ccontent) {
 		this.ccontent = ccontent;
-	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
 	}
 	public String getPostdate() {
 		return postdate;
@@ -54,20 +94,10 @@ public class ContentVO {
 	public void setCreco(int creco) {
 		this.creco = creco;
 	}
-	public String getCstate() {
-		return cstate;
-	}
-	public void setCstate(String cstate) {
-		this.cstate = cstate;
-	}
 	public int getMemnum() {
 		return memnum;
 	}
 	public void setMemnum(int memnum) {
 		this.memnum = memnum;
 	}
-	
-
-	
-
 }

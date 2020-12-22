@@ -38,18 +38,6 @@
 				</div>
 
 
-				<!-- Select Basic 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Fulldayorhalfday">Full day or half day</label>
-  <div class="col-md-4">
-    <select id="Fulldayorhalfday" name="Fulldayorhalfday" class="form-control">
-      <option value="1">Morning</option>
-      <option value="2">Afternoon</option>
-      <option value="3">Full Day</option>
-    </select>
-  </div>
-</div>
--->
 
 				<!-- Textarea -->
 				<div class="form-group">
