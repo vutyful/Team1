@@ -10,15 +10,15 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- Fonts-->
-		<link rel="stylesheet" type="text/css" href="resources/hyein/fonts/fontawesome/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/fonts/pe-icon/pe-icon.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/fonts/fontawesome/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/fonts/pe-icon/pe-icon.css">
 		<!-- Vendors-->
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/bootstrap/grid.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/magnific-popup/magnific-popup.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/swiper/swiper.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/bootstrap/grid.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/magnific-popup/magnific-popup.min.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/swiper/swiper.css">
 		<!-- App & fonts-->
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:400,700">
-		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="resources/hyein/css/main.css"><!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="../resources/hyein/css/main.css"><!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<![endif]-->
 </head>
@@ -29,7 +29,7 @@
 			<header class="header header--fixed">
 				<div class="header__inner">
 					<p></p>
-					<div class="header__logo"><a href="main.jsp"><img id="logo"  src="resources/hyein/img/logo.png" alt=""/></a></div>
+					<div class="header__logo"><a href="#"><img id="logo"  src="../resources/hyein/img/logo.png" alt=""/></a></div>
 					<div class="navbar-toggle" id="fs-button">
 						<div class="navbar-icon"><span></span></div>
 					</div>
@@ -43,13 +43,13 @@
 						
 						<!--  -->
 						<ul class="wil-menu-list">
-							<li class="current-menu-item"><a href="main.jsp">프로필 사진</a>
+							<li class="current-menu-item box"><a href="main.jsp">
+							<img class="profile" src="../resources/upload/아닌데여.png"></a>
 							</li>
-							<li><a href="work.html">프로필</a>
+							<br/><br/>
+							<li><a href="bookmark.do">북마크</a>
 							</li>
-							<li><a href="bookmark.jsp">북마크</a>
-							</li>
-							<li><a href="contact.html">로그아웃</a>
+							<li><a href="/Project/main.jsp">로그아웃</a>
 							</li>
 						</ul><!--  -->
 						
@@ -107,7 +107,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-slide-bottom -->
 													<div class="hoverbox ef-slide-bottom light">
@@ -134,7 +134,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-move-top -->
 													<div class="hoverbox ef-move-top light">
@@ -161,7 +161,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-slide-right -->
 													<div class="hoverbox ef-slide-right light">
@@ -188,7 +188,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-zoom-in -->
 													<div class="hoverbox ef-zoom-in light">
@@ -215,7 +215,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-zoom-in -->
 													<div class="hoverbox ef-zoom-in light">
@@ -242,7 +242,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-slide-right -->
 													<div class="hoverbox ef-slide-right light">
@@ -269,7 +269,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-move-right -->
 													<div class="hoverbox ef-move-right light">
@@ -296,7 +296,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-move-bottom -->
 													<div class="hoverbox ef-move-bottom light">
@@ -323,7 +323,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents_login.do">
 													
 													<!-- hoverbox ef-move-bottom -->
 													<div class="hoverbox ef-move-bottom light">
@@ -400,19 +400,19 @@
 			
 		</div>
 		<!-- Vendors-->
-		<script type="text/javascript" src="resources/hyein/vendors/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/isotope-layout/isotope.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery-one-page/jquery.nav.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.easing/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.matchHeight/jquery.matchHeight.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/masonry-layout/masonry.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.waypoints/jquery.waypoints.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/swiper/swiper.jquery.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/menu/menu.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/typed/typed.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/isotope-layout/isotope.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery-one-page/jquery.nav.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.easing/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.matchHeight/jquery.matchHeight.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/masonry-layout/masonry.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.waypoints/jquery.waypoints.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/swiper/swiper.jquery.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/menu/menu.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/typed/typed.min.js"></script>
 		<!-- App-->
-		<script type="text/javascript" src="resources/hyein/js/main.js"></script>
+		<script type="text/javascript" src="../resources/hyein/js/main.js"></script>
 </body>
 </html>
