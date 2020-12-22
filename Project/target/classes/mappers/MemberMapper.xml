@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="member.mapper">
+<mapper namespace="MemberMAP">
+
+
+
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO member
+		(memnum, userId, pass, name, birth, gender, email, joindate, state, auth)
+		VALUES
+		(seq_member_memnum.nextval,#{id},#{pass},#{name},#{birth},#{gender},#{email},sysdate,'일반회원',0)
+	</insert>
+
+
+	<select id="idCheck" parameterType="member" resultType="member">
+		SELECT * FROM member
+		WHERE id=#{id}
+		<if test="pass != null">
+			and pass=#{pass}
+		</if>
+	</select>
 
 
 

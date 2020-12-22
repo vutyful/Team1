@@ -6,7 +6,9 @@
 
 <typeAliases>
 	<typeAlias type="project.simsim.systems.domains.ContentVO" alias="content"/>
+	<typeAlias type="project.simsim.systems.domains.MemberVO" alias="member"/>
 </typeAliases>
+
 
 </configuration>
 
