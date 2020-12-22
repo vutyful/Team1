@@ -10,15 +10,15 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- Fonts-->
-		<link rel="stylesheet" type="text/css" href="resources/hyein/fonts/fontawesome/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/fonts/pe-icon/pe-icon.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/fonts/fontawesome/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/fonts/pe-icon/pe-icon.css">
 		<!-- Vendors-->
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/bootstrap/grid.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/magnific-popup/magnific-popup.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/swiper/swiper.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/bootstrap/grid.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/magnific-popup/magnific-popup.min.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/swiper/swiper.css">
 		<!-- App & fonts-->
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:400,700">
-		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="resources/hyein/css/main.css"><!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="../resources/hyein/css/main.css"><!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<![endif]-->
 </head>
@@ -29,7 +29,7 @@
 			<header class="header header--fixed">
 				<div class="header__inner">
 				<p></p>
-					<div class="header__logo"><a href="main.jsp"><img id="logo"  src="resources/hyein/img/logo.png" alt=""/></a></div>
+					<div class="header__logo"><a href="main_login.do"><img id="logo"  src="../resources/hyein/img/logo.png" alt=""/></a></div>
 					<div class="navbar-toggle" id="fs-button">
 						<div class="navbar-icon"><span></span></div>
 					</div>
@@ -43,13 +43,13 @@
 						
 						<!--  -->
 						<ul class="wil-menu-list">
-							<li class="current-menu-item box"><a href="hjview/login.do">
-							<img class="profile" src="resources/hyein/img/works/unknown.jpg"></a>
+							<li class="current-menu-item box"><a href="main.jsp">
+							<img class="profile" src="../resources/upload/아닌데여.png"></a>
 							</li>
 							<br/><br/>
-							<li><a href="hjview/login.do">북마크</a>
+							<li><a href="bookmark.do">북마크</a>
 							</li>
-							<li><a href="main/main_login.do">로그인</a>
+							<li><a href="/Project/main.jsp">로그아웃</a>
 							</li>
 						</ul><!--  -->
 						
@@ -68,7 +68,7 @@
 						
 						<!-- page-title -->
 						<div class="page-title pb-40">
-							<a href="hjview/login.do"><img id="bm_img" src="resources/hyein/img/works/bm_no.jpg"></a>
+							<a href="bm.do"><img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
 							<h2 class="page-title__title">The Myth of Ugly Design</h2>
 							<p class="page-title__text">by hyein</p>
 							<p class="page-title__text">작성한 시각 2020.12.22</p>
@@ -89,9 +89,9 @@
 							<div class="work-detail__entry">
 								<p>In nec porttitor nisi. Nunc at egestas ante. Sed vestibulum velit eu nibh commodo, non fermentum libero pellentesque. Fusce sed posuere ex, non ultrices nibh. Fusce quis leo non ex rutrum convallis non ut ante. Phasellus hendrerit ante nec est porta, et elementum massa euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
 								<p>Quisque et quam facilisis, posuere justo ut, maximus nulla. Quisque id fermentum tortor. Duis sem mi, luctus sed luctus eget, viverra et ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec faucibus imperdiet porttitor. Etiam fringilla ligula et porttitor tristique..</p><br>
-								<div class="work-img"><img src="resources/hyein/img/works/01.jpg" alt=""></div>
-								<div class="work-img"><img src="resources/hyein/img/works/02.jpg" alt=""></div>
-								<div class="work-img"><img src="resources/hyein/img/works/03.jpg" alt=""></div>
+								<div class="work-img"><img src="../resources/hyein/img/works/01.jpg" alt=""></div>
+								<div class="work-img"><img src="../resources/hyein/img/works/02.jpg" alt=""></div>
+								<div class="work-img"><img src="../resources/hyein/img/works/03.jpg" alt=""></div>
 							</div>
 							
 							<p class="best_comment">BEST</p>
@@ -149,19 +149,19 @@
 						</p>
 						<div id="contents_slider">
 							<ul>
-								<li><a href="#"><img src="resources/hyein/img/works/4.jpg"><span>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
 										<strong>컨텐츠 제목</strong>
 									</span></a></li>
-								<li><a href="#"><img src="resources/hyein/img/works/4.jpg"><span>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
 										<strong>컨텐츠 제목</strong>
 									</span></a></li>
-								<li><a href="#"><img src="resources/hyein/img/works/4.jpg"><span>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
 										<strong>컨텐츠 제목</strong>
 									</span></a></li>
-								<li><a href="#"><img src="resources/hyein/img/works/5.jpg"><span>
+								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
 										<strong>컨텐츠 제목</strong>
 									</span></a></li>
-								<li><a href="#"><img src="resources/hyein/img/works/5.jpg"><span>
+								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
 										<strong>컨텐츠 제목</strong>
 									</span></a></li>
 							</ul>
@@ -216,22 +216,22 @@
 			
 		</div>
 		<!-- Vendors-->
-		<script type="text/javascript" src="resources/hyein/vendors/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery/jquery-1.10.2.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/isotope-layout/isotope.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery-one-page/jquery.nav.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.easing/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.matchHeight/jquery.matchHeight.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/masonry-layout/masonry.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.waypoints/jquery.waypoints.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/swiper/swiper.jquery.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/menu/menu.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/typed/typed.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.bxslider.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/isotope-layout/isotope.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery-one-page/jquery.nav.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.easing/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.matchHeight/jquery.matchHeight.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/masonry-layout/masonry.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.waypoints/jquery.waypoints.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/swiper/swiper.jquery.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/menu/menu.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/typed/typed.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.bxslider.min.js"></script>
 		<!-- App-->
-		<script type="text/javascript" src="resources/hyein/js/main.js"></script>
-		<script type="text/javascript" src="resources/hyein/js/contents.js"></script>
+		<script type="text/javascript" src="../resources/hyein/js/main.js"></script>
+		<script type="text/javascript" src="../resources/hyein/js/contents.js"></script>
 </body>
 </html>

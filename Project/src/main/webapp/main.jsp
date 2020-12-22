@@ -43,13 +43,13 @@
 						
 						<!--  -->
 						<ul class="wil-menu-list">
-							<li class="current-menu-item"><a href="main.jsp">프로필 사진</a>
+							<li class="current-menu-item box"><a href="hjview/login.do">
+							<img class="profile" src="resources/hyein/img/works/unknown.jpg"></a>
 							</li>
-							<li><a href="work.html">프로필</a>
+							<br/><br/>
+							<li><a href="hjview/login.do">북마크</a>
 							</li>
-							<li><a href="bookmark.jsp">북마크</a>
-							</li>
-							<li><a href="contact.html">로그인</a>
+							<li><a href="main/main_login.do">로그인</a>
 							</li>
 						</ul><!--  -->
 						
@@ -100,8 +100,9 @@
 							</div>
 						</div> -->
 						<div class="grid-css grid-css--masonry" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
-							<div class="grid__inner">
+							<div id="grid__inner" class="grid__inner">
 								<div class="grid-sizer"></div>
+								<div id="main_contents">
 								<div class="grid-item">
 									<div class="grid-item__inner">
 										<div class="grid-item__content-wrapper">
@@ -128,6 +129,7 @@
 											
 										</div>
 									</div>
+								</div>
 								</div>
 								<div class="grid-item">
 									<div class="grid-item__inner">
@@ -347,6 +349,7 @@
 								</div>
 							</div>
 						</div>
+						
 						<div class="awe-text-center mt-50">
 							<a class="md-btn md-btn--outline-primary" href="#">더 보기
 							</a>
