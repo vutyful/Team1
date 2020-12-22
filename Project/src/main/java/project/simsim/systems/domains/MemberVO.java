@@ -6,7 +6,7 @@ public class MemberVO {
 	private String id; /* 아이디 */
 	private String pass; /* 비밀번호 */
 	private String name; /* 이름 */
-	private int age; /* 연령 */
+	private String birth; /* 생일 */
 	private String gender; /* 성별 */
 	private String email; /* 이메일 */
 	private String pic; /* 프로필사진 */
@@ -41,11 +41,11 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getAge() {
-		return age;
+	public String getBirth() {
+		return birth;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 	public String getGender() {
 		return gender;
@@ -95,6 +95,7 @@ public class MemberVO {
 	public void setBookmark(String bookmark) {
 		this.bookmark = bookmark;
 	}
+	
 	
 
 	
