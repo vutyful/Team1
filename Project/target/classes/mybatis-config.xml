@@ -4,9 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+<!-- <typeAliases>  -->
+<!-- 	<typeAlias type="project.simsim.systems.domains.ContentVO" alias="content"/>  -->
+<!--  </typeAliases>   -->
+ 
 <typeAliases>
+	<typeAlias type="project.simsim.systems.domains.ManagerAdVO" alias="manager"/>
 	<typeAlias type="project.simsim.systems.domains.ContentVO" alias="content"/>
-</typeAliases>
+ </typeAliases>
 
-</configuration>
+
+
+</configuration> 
 
