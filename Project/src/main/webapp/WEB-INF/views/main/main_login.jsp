@@ -49,7 +49,7 @@
 							<br/><br/>
 							<li><a href="bookmark.do">북마크</a>
 							</li>
-							<li><a href="/Project/main.jsp">로그아웃</a>
+							<li><a href="logout.do">로그아웃</a>
 							</li>
 						</ul><!--  -->
 						

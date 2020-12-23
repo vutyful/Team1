@@ -49,7 +49,7 @@
 							<br/><br/>
 							<li><a href="bookmark.do">북마크</a>
 							</li>
-							<li><a href="/Project/main.jsp">로그아웃</a>
+							<li><a href="logout.do">로그아웃</a>
 							</li>
 						</ul><!--  -->
 						
@@ -90,12 +90,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/807034/pexels-photo-807034.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/807034/pexels-photo-807034.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Nov 26, 2017</span><span class="author"><a href="contents_login.do">by Maria Gutierrez</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">Is UX Really That Important?</a></h2>
+													<div class="post__meta"><span class="date">Nov 26, 2017</span><span class="author"><a href="contents.do">by Maria Gutierrez</a></span></div>
+													<h2 class="post__title"><a href="contents.do">Is UX Really That Important?</a></h2>
 													<p class="post__text">Duis porttitor libero ac egestas euismod. Maecenas quis felis turpis. Nulla quis turpis sed augue egestas dapibus vel at nibh. Nul</p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -109,12 +109,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/609687/pexels-photo-609687.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/609687/pexels-photo-609687.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Nov 26, 2017</span><span class="author"><a href="contents_login.do">by Bryan Ryan</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">Free Sketch Plugins</a></h2>
+													<div class="post__meta"><span class="date">Nov 26, 2017</span><span class="author"><a href="contents.do">by Bryan Ryan</a></span></div>
+													<h2 class="post__title"><a href="contents.do">Free Sketch Plugins</a></h2>
 													<p class="post__text">Nam suscipit nisi risus, et porttitor metus molestie a. Phasellus id quam id turpis suscipit pretium. Maecenas ultrices, lacus ut </p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -128,12 +128,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/754949/pexels-photo-754949.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/754949/pexels-photo-754949.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Dec 20, 2017</span><span class="author"><a href="contents_login.do">by Bruce Powell</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">3 Essential Design Trends</a></h2>
+													<div class="post__meta"><span class="date">Dec 20, 2017</span><span class="author"><a href="contents.do">by Bruce Powell</a></span></div>
+													<h2 class="post__title"><a href="contents.do">3 Essential Design Trends</a></h2>
 													<p class="post__text">Maecenas lorem ex, euismod eget pulvinar non, facilisis ut leo. Quisque placerat purus in neque efficitur ornare. Nam at justo mag</p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -147,12 +147,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/794578/pexels-photo-794578.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/794578/pexels-photo-794578.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Dec 20, 2017</span><span class="author"><a href="contents_login.do">by Sean Coleman</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">How to Create and Manage SVG Sprites</a></h2>
+													<div class="post__meta"><span class="date">Dec 20, 2017</span><span class="author"><a href="contents.do">by Sean Coleman</a></span></div>
+													<h2 class="post__title"><a href="contents.do">How to Create and Manage SVG Sprites</a></h2>
 													<p class="post__text">Integer placerat ullamcorper urna nec rhoncus. Sed velit justo, lacinia non sapien imperdiet, sagittis fringilla risus. Nulla in e</p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -166,12 +166,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/38069/pexels-photo-38069.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/38069/pexels-photo-38069.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Feb 15, 2018</span><span class="author"><a href="contents_login.do">by Daniel Ramirez</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">3 Essential Design Trends</a></h2>
+													<div class="post__meta"><span class="date">Feb 15, 2018</span><span class="author"><a href="contents.do">by Daniel Ramirez</a></span></div>
+													<h2 class="post__title"><a href="contents.do">3 Essential Design Trends</a></h2>
 													<p class="post__text">Maecenas lorem ex, euismod eget pulvinar non, facilisis ut leo. Quisque placerat purus in neque efficitur ornare. Nam at justo mag</p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -185,12 +185,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Nov 26, 2017</span><span class="author"><a href="contents_login.do">by Olivia Ryan</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">3 Essential Design Trends</a></h2>
+													<div class="post__meta"><span class="date">Nov 26, 2017</span><span class="author"><a href="contents.do">by Olivia Ryan</a></span></div>
+													<h2 class="post__title"><a href="contents.do">3 Essential Design Trends</a></h2>
 													<p class="post__text">Sed ante nisl, fermentum et facilisis in, maximus sed ipsum. Cras hendrerit feugiat eros, ut fringilla nunc finibus sed. Quisque v</p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -204,12 +204,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/792906/pexels-photo-792906.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/792906/pexels-photo-792906.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Jan 28, 2018</span><span class="author"><a href="contents_login.do">by Ann Fowler</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">Getting Started with Vue.Js</a></h2>
+													<div class="post__meta"><span class="date">Jan 28, 2018</span><span class="author"><a href="contents.do">by Ann Fowler</a></span></div>
+													<h2 class="post__title"><a href="contents.do">Getting Started with Vue.Js</a></h2>
 													<p class="post__text">Suspendisse ac elit vitae est lacinia interdum eu sit amet mauris. Phasellus aliquam nisi sit amet libero mattis ornare. In varius</p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -223,12 +223,12 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do"><img src="https://images.pexels.com/photos/789140/pexels-photo-789140.jpeg?h=350&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
+												<div class="post__media"><a href="contents.do"><img src="https://images.pexels.com/photos/789140/pexels-photo-789140.jpeg?h=350&amp;auto=compress&amp;cs=tinysrgb" alt=""/></a></div>
 												<div class="post__body">
-													<div class="post__meta"><span class="date">Dec 20, 2017</span><span class="author"><a href="contents_login.do">by Olivia Ryan</a></span></div>
-													<h2 class="post__title"><a href="contents_login.do">Design a Perfect Homepage</a></h2>
+													<div class="post__meta"><span class="date">Dec 20, 2017</span><span class="author"><a href="contents.do">by Olivia Ryan</a></span></div>
+													<h2 class="post__title"><a href="contents.do">Design a Perfect Homepage</a></h2>
 													<p class="post__text">Maecenas lorem ex, euismod eget pulvinar non, facilisis ut leo. Quisque placerat purus in neque efficitur ornare. Nam at justo mag</p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do">read more
+													<a class="md-btn md-btn--outline-primary" href="contents.do">read more
 													</a>
 												</div>
 											</div><!-- End / post -->
@@ -239,7 +239,7 @@
 							</div>
 						</div>
 						<div class="awe-text-center mt-50">
-							<a class="md-btn md-btn--outline-primary " href="contents_login.do">더 보기
+							<a class="md-btn md-btn--outline-primary " href="contents.do">더 보기
 							</a>
 						</div>
 					</div>
@@ -260,27 +260,27 @@
 							<div class="footer__social">
 								
 								<!-- social-icon -->
-								<a class="social-icon" href="contents_login.do"><i class="social-icon__icon fa fa-facebook"></i>
+								<a class="social-icon" href="contents.do"><i class="social-icon__icon fa fa-facebook"></i>
 								</a><!-- End / social-icon -->
 								
 								
 								<!-- social-icon -->
-								<a class="social-icon" href="contents_login.do"><i class="social-icon__icon fa fa-twitter"></i>
+								<a class="social-icon" href="contents.do"><i class="social-icon__icon fa fa-twitter"></i>
 								</a><!-- End / social-icon -->
 								
 								
 								<!-- social-icon -->
-								<a class="social-icon" href="contents_login.do"><i class="social-icon__icon fa fa-linkedin"></i>
+								<a class="social-icon" href="contents.do"><i class="social-icon__icon fa fa-linkedin"></i>
 								</a><!-- End / social-icon -->
 								
 								
 								<!-- social-icon -->
-								<a class="social-icon" href="contents_login.do"><i class="social-icon__icon fa fa-behance"></i>
+								<a class="social-icon" href="contents.do"><i class="social-icon__icon fa fa-behance"></i>
 								</a><!-- End / social-icon -->
 								
 								
 								<!-- social-icon -->
-								<a class="social-icon" href="contents_login.do"><i class="social-icon__icon fa fa-vimeo"></i>
+								<a class="social-icon" href="contents.do"><i class="social-icon__icon fa fa-vimeo"></i>
 								</a><!-- End / social-icon -->
 								
 							</div>

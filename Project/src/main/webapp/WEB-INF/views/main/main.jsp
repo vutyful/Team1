@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,15 @@
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<!-- Fonts-->
-		<link rel="stylesheet" type="text/css" href="resources/hyein/fonts/fontawesome/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/fonts/pe-icon/pe-icon.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/fonts/fontawesome/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/fonts/pe-icon/pe-icon.css">
 		<!-- Vendors-->
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/bootstrap/grid.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/magnific-popup/magnific-popup.min.css">
-		<link rel="stylesheet" type="text/css" href="resources/hyein/vendors/swiper/swiper.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/bootstrap/grid.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/magnific-popup/magnific-popup.min.css">
+		<link rel="stylesheet" type="text/css" href="../resources/hyein/vendors/swiper/swiper.css">
 		<!-- App & fonts-->
 		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Open+Sans:400,700">
-		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="resources/hyein/css/main.css"><!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="../resources/hyein/css/main.css"><!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<![endif]-->
 </head>
@@ -29,7 +30,7 @@
 			<header class="header header--fixed">
 				<div class="header__inner">
 					<p></p>
-					<div class="header__logo"><a href="main.jsp"><img id="logo"  src="resources/hyein/img/logo.png" alt=""/></a></div>
+					<div class="header__logo"><a href="#"><img id="logo"  src="../resources/hyein/img/logo.png" alt=""/></a></div>
 					<div class="navbar-toggle" id="fs-button">
 						<div class="navbar-icon"><span></span></div>
 					</div>
@@ -43,13 +44,13 @@
 						
 						<!--  -->
 						<ul class="wil-menu-list">
-							<li class="current-menu-item box"><a href="hjview/login.do">
-							<img class="profile" src="resources/hyein/img/works/unknown.jpg"></a>
+							<li class="current-menu-item box"><a href="/Project/hjview/login.do">
+							<img class="profile" src="../resources/hyein/img/works/unknown.jpg"></a>
 							</li>
 							<br/><br/>
-							<li><a href="hjview/login.do">북마크</a>
+							<li><a href="/Project/hjview/login.do">북마크</a>
 							</li>
-							<li><a href="main/main_login.do">로그인</a>
+							<li><a href="main_login.do">로그인</a>
 							</li>
 						</ul><!--  -->
 						
@@ -102,68 +103,38 @@
 						<div class="grid-css grid-css--masonry" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
 							<div id="grid__inner" class="grid__inner">
 								<div class="grid-sizer"></div>
-								<div id="main_contents">
+							<c:forEach items="${contents}" var="con"> <!-- 프라퍼티 이름변경 -->
 								<div class="grid-item">
 									<div class="grid-item__inner">
 										<div class="grid-item__content-wrapper">
-											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do?connum=${con.connum}">
 													
-													<!-- hoverbox ef-slide-bottom -->
-													<div class="hoverbox ef-slide-bottom light">
-														
+													<!-- hoverbox ef-slide-right -->
+													<div class="hoverbox ef-slide-right light">
 														<!-- hb_front -->
-														<div class="hb_front"><img src="https://images.pexels.com/photos/807034/pexels-photo-807034.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
+														<div class="hb_front"><img src="../resources/upload/${con.img}"/>
 														</div><!-- End / hb_front -->
 														
 														
 														<!-- hb_back -->
 														<div class="hb_back">
-															<h2 class="work__title">The Myth of Ugly Design</h2><span class="work__text">View detail</span>
+															<h2 class="work__title"> ${con.title} </h2><span class="work__text"> ${con.ccontent} </span>
 														</div><!-- End / hb_back -->
 														
 													</div><!-- End / hoverbox ef-slide-bottom -->
 													</a>
 											</div><!-- End / work -->
-											
 										</div>
 									</div>
 								</div>
-								</div>
+							</c:forEach>
 								<div class="grid-item">
 									<div class="grid-item__inner">
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
-													
-													<!-- hoverbox ef-move-top -->
-													<div class="hoverbox ef-move-top light">
-														
-														<!-- hb_front -->
-														<div class="hb_front"><img src="https://images.pexels.com/photos/609687/pexels-photo-609687.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
-														</div><!-- End / hb_front -->
-														
-														
-														<!-- hb_back -->
-														<div class="hb_back">
-															<h2 class="work__title">How to Create and Manage SVG Sprites</h2><span class="work__text">View detail</span>
-														</div><!-- End / hb_back -->
-														
-													</div><!-- End / hoverbox ef-move-top -->
-													</a>
-											</div><!-- End / work -->
-											
-										</div>
-									</div>
-								</div>
-								<div class="grid-item">
-									<div class="grid-item__inner">
-										<div class="grid-item__content-wrapper">
-											
-											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do">
 													
 													<!-- hoverbox ef-slide-right -->
 													<div class="hoverbox ef-slide-right light">
@@ -190,7 +161,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do">
 													
 													<!-- hoverbox ef-zoom-in -->
 													<div class="hoverbox ef-zoom-in light">
@@ -217,7 +188,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do">
 													
 													<!-- hoverbox ef-zoom-in -->
 													<div class="hoverbox ef-zoom-in light">
@@ -244,7 +215,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do">
 													
 													<!-- hoverbox ef-slide-right -->
 													<div class="hoverbox ef-slide-right light">
@@ -271,7 +242,7 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do">
 													
 													<!-- hoverbox ef-move-right -->
 													<div class="hoverbox ef-move-right light">
@@ -298,7 +269,88 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do">
+													
+													<!-- hoverbox ef-move-right -->
+													<div class="hoverbox ef-move-right light">
+														
+														<!-- hb_front -->
+														<div class="hb_front"><img src="https://images.pexels.com/photos/792906/pexels-photo-792906.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
+														</div><!-- End / hb_front -->
+														
+														
+														<!-- hb_back -->
+														<div class="hb_back">
+															<h2 class="work__title">Free PSD Files</h2><span class="work__text">View detail</span>
+														</div><!-- End / hb_back -->
+														
+													</div><!-- End / hoverbox ef-move-right -->
+													</a>
+											</div><!-- End / work -->
+											
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<div class="grid-item__inner">
+										<div class="grid-item__content-wrapper">
+											
+											<!-- work -->
+											<div class="work"><a href="contents.do">
+													
+													<!-- hoverbox ef-move-right -->
+													<div class="hoverbox ef-move-right light">
+														
+														<!-- hb_front -->
+														<div class="hb_front"><img src="https://images.pexels.com/photos/792906/pexels-photo-792906.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
+														</div><!-- End / hb_front -->
+														
+														
+														<!-- hb_back -->
+														<div class="hb_back">
+															<h2 class="work__title">Free PSD Files</h2><span class="work__text">View detail</span>
+														</div><!-- End / hb_back -->
+														
+													</div><!-- End / hoverbox ef-move-right -->
+													</a>
+											</div><!-- End / work -->
+											
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<div class="grid-item__inner">
+										<div class="grid-item__content-wrapper">
+											
+											<!-- work -->
+											<div class="work"><a href="contents.do">
+													
+													<!-- hoverbox ef-move-right -->
+													<div class="hoverbox ef-move-right light">
+														
+														<!-- hb_front -->
+														<div class="hb_front"><img src="https://images.pexels.com/photos/792906/pexels-photo-792906.jpeg?w=1260&amp;h=750&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
+														</div><!-- End / hb_front -->
+														
+														
+														<!-- hb_back -->
+														<div class="hb_back">
+															<h2 class="work__title">Free PSD Files</h2><span class="work__text">View detail</span>
+														</div><!-- End / hb_back -->
+														
+													</div><!-- End / hoverbox ef-move-right -->
+													</a>
+											</div><!-- End / work -->
+											
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<div class="grid-item__inner">
+										<div class="grid-item__content-wrapper">
+											
+											<!-- work -->
+											<div class="work"><a href="contents.do">
 													
 													<!-- hoverbox ef-move-bottom -->
 													<div class="hoverbox ef-move-bottom light">
@@ -325,7 +377,88 @@
 										<div class="grid-item__content-wrapper">
 											
 											<!-- work -->
-											<div class="work"><a href="contents.jsp">
+											<div class="work"><a href="contents.do">
+													
+													<!-- hoverbox ef-move-bottom -->
+													<div class="hoverbox ef-move-bottom light">
+														
+														<!-- hb_front -->
+														<div class="hb_front"><img src="https://images.pexels.com/photos/15382/pexels-photo.jpg?h=350&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
+														</div><!-- End / hb_front -->
+														
+														
+														<!-- hb_back -->
+														<div class="hb_back">
+															<h2 class="work__title">5 Ways to Use 404 Pages</h2><span class="work__text">View detail</span>
+														</div><!-- End / hb_back -->
+														
+													</div><!-- End / hoverbox ef-move-bottom -->
+													</a>
+											</div><!-- End / work -->
+											
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<div class="grid-item__inner">
+										<div class="grid-item__content-wrapper">
+											
+											<!-- work -->
+											<div class="work"><a href="contents.do">
+													
+													<!-- hoverbox ef-move-bottom -->
+													<div class="hoverbox ef-move-bottom light">
+														
+														<!-- hb_front -->
+														<div class="hb_front"><img src="https://images.pexels.com/photos/15382/pexels-photo.jpg?h=350&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
+														</div><!-- End / hb_front -->
+														
+														
+														<!-- hb_back -->
+														<div class="hb_back">
+															<h2 class="work__title">5 Ways to Use 404 Pages</h2><span class="work__text">View detail</span>
+														</div><!-- End / hb_back -->
+														
+													</div><!-- End / hoverbox ef-move-bottom -->
+													</a>
+											</div><!-- End / work -->
+											
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<div class="grid-item__inner">
+										<div class="grid-item__content-wrapper">
+											
+											<!-- work -->
+											<div class="work"><a href="contents.do">
+													
+													<!-- hoverbox ef-move-bottom -->
+													<div class="hoverbox ef-move-bottom light">
+														
+														<!-- hb_front -->
+														<div class="hb_front"><img src="https://images.pexels.com/photos/15382/pexels-photo.jpg?h=350&amp;auto=compress&amp;cs=tinysrgb" alt=""/>
+														</div><!-- End / hb_front -->
+														
+														
+														<!-- hb_back -->
+														<div class="hb_back">
+															<h2 class="work__title">5 Ways to Use 404 Pages</h2><span class="work__text">View detail</span>
+														</div><!-- End / hb_back -->
+														
+													</div><!-- End / hoverbox ef-move-bottom -->
+													</a>
+											</div><!-- End / work -->
+											
+										</div>
+									</div>
+								</div>
+								<div class="grid-item">
+									<div class="grid-item__inner">
+										<div class="grid-item__content-wrapper">
+											
+											<!-- work -->
+											<div class="work"><a href="contents.do">
 													
 													<!-- hoverbox ef-move-bottom -->
 													<div class="hoverbox ef-move-bottom light">
@@ -351,7 +484,7 @@
 						</div>
 						
 						<div class="awe-text-center mt-50">
-							<a class="md-btn md-btn--outline-primary" href="#">더 보기
+							<a class="md-btn md-btn--outline-primary" href="#">새 컨텐츠
 							</a>
 						</div>
 					</div>
@@ -403,19 +536,19 @@
 			
 		</div>
 		<!-- Vendors-->
-		<script type="text/javascript" src="resources/hyein/vendors/jquery/jquery.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/isotope-layout/isotope.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery-one-page/jquery.nav.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.easing/jquery.easing.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.matchHeight/jquery.matchHeight.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/masonry-layout/masonry.pkgd.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/jquery.waypoints/jquery.waypoints.min.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/swiper/swiper.jquery.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/menu/menu.js"></script>
-		<script type="text/javascript" src="resources/hyein/vendors/typed/typed.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/imagesloaded/imagesloaded.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/isotope-layout/isotope.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery-one-page/jquery.nav.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.easing/jquery.easing.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.matchHeight/jquery.matchHeight.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/masonry-layout/masonry.pkgd.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/jquery.waypoints/jquery.waypoints.min.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/swiper/swiper.jquery.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/menu/menu.js"></script>
+		<script type="text/javascript" src="../resources/hyein/vendors/typed/typed.min.js"></script>
 		<!-- App-->
-		<script type="text/javascript" src="resources/hyein/js/main.js"></script>
+		<script type="text/javascript" src="../resources/hyein/js/main.js"></script>
 </body>
 </html>

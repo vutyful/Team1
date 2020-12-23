@@ -301,10 +301,3 @@ $('#back-to-down').on('click', function () {
 	}, 700);
 });
 })();
-
-window.onload = init;
-        function init(){
-            var div = document.createElement('div');
-            div.innerHTML = document.getElementById('main_contents').innerHTML;
-            document.getElementById('grid_inner').appendChild(div);
-        }
