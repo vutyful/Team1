@@ -43,13 +43,15 @@
 						
 						<!--  -->
 						<ul class="wil-menu-list">
-							<li class="current-menu-item box"><a href="main.jsp">
+							<li class="current-menu-item box"><a href="/Project/hjview/profile.do">
 							<img class="profile" src="../resources/upload/아닌데여.png"></a>
 							</li>
 							<br/><br/>
-							<li><a href="bookmark.do">북마크</a>
+							<li><a href="../main/bookmark.do">북마크</a>
 							</li>
-							<li><a href="/Project/main.jsp">로그아웃</a>
+							<li><a href="logout.do">로그아웃</a>
+							</li>
+							<li><a href="../admin.do">관리자</a>
 							</li>
 						</ul><!--  -->
 						

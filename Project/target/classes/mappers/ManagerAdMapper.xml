@@ -7,7 +7,7 @@
  <insert id="insertManager" parameterType="manager">
   INSERT INTO AD 
   (adnum,adname,adimg,adlink,startdate,enddate) 
-  VALUES(seq_TABLE3_adnum.NEXTVAL,#{adname},#{adimg},#{adlink},sysdate,sysdate+30)
+  VALUES(seq_AD_adnum.NEXTVAL,#{adname},#{adimg},#{adlink},sysdate,sysdate+30)
  </insert>
 
 <!-- 광고목록 sql -->

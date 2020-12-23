@@ -83,7 +83,7 @@ public class MemberController {
 			session.setAttribute("pass", "");
 			}
 			
-			return "redirect:/main.jsp";
+			return "../views/main/main_login";
 		}
 	}
 
@@ -94,7 +94,7 @@ public class MemberController {
 		
 		System.out.println(vo.getId());
 		
-		return "hjview/joinResult";
+		return "../views/main/main";
 		
 	}
 	/*

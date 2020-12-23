@@ -18,7 +18,7 @@
 			<td>내용</td>
 			<td><textarea name="ccontent" id="ccontent"></textarea></td>
 		</tr>
-			<input type="hidden" name="memnum" value="1"/>
+			<input type="hidden" name="memnum" value="2"/>
 		<tr>
 			<td>파일</td>
 			<td><input type="file" name="file" /></td>

@@ -32,7 +32,7 @@ public class ContentVO {
 			
 			//***********************************************
 			// 해당 경로로 변경
-			File f = new File("D:\\java\\git\\Team1\\Project\\src\\main\\webapp\\resources\\upload\\"+ img);
+			File f = new File("C:\\Users\\Kosmo_22\\git\\Team1\\Project\\src\\main\\webapp\\resources\\upload\\"+ img);
 			
 			try {
 				file.transferTo(f);

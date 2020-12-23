@@ -40,7 +40,7 @@ public class MemberVO {
 			
 			//***********************************************
 			// 해당 경로로 변경
-			File f = new File("C:\\Users\\moonm\\git\\simsim\\Project\\src\\main\\webapp\\resources\\hjresources\\upload\\"+pic);
+			File f = new File("C:\\Users\\Kosmo_22\\git\\Team1\\Project\\src\\main\\webapp\\resources\\upload\\"+pic);
 			try {
 				file.transferTo(f);
 				
