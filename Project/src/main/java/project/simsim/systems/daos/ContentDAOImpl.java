@@ -32,4 +32,16 @@ public class ContentDAOImpl implements ContentDAO {
 		return (ContentVO)mybatis.selectOne("ContentMAP.getContent", vo);
 	}
 
+	@Override
+	public void modifyContent(ContentVO vo) {
+		System.out.println("DAO : modifyContent");
+		mybatis.update("ContentMAP.modifyContent", vo);
+	}
+
+	@Override
+	public void deleteContent(ContentVO vo) {
+		System.out.println("DAO : deleteContent");
+		mybatis.delete("ContentMAP.deleteContent", vo);
+	}
+
 }
