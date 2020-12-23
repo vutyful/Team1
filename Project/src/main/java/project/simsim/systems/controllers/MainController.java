@@ -38,6 +38,12 @@ public class MainController {
 	public void bookmark() {
 		
 	}
+	
+	//관리자
+	@RequestMapping("/{url}.do") 
+	public String temp(@PathVariable String url) {
+		return url;
+	}
  
 	//로그인 상태의 메인에서 컨텐츠 view로 이동
 	@RequestMapping("/main/contents_login.do")
