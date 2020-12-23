@@ -12,7 +12,7 @@
 
 	제목 : <input type="text" name="title" id="title"/>
 	내용 : <textarea name="ccontent" id="ccontent"></textarea>
-	<input type="hidden" name="memnum" value="1"/>
+	<input type="hidden" name="memnum" value="2"/>
 	<input type="submit" value="등록"/>
 	파일 : <input type="file" name="file" />
 	
