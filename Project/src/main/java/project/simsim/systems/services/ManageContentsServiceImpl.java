@@ -27,7 +27,20 @@ public class ManageContentsServiceImpl implements ManageContentsService {
 
 	@Override
 	public ContentVO getContent(ContentVO vo) {
-		System.out.println("Controller : getContent");
+		System.out.println("Service : getContent");
 		return contentDAO.getContent(vo);
 	}
+
+	@Override
+	public void modifyContent(ContentVO vo) {
+		System.out.println("Service : modifyContent");
+		contentDAO.modifyContent(vo);
+	}
+
+	@Override
+	public void deleteContent(ContentVO vo) {
+		System.out.println("Service : deleteContent");
+		contentDAO.deleteContent(vo);
+	}
+	
 }

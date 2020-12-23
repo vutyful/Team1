@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="ManagerAdDAO">
+ 
+ <insert id="insertManager" parameterType="manager">
+  INSERT INTO AD 
+  (adnum,adname,adimg,adlink,startdate,enddate) 
+  VALUES(seq_TABLE3_adnum.NEXTVAL,#{adname},#{adimg},#{adlink},sysdate,sysdate+30)
+ </insert>
+
+<!-- 광고목록 sql -->
+<select id="getManagerList" resultType="manager">
+		<![CDATA[
+		SELECT * FROM AD ORDER BY adnum DESC
+		]]>
+	</select>
+	
+<select id="getManager"  parameterType="manager" resultType="manager">
+		<![CDATA[
+		SELECT *
+		FROM AD 
+		WHERE adnum = #{adnum}
+		]]>
+</select>
+	
+		<update id="updateManager" parameterType="manager">
+		<![CDATA[
+		UPDATE AD SET
+		adname = #{adname},
+		adimg = #{adimg},
+		adlink = #{adlink}
+		WHERE adnum = #{adnum}
+		]]>
+	</update>
+	
+		<delete id="deleteManager"  parameterType="manager">
+		<![CDATA[
+		DELETE AD
+		WHERE 
+		adnum = #{adnum}
+		]]>
+	</delete>
+	
+	
+
+	
+ 
+ </mapper>
