@@ -1,10 +1,14 @@
 $(function() {
 
-		$('#loginBtn').click(function() {
-			
 			var id = $('#id');
 			var pass = $('#pass');
 			var remember=$('#remember-id');
+
+
+
+		$('#loginBtn').click(function() {
+			
+
 
 
 			if(id.val() == ''){

@@ -27,32 +27,33 @@
 				class="row justify-content-center align-items-center">
 				<div id="login-column" class="col-md-6">
 					<div id="login-box" class="col-md-12">
-					
+
 						<form method="get" action="userLogin.do" id="login" class="form">
 							<h3 class="text-center text-info">로그인</h3>
 							<div class="form-group">
-								<label for="id" class="text-info">아이디:</label><br> <input
-									type="text" name="id" id="id" class="form-control">
+								<label for="id" class="text-info">아이디:</label><br> 
+								<input type="text" name="id" id="id" class="form-control" value="${sessionScope.id}">
 							</div>
 							<div class="form-group">
-								<label for="pass" class="text-info">비밀번호:</label><br> <input
-									type="password" name="pass" id="pass" class="form-control">
+								<label for="pass" class="text-info">비밀번호:</label><br> 
+								<input type="password" name="pass" id="pass" class="form-control" value="${sessionScope.pass}">
 							</div>
 
 							<div class="form-group">
-								<label for="remember-id" class="text-info"><span>아이디 기억하기</span> <span>
-								<input id="remember-id" name="remember-id" type="checkbox" value="Y"></span></label><br>
-							<input type="hidden" id="chk" name="remember-id" value="N">
+								<label for="remember-id" class="text-info"><span>기억하기</span> 
+								<span> <input id="remember-id" name="remember-id"
+										type="checkbox" value="Y"></span></label><br> 
+										<input type="hidden" name="remember-id" value="N">
 							</div>
-
 							<div class="form-group">
 								<button type="button" id="loginBtn" class="btn btn-info btn-md">로그인</button>
 							</div>
-
+								<div id="passFind" class="text-right">
+									<a href="passFind.do" class="text-info">비밀번호 찾기</a>
+								</div>
 							<div id="joinLink" class="text-right">
 								<a href="join.do" class="text-info">가입하기</a>
 							</div>
-							
 						</form>
 					</div>
 				</div>
