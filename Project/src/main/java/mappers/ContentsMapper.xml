@@ -6,15 +6,36 @@
 	<insert id="saveContent" parameterType="content">
 		INSERT INTO content(connum, title, ccontent, postdate, cview, creco, cstate, memnum
 		<if test="img != null">
-		, img, imgsize
+			, img, imgsize
 		</if>
 		) 
 		VALUES (seq_content_connum.nextval, #{title}, #{ccontent}, sysdate, 0, 0, 'none', #{memnum}
 		<if test="img != null">
-		, #{img}, #{imgsize}
+			, #{img}, #{imgsize}
 		</if>
 		)
 	</insert>
+	
+	<update id="modifyContent">
+		UPDATE content SET title = #{title}, ccontent = #{ccontent}
+		<choose>
+			<when test="cstate != null">
+				, cstate = #{cstate}
+			</when>
+			<when test="cstate == null">
+				, cstate = 'normal'
+			</when>
+		</choose>
+		<if test="img != null">
+			, img = #{img}, imgsize = #{imgsize}
+		</if>
+		WHERE connum = #{connum}
+	</update>
+	
+	<delete id="deleteContent">
+		DELETE FROM content WHERE connum = #{connum}
+	</delete>
+	
 	<select id="getContentsList" resultType="content">
 		SELECT * FROM content ORDER BY connum DESC
 	</select>

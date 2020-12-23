@@ -14,6 +14,7 @@ public class ContentVO {
 	private String postdate;
 	private int cview;
 	private int creco;
+	private String cstate;
 	private int memnum;
 	
 	MultipartFile file;	// write.jsp에 파일첨부시 name="file"과 동일한 변수명
@@ -93,6 +94,12 @@ public class ContentVO {
 	}
 	public void setCreco(int creco) {
 		this.creco = creco;
+	}
+	public String getCstate() {
+		return cstate;
+	}
+	public void setCstate(String cstate) {
+		this.cstate = cstate;
 	}
 	public int getMemnum() {
 		return memnum;
