@@ -5,20 +5,29 @@
  <mapper namespace="ManagerAdDAO">
  
  <insert id="insertManager" parameterType="manager">
-  INSERT INTO TABLE3 
+  INSERT INTO AD 
   (adnum,adname,adimg,adlink,startdate,enddate) 
-  VALUES(seq_TABLE3_adnum,#{adname},#{adimg},#{adlink},sysdate,sysdate+30)
+  VALUES(seq_TABLE3_adnum.NEXTVAL,#{adname},#{adimg},#{adlink},sysdate,sysdate+30)
  </insert>
 
+<!-- 광고목록 sql -->
 <select id="getManagerList" resultType="manager">
 		<![CDATA[
-		SELECT * FROM TABLE3 ORDER BY adnum DESC
+		SELECT * FROM AD ORDER BY adnum DESC
 		]]>
 	</select>
 	
-		<update id="updateManager"  parameterType="manager">
+<select id="getManager"  parameterType="manager" resultType="manager">
 		<![CDATA[
-		UPDATE TABLE3 SET
+		SELECT *
+		FROM AD 
+		WHERE adnum = #{adnum}
+		]]>
+</select>
+	
+		<update id="updateManager" parameterType="manager">
+		<![CDATA[
+		UPDATE AD SET
 		adname = #{adname},
 		adimg = #{adimg},
 		adlink = #{adlink}
@@ -28,9 +37,14 @@
 	
 		<delete id="deleteManager"  parameterType="manager">
 		<![CDATA[
-		DELETE TABLE3
-		WHERE adnum = #{adnum}
+		DELETE AD
+		WHERE 
+		adnum = #{adnum}
 		]]>
 	</delete>
+	
+	
+
+	
  
  </mapper>

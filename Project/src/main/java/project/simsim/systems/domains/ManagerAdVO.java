@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ManagerAdVO {
 	
-	private int adnum ; //광고번호
+	private int adnum; //광고번호
 	private String adname; //광고이름
 	private String adimg; //광고사진
 	private String adlink; //광고링크
@@ -21,6 +21,7 @@ public class ManagerAdVO {
 	private String totalclick;   //총클릭수
 	private String startdate;   //시작날짜
 	private String enddate;     //끝날짜
+
 	
 	
 MultipartFile file;	// write.jsp에 파일첨부시 name="file"과 동일한 변수명
@@ -36,7 +37,7 @@ MultipartFile file;	// write.jsp에 파일첨부시 name="file"과 동일한 변
 			this.adimg = file.getOriginalFilename();
 			
 			// 해당 경로로 변경
-			File f = new File("C:\\Users\\admin\\git\\Team1v2\\Project\\src\\main\\webapp\\resources\\upload"+adimg);
+			File f = new File("C:\\Users\\admin\\git\\Team1v2\\Project\\src\\main\\webapp\\resources\\upload\\"+adimg);
 
 			try {
 				file.transferTo(f);
@@ -137,6 +138,9 @@ MultipartFile file;	// write.jsp에 파일첨부시 name="file"과 동일한 변
 	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
-	
-	
+	public static ManagerAdVO getManager(ManagerAdVO vo) {
+		
+		return null;
+	}
+
 }

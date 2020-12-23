@@ -2,7 +2,6 @@ package project.simsim.systems.services;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +32,12 @@ import project.simsim.systems.domains.ManagerAdVO;
 			
 			ManagerAdDAO.deleteManager(vo);
 		}
+		public ManagerAdVO getManager(ManagerAdVO vo) {
+			System.out.println("Ser : gM");
+			
+			return ManagerAdDAO.getManager(vo);
+		}
+
 		@Override
 		public List<ManagerAdVO> getManagerList(ManagerAdVO vo) {
 			return ManagerAdDAO.getManagerList(vo);
