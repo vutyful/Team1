@@ -7,8 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- <link rel="stylesheet" href="/resources/css/main.css"> -->
 <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+<link rel="stylesheet" type="text/css" 
+href="../resources/css/main.css">
 <title>광고 목록</title>
 </head>
 <body>
@@ -29,16 +30,16 @@
        <td>${manager.adnum}</td><td align="left">
        <a href="getManager.do?adnum=${manager.adnum}">
        ${manager.adname}</a></td>
-       
        <td>${manager.adimg}</td>
        <td>${manager.adlink}</td>
        <td>${manager.startdate}</td>
        <td>${manager.enddate}</td>
      
+     
       </tr>
         </c:forEach>
    </table>
-   <br>  <a href="insertManager.do">광고등록</a>
+   <br>  <a href="insertManager.do"><input type="button" value="광고등록"></a>
 
 </body>
 </html>

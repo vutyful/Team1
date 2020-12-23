@@ -26,6 +26,25 @@ public class MemberDAOImpl implements MemberDAO{
 		return mybatis.insert("MemberMAP.insertMember", vo);
 	}
 
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+		System.out.println("===>  MemberMapper getMember() 호출");
+		return mybatis.selectOne("MemberMAP.getMember",vo);
+	}
+
+	@Override
+	public int memberUpdate(MemberVO vo) {
+		System.out.println("===>  MemberMapper memberUpdate() 호출");
+		return mybatis.update("MemberMAP.memberUpdate",vo);
+	}
+
+	@Override
+	public int picUpdate(MemberVO vo) {
+		System.out.println("===>  MemberMapper picUpdate() 호출");
+		return mybatis.update("MemberMAP.picUpdate",vo);
+
+	}
+
 
 
 }

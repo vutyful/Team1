@@ -12,7 +12,6 @@
 		(seq_member_memnum.nextval,#{id},#{pass},#{name},#{birth},#{gender},#{email},sysdate,'일반회원',0)
 	</insert>
 
-
 	<select id="idCheck" parameterType="member" resultType="member">
 		SELECT * FROM member
 		WHERE id=#{id}
@@ -20,6 +19,36 @@
 			and pass=#{pass}
 		</if>
 	</select>
+
+	<select id="getMember" parameterType="member" resultType="member">
+		<![CDATA[
+		SELECT *
+		FROM member
+		WHERE id = #{id}
+		]]>
+	</select>
+	
+	<update id="memberUpdate"  parameterType="member">
+		<![CDATA[
+		UPDATE member SET
+		name = #{name},
+		email = #{email},
+		pass = #{pass},
+		birth = #{birth},
+		gender = #{gender}
+		WHERE id = #{id}
+		]]>
+	</update>
+	
+	
+	<update id="picUpdate"  parameterType="member">
+		<![CDATA[
+		UPDATE member SET
+		pic = #{pic}
+		WHERE id = #{id}
+		]]>
+	</update>
+	
 
 
 

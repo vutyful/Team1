@@ -30,5 +30,7 @@
 	</c:forEach>
 </table>
 
+<a href='save.do'>콘텐츠 등록 페이지</a><br/>
+
 </body>
 </html>

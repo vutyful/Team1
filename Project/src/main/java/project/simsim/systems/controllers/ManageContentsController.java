@@ -28,7 +28,7 @@ public class ManageContentsController
 	{
 		System.out.println("Controller : saveContent");
 		manageContentsService.saveContent(vo);
-		return "manageContents/main";
+		return "redirect:view.do?connum=" + vo.getConnum();
 	}
 	
 	@RequestMapping("manageContents/getContentsList.do")
@@ -46,4 +46,19 @@ public class ManageContentsController
 		model.addAttribute("content", manageContentsService.getContent(vo));
 	}
 	
+	@RequestMapping("manageContents/modifyContent.do")
+	public String modify(ContentVO vo)
+	{
+		System.out.println("Controller : modify");
+		manageContentsService.modifyContent(vo);
+		return "redirect:view.do?connum=" + vo.getConnum();
+	}
+	
+	@RequestMapping("manageContents/deleteContent.do")
+	public String delete(ContentVO vo)
+	{
+		System.out.println("Controller : delete");
+		manageContentsService.deleteContent(vo);
+		return "redirect:getContentsList.do";
+	}
 }

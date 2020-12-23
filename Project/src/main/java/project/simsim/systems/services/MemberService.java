@@ -12,4 +12,10 @@ public interface MemberService {
 	
 	public int userInsert(MemberVO vo );
 
+	public MemberVO getMember(MemberVO vo );
+
+	public int memberUpdate(MemberVO vo );
+	
+	public int picUpdate(MemberVO vo );
 }
+

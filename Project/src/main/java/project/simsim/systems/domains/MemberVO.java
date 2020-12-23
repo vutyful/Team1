@@ -1,5 +1,10 @@
 package project.simsim.systems.domains;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberVO {
 	
 	private int memnum; /* 회원번호 */
@@ -16,6 +21,37 @@ public class MemberVO {
 	private int auth; /* 권한 */
 	private String bookmark; /* 북마크 */
 	
+	private long picSize; /* 프로필사진용량 */
+	
+	
+	//*************************************************
+	MultipartFile file;	// write.jsp에 파일첨부시 name="file"과 동일한 변수명
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+
+		// 업로드 파일 접근
+		if(! file.isEmpty()){
+			this.pic = file.getOriginalFilename();
+			this.picSize = file.getSize();
+			
+			//***********************************************
+			// 해당 경로로 변경
+			File f = new File("C:\\Users\\moonm\\git\\simsim\\Project\\src\\main\\webapp\\resources\\hjresources\\upload\\"+pic);
+			try {
+				file.transferTo(f);
+				
+			} catch (IllegalStateException e) {				
+				e.printStackTrace();
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	public int getMemnum() {
 		return memnum;
@@ -95,6 +131,15 @@ public class MemberVO {
 	public void setBookmark(String bookmark) {
 		this.bookmark = bookmark;
 	}
+	public long getPicSize() {
+		return picSize;
+	}
+	public void setPicSize(long picSize) {
+		this.picSize = picSize;
+	}
+	
+	
+	
 	
 	
 
