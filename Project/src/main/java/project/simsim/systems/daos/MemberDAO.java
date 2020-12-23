@@ -12,7 +12,10 @@ public interface MemberDAO {
 	 * 회원가입기능 구현
 	 */
 	int memberInsert(MemberVO vo);
-
 	
+	MemberVO getMember(MemberVO vo);
 	
+	int memberUpdate(MemberVO vo);
+	
+	int picUpdate(MemberVO vo);
 }

@@ -31,4 +31,23 @@ public class MemberServiceImpl implements MemberService{
 	   {
 		  return memberDAO.memberInsert(vo);
 	   }
+
+	   //회원 정보 가져오기
+	@Override
+	public MemberVO getMember(MemberVO vo) {
+		return memberDAO.getMember(vo);
+	}
+
+
+	@Override
+	public int memberUpdate(MemberVO vo) {
+
+		return memberDAO.memberUpdate(vo);
+	}
+
+
+	@Override
+	public int picUpdate(MemberVO vo) {
+		return memberDAO.picUpdate(vo);
+	}
 }

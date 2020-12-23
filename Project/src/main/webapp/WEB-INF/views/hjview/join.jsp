@@ -23,6 +23,7 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+
 <title>join</title>
 </head>
 <body>
@@ -91,7 +92,7 @@
 						</div>
 						<div class="col-sm-4">
 							<label class="radio-inline"> <input type="radio"
-								id="maleRadio" value="외" name="gender">그 외
+								id="otherRadio" value="외" name="gender">그 외
 							</label>
 						</div>
 					</div>
