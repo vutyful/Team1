@@ -9,6 +9,7 @@ public class ContentVO {
 	private int connum;
 	private String title;
 	private String ccontent;
+	private String cate;
 	private String img;
 	private long imgsize;
 	private String postdate;
@@ -45,7 +46,13 @@ public class ContentVO {
 			}
 		}
 	}
-	
+
+	public String getCate() {
+		return cate;
+	}
+	public void setCate(String cate) {
+		this.cate = cate;
+	}
 	
 	public String getImg() {
 		return img;

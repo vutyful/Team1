@@ -13,9 +13,11 @@ public interface MemberDAO {
 	 */
 	int memberInsert(MemberVO vo);
 	
-	MemberVO getMember(MemberVO vo);
+	MemberVO CheckUnique(MemberVO vo);
 	
 	int memberUpdate(MemberVO vo);
 	
 	int picUpdate(MemberVO vo);
+	
+	int memberLeave(MemberVO vo);
 }

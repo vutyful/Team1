@@ -24,6 +24,10 @@ public class ManagerAdController {
 	public String viewPage(@PathVariable String manager) {
 		return "/managerAd/" + manager; 
 	}
+	@RequestMapping("managerAdST/{manager}.do")
+	public String viewPage1(@PathVariable String manager) {
+		return "/managerAdST/" + manager; 
+	}
 	
     //광고 목록창 불러오기
 	@RequestMapping("managerAd/getManagerList.do")

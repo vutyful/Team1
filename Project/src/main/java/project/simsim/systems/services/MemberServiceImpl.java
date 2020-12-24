@@ -17,8 +17,9 @@ public class MemberServiceImpl implements MemberService{
 	
 	/**
 	  * 아이디 중복 체크하는 sql + 로그인 기능 sql
+	  * 회원정보 하나 가져오기
 	  */
-	  public MemberVO idCheck_Login( MemberVO vo)
+	  public MemberVO idCheck( MemberVO vo)
 	  {
 		  return memberDAO.idCheck(vo);
 	  }
@@ -29,14 +30,14 @@ public class MemberServiceImpl implements MemberService{
 	   */
 	   public int userInsert(MemberVO vo )
 	   {
+		   
 		  return memberDAO.memberInsert(vo);
 	   }
 
-	   //회원 정보 가져오기
-	@Override
-	public MemberVO getMember(MemberVO vo) {
-		return memberDAO.getMember(vo);
-	}
+	   @Override
+	   public MemberVO CheckUnique(MemberVO vo) {
+		   return memberDAO.CheckUnique(vo);
+	   }
 
 
 	@Override
@@ -50,4 +51,13 @@ public class MemberServiceImpl implements MemberService{
 	public int picUpdate(MemberVO vo) {
 		return memberDAO.picUpdate(vo);
 	}
+
+
+	@Override
+	public int memberLeave(MemberVO vo) {
+
+		return memberDAO.memberLeave(vo);
+	}
+
+
 }

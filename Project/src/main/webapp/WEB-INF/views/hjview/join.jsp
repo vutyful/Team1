@@ -35,6 +35,7 @@
 			<h2>회원가입</h2>
 			<div class="form-group">
 				<label for="name" class="col-sm-3 control-label">이름(별명)</label>
+				<label class="col-sm-3 ">${nameCheck}</label>
 				<div class="col-sm-9">
 					<input type="text" id="name" placeholder="이름(별명)"
 						class="form-control" name="name" autofocus>

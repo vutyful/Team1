@@ -18,7 +18,7 @@ href="../resources/css/main.css">
         
    <table border="1">
        <tr> 
-        <th  width="100">광고번호</th>
+        <th  width="100">광고번호</th> 
         <th  width="100">광고이름</th>
         <th  width="100">광고사진</th>
         <th  width="100">광고링크</th>
@@ -30,7 +30,7 @@ href="../resources/css/main.css">
        <td>${manager.adnum}</td><td align="left">
        <a href="getManager.do?adnum=${manager.adnum}">
        ${manager.adname}</a></td>
-       <td>${manager.adimg}</td>
+       <td><img width="70"  alt="" src="/Project/resources/upload/${manager.adimg}"></td>
        <td>${manager.adlink}</td>
        <td>${manager.startdate}</td>
        <td>${manager.enddate}</td>
