@@ -39,6 +39,19 @@ public class MainServiceImpl implements MainService {
 		return mainDAO.getSelectByconnum(vo);
 	}
 
+	@Override
+	//아이디로 해당 북마크 값 가져오기
+	public String getBookmark(String id) {
+		String bm = mainDAO.getBookmark(id);
+		return bm;
+	}
+
+	@Override
+	//해당 아이디의 북마크에 수정된 북마크 값 넣기
+	public int updateBookmark(String id, String bm) {
+		return mainDAO.updateBookmark(id, bm);
+	}
+
 	
 
 }

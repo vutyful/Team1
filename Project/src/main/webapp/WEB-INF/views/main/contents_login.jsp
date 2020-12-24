@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,7 @@
 							<li><a href="bookmark.do">북마크</a>
 							</li>
 							<li><a href="logout.do">로그아웃</a>
-							</li>
+							</li>0
 						</ul><!--  -->
 						
 					</nav><!-- End / overlay-menu -->
@@ -68,10 +69,21 @@
 						
 						<!-- page-title -->
 						<div class="page-title pb-40">
-							<a href="bm.do"><img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
-							<h2 class="page-title__title">The Myth of Ugly Design</h2>
-							<p class="page-title__text">by hyein</p>
-							<p class="page-title__text">작성한 시각 2020.12.22</p>
+							<a href="bm.do?connum=${content.connum}">
+							<c:choose>
+								<c:when test="${check eq 'true'}">
+									<img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
+								</c:when>
+								<c:when test="${check eq 'false'}">
+									<img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
+								</c:when>
+								<c:otherwise>
+									<img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
+								</c:otherwise>
+							</c:choose>
+							<h2 class="page-title__title"> ${content.title} </h2>
+							<p class="page-title__text">by ${content.memnum} </p>
+							<p class="page-title__text">${content.postdate} </p>
 							<div class="page-title__divider"></div>
 						</div><!-- End / page-title -->
 						
@@ -87,11 +99,8 @@
 						<!--  -->
 						<div>
 							<div class="work-detail__entry">
-								<p>In nec porttitor nisi. Nunc at egestas ante. Sed vestibulum velit eu nibh commodo, non fermentum libero pellentesque. Fusce sed posuere ex, non ultrices nibh. Fusce quis leo non ex rutrum convallis non ut ante. Phasellus hendrerit ante nec est porta, et elementum massa euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-								<p>Quisque et quam facilisis, posuere justo ut, maximus nulla. Quisque id fermentum tortor. Duis sem mi, luctus sed luctus eget, viverra et ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec faucibus imperdiet porttitor. Etiam fringilla ligula et porttitor tristique..</p><br>
-								<div class="work-img"><img src="../resources/hyein/img/works/01.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/02.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/03.jpg" alt=""></div>
+								<p> ${content.ccontent} </p>
+								<div class="work-img"><img src="../resources/upload/${content.img}" alt=""></div>
 							</div>
 							
 							<p class="best_comment">BEST</p>

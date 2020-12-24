@@ -68,10 +68,10 @@
 						
 						<!-- page-title -->
 						<div class="page-title pb-40">
-							<a href="bm.do"><img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
+							<a href="/Project/hjview/login.do"><img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
 							<h2 class="page-title__title"> ${content.title} </h2>
 							<p class="page-title__text">by ${content.memnum} </p>
-							<p class="page-title__text">작성한 시각 ${content.postdate} </p>
+							<p class="page-title__text"> ${content.postdate} </p>
 							<div class="page-title__divider"></div>
 						</div><!-- End / page-title -->
 						
@@ -88,10 +88,7 @@
 						<div>
 							<div class="work-detail__entry">
 								<p> ${content.ccontent} </p>
-								<p>Quisque et quam facilisis, posuere justo ut, maximus nulla. Quisque id fermentum tortor. Duis sem mi, luctus sed luctus eget, viverra et ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec faucibus imperdiet porttitor. Etiam fringilla ligula et porttitor tristique..</p><br>
-								<div class="work-img"><img src="../resources/hyein/img/works/01.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/02.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/03.jpg" alt=""></div>
+								<div class="work-img"><img src="../../resources/upload/${content.img}" alt=""></div>
 							</div>
 							
 							<p class="best_comment">BEST</p>
@@ -149,6 +146,21 @@
 						</p>
 						<div id="contents_slider">
 							<ul>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
 								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
 										<strong>컨텐츠 제목</strong>
 									</span></a></li>
