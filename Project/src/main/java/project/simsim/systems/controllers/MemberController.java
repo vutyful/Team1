@@ -71,7 +71,7 @@ public class MemberController {
 			session.setAttribute("pass", "");
 			}
 			
-			return "../views/main/main_login";
+			return "redirect:/main/main_login.do";
 		}
 	}
 
