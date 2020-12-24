@@ -27,9 +27,9 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public MemberVO getMember(MemberVO vo) {
-		System.out.println("===>  MemberMapper getMember() 호출");
-		return mybatis.selectOne("MemberMAP.getMember",vo);
+	public MemberVO CheckUnique(MemberVO vo) {
+		System.out.println("===>  MemberMapper CheckUnique() 호출");
+		return mybatis.selectOne("MemberMAP.CheckUnique", vo);
 	}
 
 	@Override
@@ -42,6 +42,13 @@ public class MemberDAOImpl implements MemberDAO{
 	public int picUpdate(MemberVO vo) {
 		System.out.println("===>  MemberMapper picUpdate() 호출");
 		return mybatis.update("MemberMAP.picUpdate",vo);
+
+	}
+
+	@Override
+	public int memberLeave(MemberVO vo) {
+		System.out.println("===>  MemberMapper memberLeave() 호출");
+		return mybatis.update("MemberMAP.memberLeave",vo);
 
 	}
 

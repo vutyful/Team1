@@ -18,14 +18,20 @@
 		<if test="pass != null">
 			and pass=#{pass}
 		</if>
+		<if test="email != null">
+			and email=#{email}
+		</if>
 	</select>
-
-	<select id="getMember" parameterType="member" resultType="member">
-		<![CDATA[
-		SELECT *
-		FROM member
-		WHERE id = #{id}
-		]]>
+	
+	<select id="CheckUnique" parameterType="member" resultType="member">
+		SELECT * FROM member
+		WHERE id=#{id}
+		<if test="name != null">
+			or name=#{name}
+		</if>
+		<if test="email != null">
+			or email=#{email}
+		</if>
 	</select>
 	
 	<update id="memberUpdate"  parameterType="member">
@@ -49,6 +55,14 @@
 		]]>
 	</update>
 	
+	<update id="memberLeave"  parameterType="member">
+		<![CDATA[
+		UPDATE member SET
+		outdate = sysdate,
+		state = '탈퇴'
+		WHERE id = #{id}
+		]]>
+	</update>
 
 
 

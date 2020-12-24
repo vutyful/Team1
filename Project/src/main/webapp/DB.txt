@@ -4,7 +4,7 @@ CREATE TABLE Member (
 	id VARCHAR2(20), /* 아이디 */
 	pass VARCHAR2(20), /* 비밀번호 */
 	name VARCHAR2(20), /* 이름 */
-	age NUMBER, /* 연령 */
+	birth DATE, /* 생년월일 */
 	gender CHAR(4), /* 성별 */
 	email VARCHAR2(30), /* 이메일 */
 	pic VARCHAR2(50), /* 프로필사진*/
@@ -25,7 +25,7 @@ COMMENT ON COLUMN Member.pass IS '비밀번호';
 
 COMMENT ON COLUMN Member.name IS '이름';
 
-COMMENT ON COLUMN Member.age IS '연령';
+COMMENT ON COLUMN Member.birth IS '생년월일';
 
 COMMENT ON COLUMN Member.gender IS '성별';
 

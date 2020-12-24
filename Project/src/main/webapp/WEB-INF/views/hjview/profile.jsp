@@ -76,16 +76,17 @@
 									</div></li>
 							</ul>
 						</div>
-						<span class="image"><a href="hjview/uploadPic"><img
-								src="../resources/hjresources/upload/${member.pic}" alt="profile" /></a></span>
+						<span class="image"><img
+								src="../resources/upload/${member.pic}" alt="profile" /></span>
 					</div>
+				</form>
 					<!-- /.form-group -->
 					<footer class="major">
 						<ul class="actions special">
 							<button type="submit" id="picBtn" class="btn btn-primary btn-block">확인</button>
 						</ul>
 					</footer>
-				</form>
+
 			</section>
 
 			<!-- First Section -->
@@ -159,14 +160,14 @@
 									</div>
 								</div>
 							</div>
+						</form>
+						<!-- /form -->
 							<!-- /.form-group -->
 							<footer class="major">
 								<ul class="actions special">
 									<button type="submit" id="proEditBtn" class="btn btn-primary btn-block">확인</button>
 								</ul>
 							</footer>
-						</form>
-						<!-- /form -->
 					</div>
 					<!-- ./container -->
 				</ul>
@@ -288,43 +289,43 @@
 			<section id="cta" class="main special">
 				<header class="major">
 					<h2>회원 탈퇴</h2>
-					<p>탈퇴 시 모든 정보가 사라지며 복구가 어렵습니다.</p>
+					<p id="leaveInfo">탈퇴 시 모든 정보가 사라지며 복구가 어렵습니다.</p>
 
 				</header>
 
 				<ul class="features">
 					<div class="container">
-						<form action="leave.do" class="form-horizontal" role="form">
+						<form action="leaveOK.do" id="leaveForm" class="form-horizontal" role="form">
 							<div class="form-group">
 								<label for="id" class="col-sm-3 control-label">아이디</label>
 								<div class="col-sm-9">
 									<input type="text" id="id" placeholder="아이디"
-										class="form-control" autofocus>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="email" class="col-sm-3 control-label">이메일</label>
-								<div class="col-sm-9">
-									<input type="text" id="id" placeholder="이메일"
-										class="form-control" autofocus>
+										class="form-control" name="id" autofocus>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label for="password" class="col-sm-3 control-label">비밀번호</label>
 								<div class="col-sm-9">
-									<input type="password" id="password" placeholder="비밀번호"
+								<input type="password" id="password" placeholder="비밀번호"
+										class="form-control" name="pass">
+								</div>
+							</div>
+							
+							<div class="form-group" id="confirmNumDiv" style="display: none">
+								<label for="confirmNum" class="col-sm-3 control-label">인증번호</label>
+								<div class="col-sm-9">
+									<input type="text" id="confirmNum" placeholder="인증번호"
 										class="form-control">
 								</div>
 							</div>
-
-							<footer class="major">
-								<ul class="actions special">
-									<button type="submit" class="btn btn-primary btn-block">탈퇴</button>
-								</ul>
-							</footer>
 						</form>
 						<!-- /form -->
+							<footer class="major">
+								<ul class="actions special">
+									<button type="submit" class="btn btn-primary btn-block" id="leaveBtn">확인</button>
+								</ul>
+							</footer>
 					</div>
 					<!-- ./container -->
 				</ul>
