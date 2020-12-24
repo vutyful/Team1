@@ -10,4 +10,5 @@ public interface ContentDAO {
 	public void deleteContent(ContentVO vo);
 	public ContentVO getContent(ContentVO vo);
 	public List<ContentVO> getContentsList();
+	public List<String> getCategoryList();
 }
