@@ -4,12 +4,12 @@
 <mapper namespace="ContentMAP">
 
 	<insert id="saveContent" parameterType="content">
-		INSERT INTO content(connum, title, ccontent, postdate, cview, creco, cstate, memnum
+		INSERT INTO content(connum, title, ccontent, postdate, cview, creco, cstate, memnum, cate
 		<if test="img != null">
 			, img, imgsize
 		</if>
 		) 
-		VALUES (seq_content_connum.nextval, #{title}, #{ccontent}, sysdate, 0, 0, 'none', #{memnum}
+		VALUES (seq_content_connum.nextval, #{title}, #{ccontent}, sysdate, 0, 0, 'none', #{memnum}, #{cate}
 		<if test="img != null">
 			, #{img}, #{imgsize}
 		</if>
@@ -17,7 +17,7 @@
 	</insert>
 	
 	<update id="modifyContent">
-		UPDATE content SET title = #{title}, ccontent = #{ccontent}
+		UPDATE content SET title = #{title}, ccontent = #{ccontent}, cate = #{cate}
 		<choose>
 			<when test="cstate != null">
 				, cstate = #{cstate}
@@ -42,6 +42,10 @@
 	
 	<select id="getContent" parameterType="content" resultType="content">
 		SELECT * FROM content WHERE connum = #{connum}
+	</select>
+	
+	<select id="getCategoryList" resultType="string">
+		select cate from content GROUP BY cate
 	</select>
 
 </mapper>
