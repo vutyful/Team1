@@ -6,6 +6,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" 
 href="../resources/css/main.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+function readURL(input) {
+	if(input.files && input.files[0] ){
+		var reader = new FileReader();
+		reader.onload = function (e) {
+			$("#blah").attr('src',e.target.result);
+		}
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+$("#adimg").change(function () {
+	readURL(this);
+})
+</script>
 <title>광고 상세보기</title>
 </head>
 <body>
@@ -22,8 +37,11 @@ href="../resources/css/main.css">
       </tr>
       <tr>
           <td width="120">광고사진</td>
-          <td align="left" ><input name="adimg" type="file" 
-             value="${manager.adimg}"/></td>
+          <td align="left" ><input name="adimg" type="file" onchange="readURL(this);"
+          value="${manager.adimg}"/> 
+          <img alt="tour image" src="#" id="blah" width="100"/>
+          </td>
+          
       </tr>
       <tr>
          <td width="120">광고링크</td>

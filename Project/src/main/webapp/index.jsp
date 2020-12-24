@@ -15,7 +15,7 @@ href="resources/css/main.css">
    <hr>
 <br><a href="managerAd/getManagerList.do"><input type="button" value="광고목록보기"></a>
    <hr>
-<br> <a href="managerAd/getManagerSTList.do"><input type="button" value="광고통계보기"></a>
+<br> <a href="managerAdST/getManagerST.do"><input type="button" value="광고통계보기"></a>
    <hr>
 <br> 
 
