@@ -42,5 +42,11 @@ public class ManageContentsServiceImpl implements ManageContentsService {
 		System.out.println("Service : deleteContent");
 		contentDAO.deleteContent(vo);
 	}
+
+	@Override
+	public List<String> getCategoryList() {
+		System.out.println("Service : getCategoryList");
+		return contentDAO.getCategoryList();
+	}
 	
 }

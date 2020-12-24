@@ -1,6 +1,7 @@
 package project.simsim.systems.controllers;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,14 @@ public class ManageContentsController
 		return "/manageContents/"+temp;
 	}
 	
+	@RequestMapping("manageContents/save.do")
+	public void callCategory(Model model)
+	{
+		List<String> cate = manageContentsService.getCategoryList();
+		cate.remove(0);
+		model.addAttribute("list", cate);
+	}
+	
 	@RequestMapping("manageContents/saveContent.do")
 	public String saveContent(ContentVO vo) throws IOException
 	{
@@ -43,6 +52,9 @@ public class ManageContentsController
 	public void view(ContentVO vo, Model model)
 	{
 		System.out.println("Controller : view");
+		List<String> cate = manageContentsService.getCategoryList();
+		cate.remove(0);
+		model.addAttribute("list", cate);
 		model.addAttribute("content", manageContentsService.getContent(vo));
 	}
 	

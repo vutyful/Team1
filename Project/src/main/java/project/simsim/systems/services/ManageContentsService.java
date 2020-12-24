@@ -10,4 +10,5 @@ public interface ManageContentsService {
 	void deleteContent(ContentVO vo);
 	ContentVO getContent(ContentVO vo);
 	List<ContentVO> getContentsList();
+	List<String> getCategoryList();
 }

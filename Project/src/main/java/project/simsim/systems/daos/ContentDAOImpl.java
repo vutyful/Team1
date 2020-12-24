@@ -44,4 +44,10 @@ public class ContentDAOImpl implements ContentDAO {
 		mybatis.delete("ContentMAP.deleteContent", vo);
 	}
 
+	@Override
+	public List<String> getCategoryList() {
+		System.out.println("DAO : getCategoryList");
+		return mybatis.selectList("ContentMAP.getCategoryList");
+	}
+
 }
