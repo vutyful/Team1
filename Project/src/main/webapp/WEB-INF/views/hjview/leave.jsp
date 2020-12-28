@@ -15,8 +15,8 @@
 <body>
 
 	<div class="container">
-		<form class="form-horizontal">
-			<h2>회원 탈퇴</h2>
+		<form action="bye.do" class="form-horizontal" id="bye">
+			<h2>다음에 또 만나요!</h2>
 			<fieldset>
 				<!-- Select Basic -->
 
@@ -29,10 +29,12 @@
 					<div class="col-md-4">
 						<select id="Pleaseselectthetypeofleave."
 							name="Pleaseselectthetypeofleave." class="form-control">
-							<option value="1">이유1</option>
-							<option value="2">이유2</option>
-							<option value="3">이유3</option>
-							<option value="4">이유4</option>
+							<option value="0" selected disabled>-------------선택------------</option>
+							<option value="1">비슷한 다른 플랫폼을 이용중입니다.</option>
+							<option value="2">더 이상 서비스를 이용하지 않습니다.</option>
+							<option value="3">개인정보 문제로 탈퇴합니다.</option>
+							<option value="4">이용하는데 불편합니다.</option>
+							<option value="4">기타</option>
 						</select>
 					</div>
 				</div>
@@ -46,7 +48,7 @@
 					<div class="col-md-4">
 						<textarea class="form-control" id="ReasonforLeave"
 							name="ReasonforLeave"></textarea>	
-						<p>	<br/>모든 북마크와 댓글을 포함한 모든 정보가 사라집니다.<br /> 정말 탈퇴하시겠습니까?</p>
+						<p>	<br/>그 동안 이용해 주셔서 감사합니다.</p>
 					</div>
 				</div>
 
@@ -54,7 +56,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="submit"></label>
 					<div class="col-md-4">
-						<button id="submit" name="submit" class="btn btn-primary">탈퇴하기</button>
+						<button type="submit" id="bye"  class="btn btn-primary">확인</button>
 					</div>
 
 				</div>

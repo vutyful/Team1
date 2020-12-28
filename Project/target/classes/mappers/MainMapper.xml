@@ -10,4 +10,12 @@
 	<select id="getOneContent" parameterType="content" resultType="content">
 		SELECT * FROM content WHERE connum = #{connum}
 	</select>
+	
+	<select id="getbookmark" parameterType="string" resultType="string">
+		SELECT bookmark FROM member WHERE id = #{id}
+	</select>
+	
+	<update id="updateBookmark" parameterType="hashmap">
+		UPDATE member SET bookmark = #{bm} WHERE id = #{id}
+	</update>
 </mapper>
