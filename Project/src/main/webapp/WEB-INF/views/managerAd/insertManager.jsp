@@ -5,8 +5,9 @@
 <head>
 
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" 
-href="../resources/css/main.css">
+
+<link rel="stylesheet" type="text/css"  href="../resources/managerAd/css/managerAd.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 function readURL(input) {
@@ -30,7 +31,7 @@ $("#file").change(function () {
 
 <form action="saveManager.do" enctype="multipart/form-data" method="post" runat="server">
 
-<table border="3" >
+<table class="managertable" >
    
     <tr> 
     <td>광고이름</td>
@@ -42,17 +43,17 @@ $("#file").change(function () {
     </tr>
     <tr>
     <td>광고사진</td>
-     <td><input type="file" name="file" onchange="readURL(this);">
+     <td><input type="file"  name="file" onchange="readURL(this);">
      <img alt="tour image" src="#" id="blah" width="100"/>
      </td>
      </tr>
      <tr>
      <td colspan="2" align="center">
-      <input type="submit" value="광고등록"/>
+      <input class="manager-but" type="submit" value="광고등록"/>
       </td>
      </table>
      
-     <a href="getManagerList.do"><input type="button" value="광고목록"></a>
+ <input class="manager-but" onclick="location.href='getManagerList.do'" type="button" value="광고목록">
 </form>
 
 </body>

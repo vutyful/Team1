@@ -1,6 +1,10 @@
 package project.simsim.systems.daos;
 
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -27,11 +31,17 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 
 	@Override
-	public MemberVO CheckUnique(MemberVO vo) {
+	public List<MemberVO> CheckUnique(MemberVO vo) {
 		System.out.println("===>  MemberMapper CheckUnique() 호출");
-		return mybatis.selectOne("MemberMAP.CheckUnique", vo);
+		return mybatis.selectList("MemberMAP.CheckUnique", vo);
 	}
 
+	@Override
+	public List<MemberVO> checkUniqueProfile(MemberVO vo) {
+		System.out.println("===>  MemberMapper checkUniqueProfile() 호출");
+		return mybatis.selectList("MemberMAP.checkUniqueProfile", vo);
+	}
+	
 	@Override
 	public int memberUpdate(MemberVO vo) {
 		System.out.println("===>  MemberMapper memberUpdate() 호출");
@@ -52,6 +62,12 @@ public class MemberDAOImpl implements MemberDAO{
 
 	}
 
+	@Override
+	public List<Map<String,Object>> getReply(Map<String,Integer> reply) {
+		System.out.println("===>  MemberMapper getReply() 호출");
+		return mybatis.selectList("MemberMAP.getReply",reply);
 
+	}
+	
 
 }

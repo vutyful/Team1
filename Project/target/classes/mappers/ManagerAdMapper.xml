@@ -15,7 +15,13 @@
 		<![CDATA[
 		SELECT * FROM AD ORDER BY adnum DESC
 		]]>
-	</select>
+	</select>	
+	
+<select id="getManagerSTList" resultType="manager">
+		<![CDATA[
+		SELECT * FROM AD ORDER BY adnum DESC
+		]]>
+</select>	
 	
 <select id="getManager"  parameterType="manager" resultType="manager">
 		<![CDATA[
@@ -42,7 +48,7 @@
 		adnum = #{adnum}
 		]]>
 	</delete>
-	
+
 	
 
 	

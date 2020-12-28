@@ -1,5 +1,9 @@
 package project.simsim.systems.daos;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import project.simsim.systems.domains.MemberVO;
 
 public interface MemberDAO {
@@ -13,11 +17,15 @@ public interface MemberDAO {
 	 */
 	int memberInsert(MemberVO vo);
 	
-	MemberVO CheckUnique(MemberVO vo);
+	List<MemberVO> CheckUnique(MemberVO vo);
+	
+	List<MemberVO> checkUniqueProfile(MemberVO vo);
 	
 	int memberUpdate(MemberVO vo);
 	
 	int picUpdate(MemberVO vo);
 	
 	int memberLeave(MemberVO vo);
+	
+	List<Map<String,Object>> getReply(Map<String,Integer> reply);
 }
