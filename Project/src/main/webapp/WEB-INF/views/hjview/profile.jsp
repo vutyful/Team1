@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +69,7 @@
 							<header class="major">
 								<h2>프로필 사진</h2>
 							</header>
-							<p>프로필 사진 변경 가능</p>
+							<p id="picInfo"></p>
 							<ul class="actions">
 								<li><div class="filebox">
 										<label for="picFile">업로드</label> <input type="file"
@@ -93,10 +94,11 @@
 			<section id="first" class="main special">
 				<header class="major">
 					<h2>프로필 수정</h2>
+					<p id="profileInfo">수정 할 정보를 입력해 주세요.</p>
 				</header>
 				<ul class="features">
 					<div class="container">
-						<form action="profileEdit.do" id="proEditForm" class="form-horizontal" role="form">
+						<form action="profileEdit.do" method="post" id="proEditForm"  class="form-horizontal" role="form">
 							<div class="form-group">
 								<label for="name" class="col-sm-3 control-label">이름(별명)</label>
 								<div class="col-sm-9">
@@ -113,32 +115,30 @@
 							</div>
 
 							<div class="form-group">
-								<label for="password" class="col-sm-3 control-label">현재
-									비밀번호</label>
+								<label for="password" class="col-sm-3 control-label">현재 비밀번호</label>
 								<div class="col-sm-9">
-									<input type="password" id="exPass" placeholder="현재 비밀번호"
-										class="form-control" name="exPass">
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label for="password" class="col-sm-3 control-label">새
-									비밀번호</label>
-								<div class="col-sm-9">
-									<input type="password" id="pass" placeholder="비밀번호 새로 설정시에만 입력"
+									<input type="password" id="pass" placeholder="현재 비밀번호"
 										class="form-control" name="pass">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="password" class="col-sm-3 control-label">비밀번호
-									확인</label>
+								<label for="password" class="col-sm-3 control-label">새 비밀번호</label>
+								<div class="col-sm-9">
+									<input type="password" id="newPass" placeholder="비밀번호 새로 설정시에만 입력"
+										class="form-control" name="newPass">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="password" class="col-sm-3 control-label">비밀번호 확인</label>
 								<div class="col-sm-9">
 									<input type="password" id="passConfirm" placeholder="비밀번호 새로 설정시에만 입력"
 										class="form-control">
 								</div>
 							</div>
-							<div class="form-group">
+							
+							<div class="form-group"  >
 								<label for="birthDate" class="col-sm-3 control-label">생년월일</label>
 								<div class="col-sm-9">
 									<input type="date" id="birthDate" class="form-control" name="birth" value="${member.birth}">
@@ -150,11 +150,12 @@
 								<div class="col-sm-6">
 									<div class="form-group">
 										<div class="col-md-4">
+											<input type="hidden" id="userGender" value="${member.gender}">
 											<select id="gender" name="gender" class="form-control"
 												style="height: auto" >
 												<option value="여">여자</option>
 												<option value="남">남자</option>
-												<option value="외">그 외</option>
+												<option value ="외">그 외</option>
 											</select>
 										</div>
 									</div>
@@ -179,99 +180,44 @@
 			<section id="second" class="main special">
 				<header class="major">
 					<h2>내가 쓴 댓글</h2>
-					<div class="row">
-
+					<div class="row" >
 						<div>
-							<div class="card">
+							<div class="card " >
 								<div class="card-body p-0">
 									<div class="table-responsive">
-										<table class="table">
+										<table class="table" >
 											<thead class="bg-light">
 												<tr class="border-0">
 													<th class="border-0">#</th>
-													<th class="border-0">Image</th>
-													<th class="border-0">Product Name</th>
-													<th class="border-0">Product Id</th>
-													<th class="border-0">Quantity</th>
-													<th class="border-0">Price</th>
-													<th class="border-0">Order Time</th>
-													<th class="border-0">Customer</th>
-													<th class="border-0">Status</th>
+													<th class="border-0"> 컨 텐 츠  이 미 지 </th>
+													<th class="border-0"> --------컨 텐 츠  제 목--------- </th>
+													<th class="border-0"> ----------댓 글  날 짜----------  </th>
+													<th class="border-0"> ----------댓 글  내 용----------  </th>
+													<th class="border-0"> 추 천 수  </th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
-													<td>1</td>
-													<td>
-														<div class="m-r-10">
-															<img src="assets/images/product-pic.jpg" alt="user"
-																class="rounded" width="45">
-														</div>
-													</td>
-													<td>Product #1</td>
-													<td>id000001</td>
-													<td>20</td>
-													<td>$80.00</td>
-													<td>27-08-2018 01:22:12</td>
-													<td>Patricia J. King</td>
-													<td><span class="badge-dot badge-brand mr-1"></span>InTransit
-													</td>
-												</tr>
-												<tr>
-													<td>2</td>
-													<td>
-														<div class="m-r-10">
-															<img src="assets/images/product-pic-2.jpg" alt="user"
-																class="rounded" width="45">
-														</div>
-													</td>
-													<td>Product #2</td>
-													<td>id000002</td>
-													<td>12</td>
-													<td>$180.00</td>
-													<td>25-08-2018 21:12:56</td>
-													<td>Rachel J. Wicker</td>
-													<td><span class="badge-dot badge-success mr-1"></span>Delivered
-													</td>
-												</tr>
-												<tr>
-													<td>3</td>
-													<td>
-														<div class="m-r-10">
-															<img src="assets/images/product-pic-3.jpg" alt="user"
-																class="rounded" width="45">
-														</div>
-													</td>
-													<td>Product #3</td>
-													<td>id000003</td>
-													<td>23</td>
-													<td>$820.00</td>
-													<td>24-08-2018 14:12:77</td>
-													<td>Michael K. Ledford</td>
-													<td><span class="badge-dot badge-success mr-1"></span>Delivered
-													</td>
-												</tr>
-												<tr>
-													<td>4</td>
-													<td>
-														<div class="m-r-10">
-															<img src="assets/images/product-pic-4.jpg" alt="user"
-																class="rounded" width="45">
-														</div>
-													</td>
-													<td>Product #4</td>
-													<td>id000004</td>
-													<td>34</td>
-													<td>$340.00</td>
-													<td>23-08-2018 09:12:35</td>
-													<td>Michael K. Ledford</td>
-													<td><span class="badge-dot badge-success mr-1"></span>Delivered
-													</td>
-												</tr>
-												<tr>
-													<td colspan="9"><a href="#"
-														class="btn btn-outline-light float-right">View Details</a></td>
-												</tr>
+												<c:forEach items="${replyList}" var="map">
+				<!-- 프라퍼티이름 변경 -->
+				<tr>
+				<td>${map.RNUM}</td>
+				<td>
+					<div class="m-r-10">
+				<a href="profile.do?connum=${map.CONNUM}">
+					<img src="../resources/upload/${map.IMG}" alt="user" class="rounded" width="45">
+				</a>
+					</div>
+				</td>
+					<td>${map.TITLE}</td>
+					<td >${map.REDATE}</td>
+					<td>${map.RCONTENT}</td>
+					<td>${map.RRECO}</td>
+				</tr>
+			</c:forEach>
+	
+
+												
 											</tbody>
 										</table>
 									</div>
@@ -284,6 +230,15 @@
 				</header>
 
 			</section>
+			<footer class="major">
+		
+			<div style="text-align: center">
+				<c:forEach var="i" begin="1" end="${pageTotalCount}" >
+				<a href="profile.do?page=${i}"><span><c:out value="[${i}]" /></span></a>
+				</c:forEach>
+			</div>
+		
+			</footer>
 
 			<!-- Get Started -->
 			<section id="cta" class="main special">
@@ -295,11 +250,11 @@
 
 				<ul class="features">
 					<div class="container">
-						<form action="leaveOK.do" id="leaveForm" class="form-horizontal" role="form">
+						<form action="leave.do" id="leaveForm" class="form-horizontal" role="form">
 							<div class="form-group">
 								<label for="id" class="col-sm-3 control-label">아이디</label>
 								<div class="col-sm-9">
-									<input type="text" id="id" placeholder="아이디"
+									<input type="text" id="idLeave" placeholder="아이디"
 										class="form-control" name="id" autofocus>
 								</div>
 							</div>

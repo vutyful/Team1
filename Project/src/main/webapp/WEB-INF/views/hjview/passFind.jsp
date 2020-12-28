@@ -30,7 +30,7 @@
 
 
 	<div class="container">
-		<form method="get" action="userInsert.do" id="join"
+		<form method="get" action="userInsert.do" id="pasFind"
 			class="form-horizontal" role="form">
 			<h2>비밀번호 찾기</h2>
 
@@ -42,17 +42,22 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="pass" class="col-sm-3 control-label">비밀번호</label>
+				<div class="col-sm-9">
+					<input type="password" id="pass" placeholder="비밀번호" class="form-control"
+						name="pass" autofocus>
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="email" class="col-sm-3 control-label">이메일 </label>
 				<div class="col-sm-9">
 					<input type="email" id="email" placeholder="이메일"
 						class="form-control" name="email">
 				</div>
-			<div class="form-group float-right">
-				<label id="info"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<button type="button" id="sendCrtNumber" class="btn btn-primary">전송</button>
+
 			</div>
-			</div>
-			<div class="form-group">
+
+			<div class="form-group" style="display:none" id="confirmNumDiv">
 				<label for="id" class="col-sm-3 control-label">인증번호 입력</label>
 				<div class="col-sm-9">
 					<input type="text" id="crtNumber" placeholder="인증번호" class="form-control"
@@ -63,8 +68,9 @@
 
 			<div class="form-group float-right">
 				<label id="info"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<button type="button" id="passFindBtn" class="btn btn-primary">확인</button>
+				<button type="button" id="passFindBtn" class="btn btn-primary">전송</button>
 			</div>
+		
 		</form>
 		<!-- /form -->
 	</div>

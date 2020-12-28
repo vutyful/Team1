@@ -42,17 +42,17 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="email" class="col-sm-3 control-label">이메일 </label>
-				<div class="col-sm-9">
-					<input type="email" id="email" placeholder="이메일"
-						class="form-control" name="email">
-				</div>
-			</div>
-			<div class="form-group">
 				<label for="id" class="col-sm-3 control-label">아이디</label>
 				<div class="col-sm-9">
 					<input type="text" id="id" placeholder="아이디" class="form-control"
 						name="id" autofocus>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-sm-3 control-label">이메일 </label>
+				<div class="col-sm-9">
+					<input type="email" id="email" placeholder="이메일"
+						class="form-control" name="email">
 				</div>
 			</div>
 			<div class="form-group">
