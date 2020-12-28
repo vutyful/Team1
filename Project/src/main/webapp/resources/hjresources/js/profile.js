@@ -1,60 +1,238 @@
 $(function() {
 
-			var picFile = $('#picFile');
 
+
+
+
+
+			
+
+		//프로필 사진 바꾸기
+
+			var picFile = $('#picFile');
+			
 		$('#picBtn').click(function() {
 			
+			//파일 업로드 없을 때
 			if(picFile.val() == null || picFile.val() ==''){
-				alert("변경사항이 없습니다.");
+				alert("프로필 사진을 업로드해 주세요. \n(사진 로딩에는 시간이 걸립니다.)")
+				location.reload();
+			}else{
+				$('#picForm').submit();
+			}
+			
+
+		});
+		
+		
+
+			
+			
+	//수정
+
+	//사용자 성별  기본 selected
+	$('#gender').val($.trim($('#userGender').val()));
+
+			var name = $('#name');
+			var email = $('#email');
+			var id = $('#id');
+			
+			var pass = $('#pass');
+			var newPass = $('#newPass');
+			var passConfirm = $('#passConfirm');
+			var birthDate = $('#birthDate');
+			
+			var profileInfo= $('#profileInfo');
+
+//유효성	
+
+			var Length = 0; 
+			var engCheck = /[a-z]/; 
+			var korCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+			var numCheck = /[0-9]/; 
+			var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+			var emailRule	 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+			var passRule = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
+
+	//escape 16진수로 바꿔줌 한글은 길이6
+	//바이트 구하는 함수
+	var getTextLength = function(str) {
+    var len = 0;
+    for (var i = 0; i < str.length; i++) {
+    if (escape(str.charAt(i)).length == 6) {
+   	 len++;
+      }
+ 	  	len++;
+   	 }
+    return len;
+	}
+	
+
+			
+	
+	
+	
+	//프로필 수정
+		
+		$('#proEditBtn').click(function() {
+		
+			if(name.val() == ''){
+				profileInfo.text("이름을 입력해주세요.");
+				name.focus();
+				return;
+			}
+			if (name.val().search(/\s/) != -1) {
+				profileInfo.text("이름은 빈칸을 포함 할 수 없습니다.");
+				return;
+			}
+			if(getTextLength(name.val())>20){
+				profileInfo.text("이름은 한글 1~10자, 영문 및 숫자 2~20자 입니다.");
+				return;
+			}
+			if (specialCheck.test(name.val())){
+				profileInfo.text("이름 특수문자를 포함 할 수 없습니다.");
+				return;
+			}
+		
+		
+			if(email.val() == ''){
+				profileInfo.text("이메일을 입력해주세요.");
+				email.focus();
+				return;
+			}
+			if (!emailRule.test(email.val())){
+				profileInfo.text("이메일 형식이 아닙니다.");
 				return;
 			}
 			
-			$('#picForm').submit();
-		});
-		
-		
-		
-		$('#proEditBtn').click(function() {
 			
-			
-			
-			$('#proEditForm').submit();
-		});
 		
-		
-		
-		
-		//탈퇴
-			var id = $('#id');
-			var password = $('#password');
-			var leaveInfo= $('#leaveInfo');
-			
-
-		
-		$('#leaveBtn').click(function() {
-		
-		
-		if(id.val()==''){
-			leaveInfo.text("아이디를 입력해 주세요.");
-			return;
+		if(pass.val()==''){
+		profileInfo.text("비밀번호를 입력해 주세요.");
+		return;
 		}
+	
+		
+	//새 비밀번호
+	//칸이 비어있지 않을 때만
+			if(newPass.val()!=''){
 
+			if (!passRule.test(newPass.val())){
+				profileInfo.text("비밀번호는 영문자, 특수문자, 숫자 포함 형태의 8~15자리 이내로 설정하셔야 합니다.");
+				return;
+			}
+			
+				if(passConfirm.val() == ''){
+				profileInfo.text("비밀번호 확인을 입력해주세요.");
+				passConfirm.focus();
+				return;
+			}
+			
+				if(newPass.val() != passConfirm.val()){
+				profileInfo.text("비밀번호가 일치하지 않습니다.");
+				newPass.val('');
+				passConfirm.val('');
+				newPass.focus();
+				return;
+			}
+			
+			
+			}//end of if
+			
+
+			
+		if(birthDate.val()==''){
+		profileInfo.text("생일을 입력해 주세요.");
+		return;
+		}
+		
+		
+		//중복 확인(닉네임, 이메일)
+		$.ajax({
+	 	type : 'post',
+	 	
+	 	async : true, //비동기 통신
+	 	
+	 	url : 'checkProfile.do', //*****요청(request) jsp는x mvc안타겠다는 얘기
+	 	
+	 	contentType : 'application/x-www-form-urlencoded;charset=utf-8', //한글처리
+	 	
+	 	data : {'name' : $('#name').val(),
+	 				'email' : $('#email').val(),
+	 				'pass' : $('#pass').val(),
+	 				'birth' : $('#birth').val(),
+	 				'gender' : $('#gender').val(),
+	 				'newPass' : $('#newPass').val()
+	 	},
+	 	
+	 	success : function(result){
+	 		profileInfo.text(result);
+	 		if(result=='성공'){
+	 		$('#proEditForm').submit();
+	 		}
+	 	},
+	 	
+	 	error : function(err){
+	 		console.log(err);
+	 	}
+	 	
+	 }) //end of ajax 
+			
+
+		});
+		
+		
+		
+		
+		
+		
+		//내 댓글
+		
+			
+		
+		
+		
+		
+		
+
+		
+
+			//탈퇴
+		var idLeave = $('#idLeave');
+		var password = $('#password');
+		var leaveInfo= $('#leaveInfo');
+
+					
+		$('#leaveBtn').click(function() {
+
+		
+		if(idLeave.val()==''){
+		leaveInfo.text("아이디를 입력해 주세요.");
+		return;
+		}
+		if(password.val()==''){
+		leaveInfo.text("비밀번호를 입력해 주세요.");
+		return;
+		}
+		
 		
   		$.ajax({
 	 	type : 'post',
 	 	
 	 	async : true, //비동기 통신
 	 	
-	 	url : 'leave.do', //*****요청(request) jsp는x mvc안타겠다는 얘기
+	 	url : 'leaveCheck.do', //*****요청(request) jsp는x mvc안타겠다는 얘기
 	 	
 	 	contentType : 'application/x-www-form-urlencoded;charset=utf-8', //한글처리
 	 	
-	 	data : {'id' : $('#id').val(),
+	 	data : {'id' : $('#idLeave').val(),
 	 				'pass' : $('#password').val(),
 	 				'confirmNum' : $('#confirmNum').val()
 	 	},
 	 	
 	 	success : function(result){
+	 	
 	 		leaveInfo.text(result);
 	 		
 	 		if(leaveInfo.text() == '이메일을 확인해주세요.' &&
@@ -66,9 +244,10 @@ $(function() {
     		$('#leaveBtn').text('탈퇴');
   			}
   			
- 
-  			
-	 		return;
+ 		if(result=='탈퇴'){
+  		$('#leaveForm').submit();
+		}
+		
 	 	},
 	 	
 	 	error : function(err){
@@ -80,7 +259,7 @@ $(function() {
 		
   		
   		
-		//$('#leaveForm').submit();
+
 		
 		});
 		

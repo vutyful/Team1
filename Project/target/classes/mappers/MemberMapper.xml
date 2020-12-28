@@ -25,14 +25,33 @@
 	
 	<select id="CheckUnique" parameterType="member" resultType="member">
 		SELECT * FROM member
-		WHERE id=#{id}
-		<if test="name != null">
-			or name=#{name}
-		</if>
-		<if test="email != null">
-			or email=#{email}
-		</if>
+		WHERE name=#{name} or email=#{email} or id=#{id}
 	</select>
+	
+	<select id="checkUniqueProfile" parameterType="member" resultType="member">
+		SELECT * FROM member
+		WHERE id !=#{id} and (name=#{name} or email=#{email})
+	</select>
+	
+	<select id="getReply" parameterType="map" resultType="map">
+	
+	SELECT (SELECT count(*) FROM reply WHERE memnum=#{memnum}) count, rnum, connum, img, title, replynum, redate, rcontent, rreco 
+	FROM
+	(SELECT rownum rnum,  connum, img, title, replynum, redate, rcontent, rreco 
+	FROM (SELECT c.connum connum, c.img img, c.title title, r.redate redate, r.rcontent rcontent, r.rreco rreco, r.replynum replynum
+	FROM content c INNER JOIN (SELECT * FROM reply WHERE memnum=#{memnum}) r
+	ON c.connum = r.connum  ORDER BY r.redate desc))
+	
+		<if test="firstRow != null and endRow != null">
+		<![CDATA[
+	WHERE rnum>=#{firstRow} and rnum<=#{endRow}
+		]]>
+		</if >
+	
+	ORDER BY redate desc
+	
+	</select>
+	
 	
 	<update id="memberUpdate"  parameterType="member">
 		<![CDATA[
