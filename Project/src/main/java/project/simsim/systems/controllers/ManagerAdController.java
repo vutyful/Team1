@@ -24,15 +24,11 @@ public class ManagerAdController {
 	public String viewPage(@PathVariable String manager) {
 		return "/managerAd/" + manager; 
 	}
-	@RequestMapping("managerAdST/{manager}.do")
-	public String viewPage1(@PathVariable String manager) {
-		return "/managerAdST/" + manager; 
-	}
 	
     //광고 목록창 불러오기
 	@RequestMapping("managerAd/getManagerList.do")
 	public void getManagerAdList(ManagerAdVO vo,Model model) {
-         ArrayList<ManagerAdVO> temp = (ArrayList<ManagerAdVO>) ManagerAdService.getManagerList(vo);
+        ArrayList<ManagerAdVO> temp = (ArrayList<ManagerAdVO>) ManagerAdService.getManagerList(vo);
 		       for(ManagerAdVO t : temp)
 		    {System.out.println("dao"+ t.getAdname());}
     model.addAttribute("managerList",ManagerAdService.getManagerList(vo));

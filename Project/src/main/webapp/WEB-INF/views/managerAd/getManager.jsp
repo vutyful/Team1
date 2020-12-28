@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" 
-href="../resources/css/main.css">
+
+<link rel="stylesheet" type="text/css"  href="../resources/managerAd/css/managerAd.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript">
+
+<script>
+
 function readURL(input) {
 	if(input.files && input.files[0] ){
 		var reader = new FileReader();
@@ -21,14 +24,20 @@ $("#adimg").change(function () {
 	readURL(this);
 })
 </script>
+<style type="text/css">
+
+
+</style>
 <title>광고 상세보기</title>
 </head>
 <body>
       <h1>광고 상세</h1>
-      <hr>
-      <form action="updateManager.do" method="post">
+
+
+      <form action="updateManager.do" method="post" id="manager">
         <input name="adnum" type="hidden" value="${manager.adnum}" />
-        <table border="1" cellpadding="0" cellspacing="0">
+        
+        <table class="managertable">
         
       <tr>
             <td width="120">광고이름</td>
@@ -37,7 +46,7 @@ $("#adimg").change(function () {
       </tr>
       <tr>
           <td width="120">광고사진</td>
-          <td align="left" ><input name="adimg" type="file" onchange="readURL(this);"
+          <td align="left" ><input name="adimg" type="file" onchange="readURL(this);" 
           value="${manager.adimg}"/> 
           <img alt="tour image" src="#" id="blah" width="100"/>
           </td>
@@ -59,15 +68,17 @@ $("#adimg").change(function () {
       
       <tr>
          <td colspan="2" align="center">
-         <input type="submit" value="광고수정">
+         <input class="manager-but" type="submit" value="광고수정">
          </td>
       </tr>
     </table>
  </form>
- <hr>
- <a href="insertManager.do"><input type="button" value="광고등록"></a>
- <a href="deleteManager.do?adnum=${manager.adnum}"><input type="button" value="광고삭제"></a>
- <a href="getManagerList.do"><input type="button" value="광고목록"></a>
+ 
+ 
+
+<input class="manager-but" onclick="location.href='insertManager.do'" type="button" value="광고등록">
+<input class="manager-but" onclick="location.href='deleteManager.do?adnum=${manager.adnum}'" type="button" value="광고삭제">
+<input class="manager-but" onclick="location.href='getManagerList.do'" type="button" value="광고목록">
  
 </body>
 </html>

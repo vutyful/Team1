@@ -17,7 +17,8 @@ public interface ManagerAdDAO {
 	public ManagerAdVO getManager(ManagerAdVO vo) ;
 	
 	public List<ManagerAdVO> getManagerList(ManagerAdVO vo) ;
+	
 
-
+	
 
 }

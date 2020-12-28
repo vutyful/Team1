@@ -27,8 +27,10 @@ public interface ManagerAdService {
 		ManagerAdVO getManager(ManagerAdVO vo);
 		
 		// 광고 목록 조회
-		List<ManagerAdVO> getManagerList(ManagerAdVO vo); 
+		List<ManagerAdVO> getManagerList(ManagerAdVO vo);
+		
+
+
 
 	
-		
 }
