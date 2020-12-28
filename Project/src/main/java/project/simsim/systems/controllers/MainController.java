@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import project.simsim.systems.domains.ContentVO;
+import project.simsim.systems.domains.ReplyVO;
 import project.simsim.systems.services.MainServiceImpl;
 
 @Controller
@@ -36,7 +38,6 @@ public class MainController {
 	public void main(ContentVO vo,Model m) {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(vo)); 
-		System.out.println("모든 컨텐츠 가져옴"+mainService.getAllContent(vo).get(0).getCcontent());
 	}
 	
 	
@@ -46,9 +47,21 @@ public class MainController {
 	}
 	
 
-	//로그인 상태의 메인(main_login.jsp)에서 북마크로 이동
+	//로그인 상태에서 북마크로 이동
 	@RequestMapping("/main/bookmark.do") 
-	public void bookmark() {
+	public void bookmark(HttpSession session,Model m) {
+		String id = (String) session.getAttribute("login");
+		//해당 아이디의 북마크 얻어오기
+		String bm = mainService.getBookmark(id);
+		if(bm==null) { //기존 북마크가 하나도 없다면 "북마크가 없습니다 html띄우기"
+			
+		}
+		String[] bms = bm.split("/");
+		List<ContentVO> list = new ArrayList<ContentVO>();
+		for(String connum:bms) {
+			list.add(mainService.getSelectByconnum(connum));
+		}
+		m.addAttribute("bookmarks", list);
 		
 	}
 	
@@ -60,33 +73,45 @@ public class MainController {
  
 	//로그인 상태의 메인에서 컨텐츠 view로 이동
 	@RequestMapping("/main/contents_login.do")
-	public void contents_login(ContentVO vo,Model m, String check) {
-		//메인에서 넘어온 컨텐츠의 connum으로 해당 컨텐츠 레코드 가져오기
-		/*
+	public void contents_login(HttpSession session,ContentVO vo,Model m,String check) {
+		
+		/**
+		 * 컨텐츠 띄우기 전 북마크 여부 확인하기
+		 */
+		String id = (String) session.getAttribute("login");
 		String bm = mainService.getBookmark(id);
 		if(bm != null)
 		{
 			String[] bms = bm.split("/");
 			List<String> list = new ArrayList<String>();
 			Collections.addAll(list, bms);
-			if(list.contains(vo.getConnum())) {
+			if(list.contains(Integer.toString(vo.getConnum()))) {
 				check = "true";
-			}
+			}else check = "false";
 		}
-		*/
+		
 		m.addAttribute("check", check);
+		//메인에서 넘어온 컨텐츠의 connum으로 해당 컨텐츠 레코드 가져오기
 		m.addAttribute("content", mainService.getSelectByconnum(vo));
+		/**
+		 *  해당 게시글의 댓글 전부 불러오기
+		 */
+		m.addAttribute("replys", mainService.getAllReply(vo));
+		System.out.println(mainService.getAllReply(vo));
+		
 	}
 	
-	//메인에서 컨텐츠 view로 이동
+	//메인에서 컨텐츠 view로 이동(로그인 전)
 	@RequestMapping("/main/contents.do")
 	public void contents(ContentVO vo,Model m) {
-			//메인에서 넘어온 컨텐츠의 connum으로 해당 컨텐츠 레코드 가져오기
-			m.addAttribute("content", mainService.getSelectByconnum(vo));
-			System.out.println("컨텐츠 레코드 하나 가져오기"+mainService.getSelectByconnum(vo).getImg());
+		//메인에서 넘어온 컨텐츠의 connum으로 해당 컨텐츠 레코드 가져오기
+		m.addAttribute("content", mainService.getSelectByconnum(vo));
+		//해당 게시글의 댓글 전부 불러오기
+		m.addAttribute("replys", mainService.getAllReply(vo));
+		
 		}
 
-	//해당 게시글을 북마크하기
+	//해당 게시글을 북마크하기(hover)
 	@RequestMapping("/main/bm.do")
 	public String bm_regist(HttpSession session, String connum,Model m) {
 		String id = (String) session.getAttribute("login");
@@ -124,6 +149,39 @@ public class MainController {
 			System.out.println(bms_result);
 		}
 		return "redirect:/main/contents_login.do?connum=" + connum + "&check=" + check;
+	}
+	
+	//댓글 달기 (해당 게시글 번호, 회원번호(아이디 이용),댓글 내용 필요)
+	@RequestMapping(value = "/main/insertReply.do",produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String insertReply(HttpSession session,ReplyVO vo) {
+		String id = (String)session.getAttribute("login");
+		String message = "댓글이 등록되었습니다.";
+		//아이디로 회원번호 얻어오기
+		int memnum = Integer.parseInt(mainService.getMemnumById(id));
+		//댓글 작성
+		vo.setMemnum(memnum);
+		int result = mainService.insertReply(vo);
+		if(result==0) message = "댓글 작성에 실패했습니다.";
+		
+		return message;
+	}
+	
+	//댓글 추천
+	@RequestMapping(value = "/main/updateReco.do", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String updateReco(ReplyVO vo) {
+		//
+		return null;
+	}
+	
+	//댓글 수정
+	@RequestMapping(value = "/main/updateReply.do" , produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String updateReply(ReplyVO vo) {
+		int result = mainService.updateReply(vo);
+		return String.valueOf(result);
+		
 	}
 
 	//로그아웃
