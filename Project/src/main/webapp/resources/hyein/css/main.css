@@ -73,6 +73,18 @@
     object-fit: cover;
 }
 
+.profile_reply {
+    width: 50px;
+    height: 50px; 
+    border-radius: 70%;
+    overflow: hidden;
+}
+.box__reply  {
+    width: 5%;
+    height: 5%;
+    object-fit: cover;
+}
+
 /*----------------------------------------*/
 a[disabled], input[disabled], button[disabled], textarea[disabled] {
     cursor: not-allowed !important;
@@ -2839,7 +2851,7 @@ ul {
 }
 
 /* 댓글 */
-#write_comment{
+#ta_comment{
     box-shadow: none;
     outline: none;
     margin: 0;
@@ -2849,11 +2861,25 @@ ul {
     border: 1px solid #7C7C7C;
     color: #7C7C7C;
     font-size: 14px;
-    vertical-align: middle;
+    vertical-align: top;
     height: 100px;
     width: 100%;
 }
 
+.ta_comment{
+    box-shadow: none;
+    outline: none;
+    margin: 0;
+    border-radius: 0;
+    padding: 0 15px;
+    line-height: 48px;
+    border: 1px solid #7C7C7C;
+    color: #7C7C7C;
+    font-size: 14px;
+    vertical-align: top;
+    height: 100px;
+    width: 100%;
+}
 
 .best_comment{
     padding: 10px 0;

@@ -111,7 +111,7 @@
 											<div class="work"><a href="contents.do?connum=${con.connum}">
 													
 													<!-- hoverbox ef-slide-right -->
-													<div class="hoverbox ef-slide-right light">
+													<div class="hoverbox ef-move-right light">
 														<!-- hb_front -->
 														<div class="hb_front"><img src="../resources/upload/${con.img}"/>
 														</div><!-- End / hb_front -->

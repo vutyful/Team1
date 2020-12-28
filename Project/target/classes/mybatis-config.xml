@@ -8,6 +8,7 @@
 	<typeAlias type="project.simsim.systems.domains.ManagerAdVO" alias="manager"/>
 	<typeAlias type="project.simsim.systems.domains.ContentVO" alias="content"/>
 	<typeAlias type="project.simsim.systems.domains.MemberVO" alias="member"/>
+	<typeAlias type="project.simsim.systems.domains.ReplyVO" alias="reply"/>
  </typeAliases>
 
 
