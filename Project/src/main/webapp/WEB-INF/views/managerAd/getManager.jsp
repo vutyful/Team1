@@ -6,11 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" type="text/css"  href="../resources/managerAd/css/managerAd.css">
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <script>
-
 function readURL(input) {
 	if(input.files && input.files[0] ){
 		var reader = new FileReader();

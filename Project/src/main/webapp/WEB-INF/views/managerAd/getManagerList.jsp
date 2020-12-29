@@ -28,13 +28,13 @@
        </tr>
    <c:forEach items="${managerList}" var="manager">
    <tr>
-       <td>${manager.adnum}</td><td align="left">
+       <td align="center">${manager.adnum}</td><td align="center">
        <a href="getManager.do?adnum=${manager.adnum}">
        ${manager.adname}</a></td>
-       <td><img  width="70"  alt="" src="/Project/resources/upload/${manager.adimg}"></td>
-       <td>${manager.adlink}</td>
-       <td>${manager.startdate}</td>
-       <td>${manager.enddate}</td>
+       <td align="center"><img  width="70"  alt="" src="/Project/resources/upload/${manager.adimg}"></td>
+       <td align="center">${manager.adlink}</td>
+       <td align="center">${manager.startdate}</td>
+       <td align="center">${manager.enddate}</td>
      
      
       </tr>
