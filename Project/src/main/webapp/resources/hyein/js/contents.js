@@ -25,30 +25,73 @@
 								},//보내는 데이터
 						success : function(result){
 							$('#ta_comment').val('');
-							alert(result);
+							alert('댓글 작성이 완료되었습니다.');
+							
 						},
 						error : function(err){console.log(err);}
 					})
 				});
+
+//--------------------------------------------------------------
 				
-	// 댓글 추천 hover			
-	$('.reply_reco').click(function(){
-   		alert("댓글 추천!");
-					$.ajax({
-						type: 'post',
-						async : true, 
-						url : 'updateReco.do',
-						contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-						data : {'rcontent':$('#ta_comment').val(),
-								'connum':$('#connum').val()
-								},//보내는 데이터
-						success : function(result){
-							$('#ta_comment').val('');
-							alert(result);
-						},
-						error : function(err){console.log(err);}
-					})
-				});
+	// 댓글 추천 (hover)			
+	$('.reply_reco_icon').css('cursor','pointer');
+	
+	$('.reply_reco_icon').each(function(){
+  $(this).click(function(){
+      var like;
+        $.ajax({
+            type: 'post',
+            async : false,
+            url : 'updateReco.do',
+            contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+            data : {'replynum':$(this).parent().parent().next().find('.replynum').val()
+            },// 해당 댓글번호 보내기
+            success : function(result){
+                like = result;
+               // resultFunc(result);
+            },
+            error : function(err){console.log(err);}
+        });
+            //
+            // if(result === 'ok') {
+            //     $(this).attr('src', $(this).attr('src').replace('no', 'ok'));
+            // }else{
+            //     $(this).attr('src',$(this).attr('src').replace('ok','no'));
+            // }
+
+        // 하트 모양 바꿔주기
+
+        if(like === 'ok') {
+            $(this).attr('src', $(this).attr('src').replace('no', 'ok'));
+        }else{
+            $(this).attr('src',$(this).attr('src').replace('ok','no'));
+        }
+
+        //댓글 추천 수 실시간 반영
+        var reco;
+        $.ajax({
+            type: 'post',
+            async : false,
+            url : 'getReco.do',
+            contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+            data : {'replynum':$('.replynum').val()
+            },// 해당 댓글번호 보내기
+            success : function(result){
+                reco = result;
+            },
+            error : function(err){console.log(err);}
+        });
+        // function resultFunc(result){
+        //     $(this).parent().prev().text(reco);
+        // }
+        $(this).parent().prev().text(reco);
+
+ })
+});
+					
+	
+//--------------------------------------------------------------				
 			
 		//수정 ta/btn 숨기기(default)	
 		$('.ta_comment').css('display','none');
@@ -83,7 +126,7 @@
             }
         });
         
-     //수정 등록 버튼 눌렸을 때
+     //댓글 수정 시 등록 버튼 눌렸을 때
      
  	var modify_btns = $('.modify_btn'); //등록버튼 
 
@@ -113,4 +156,55 @@
         	$(this).siblings('p').css('display','inline-block');
             	
 })
+
+	// 댓글 삭제 버튼 눌렸을 때
+	var reply_deletes = $('.reply_delete'); //삭제 버튼들
+	
+	  reply_deletes.hover(function () {
+            $(this).css('cursor', 'pointer');
+            $(this).css('color', '#66AEE7');
+        }, function () {
+            $(this).css('cursor', 'none');
+            $(this).css('color', 'black');
+        });
+	
+	
+	reply_deletes.click(function(){
+		if(confirm("정말 삭제하시겠습니까?") == true){
+			 $.ajax({
+       			 type : 'post',
+       			 async :  'true',
+       			 url : 'deleteReply.do',
+       			 contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+       			 data : {'replynum' : $('.replynum').val()},
+       			 success : function (result){
+						alert(result);
+       			 },
+       			 error : function (err) {console.log(err);}
+   			});
+   			
+   			$(this).parents('.comment_text best_comment replys').remove();
+   			
+			 $.ajax({
+      			  	type : 'post',
+        			async :  'true',
+        			url : 'getAllreply.do',
+       			 	contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+       				 data : {'connum' : $('.connum').val()},
+       				 dataType : JSON,
+       				 success : function (rep){
+          				 for(var i=0;i<rep.length;i++){
+              			 alert(rep[0].title);
+         			 	 }
+      				  },
+     			   error : function (err) {console.log(err);}
+   				 });
+			
+			
+		}else{
+			return;
+		}
+	
+	})
+	
 

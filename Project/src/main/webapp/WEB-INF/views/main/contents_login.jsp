@@ -53,7 +53,9 @@
 							<li><a href="bookmark.do">북마크</a>
 							</li>
 							<li><a href="logout.do">로그아웃</a>
-							</li>0
+							</li>
+							<li><a href="../admin.do">관리자</a>
+							</li>
 						</ul><!--  -->
 						
 					</nav><!-- End / overlay-menu -->
@@ -115,36 +117,35 @@
 							<p class="best_comment">REVIEWS</p>
 						<div id="comments">	
 							<c:forEach items="${replys}" var="rep">
-							<div class="comment_text best_comment replys">
+							<div class="comment_text best_comment replys foreach">
 								<dl  class="cmt_item">
 									<dt>
 										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/${rep.memberVO.pic}"/></span>
-										<span id="reply_id" title="아이디"> ${rep.memberVO.id}${sessionScope.login}</span>
+										<span id="reply_id" title="아이디"> ${rep.memberVO.id}</span>
 										<i id="reply_date"> ${rep.redate} </i>
 									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<span class="comment_option">
-											<span id="reply_reco">${rep.rreco}</span>
+											<span class="reply_reco">${rep.rreco}</span>&nbsp;&nbsp;&nbsp;
 											<span>
-												<a href="reco.do?rreco=${rep.rreco}&replynum=${rep.replynum}" class="reply_reco" type="button">추천</a>
+<%-- 												<a href="reco.do?rreco=${rep.rreco}&replynum=${rep.replynum}" class="reply_reco">추천</a> --%>
+												<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
+												<c:choose>
+													<c:when test="">
+														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_ok.png"/>
+													</c:when>
+													<c:when test="">
+														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
+													</c:when>
+												</c:choose>
 											</span>
-											<c:choose>
-												<c:when test="${sessionScope.login eq rep.memberVO.id}">
+												<c:if test="${sessionScope.login eq rep.memberVO.id}">
 													<span class="reply_modify">
 														<span>수정</span>
 													</span>
 													<span class="reply_delete">
 														<span>삭제</span>
 													</span>
-												</c:when>
-												<c:when test="${sessionScope.login ne rep.memberVO.id}">
-													<span class="reply_modify">
-														<span>수정</span>
-													</span>
-													<span class="reply_delete">
-														<input type="button">삭제</a>
-													</span>
-												</c:when>
-											</c:choose>
+												</c:if>
 									</span>
 									<dd>
 										<span>
@@ -157,8 +158,49 @@
 								</dl>
 							</div>
 							</c:forEach>
+							<div class="comment_text best_comment replys aja" style='display:none'>
+								<dl  class="cmt_item">
+									<dt>
+										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/${rep.memberVO.pic}"/></span>
+										<span id="reply_id" title="아이디"> ${rep.memberVO.id}</span>
+										<i id="reply_date"> ${rep.redate} </i>
+									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span class="comment_option">
+											<span class="reply_reco">${rep.rreco}</span>&nbsp;&nbsp;&nbsp;
+											<span>
+<%-- 												<a href="reco.do?rreco=${rep.rreco}&replynum=${rep.replynum}" class="reply_reco">추천</a> --%>
+												<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
+												<c:choose>
+													<c:when test="">
+														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_ok.png"/>
+													</c:when>
+													<c:when test="">
+														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
+													</c:when>
+												</c:choose>
+											</span>
+												<c:if test="${sessionScope.login eq rep.memberVO.id}">
+													<span class="reply_modify">
+														<span>수정</span>
+													</span>
+													<span class="reply_delete">
+														<span>삭제</span>
+													</span>
+												</c:if>
+									</span>
+									<dd>
+										<span>
+										<textarea class="ta_comment ta_modify">${rep.rcontent}</textarea>
+										<input class="modify_btn" type="button" value="등록"/>
+										<input class="replynum" type="hidden" value="${rep.replynum}"/>
+										<p class="rcontent">&nbsp;&nbsp;${rep.rcontent}</p>
+										</span>
+									</dd>
+								</dl>
+							</div>
 						</div>	<br/><br/><br/>
 							<div>
+				
 								<textarea id="ta_comment"></textarea>
 								<input id="connum" type="hidden" value="${content.connum}"/>
 								<button id="write_comment">글쓰기</button>
