@@ -63,34 +63,34 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>컨텐츠 관리</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
-                        <a class="collapse-item active" href="ContentsList.do">컨텐츠 목록</a>
-                        <a class="collapse-item" href="ContentSave.do">컨텐츠 등록</a>
+                        <a class="collapse-item" href="../manageContents/ContentsList.do">컨텐츠 목록</a>
+                        <a class="collapse-item" href="../manageContents/ContentSave.do">컨텐츠 등록</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>회원 관리</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
-                        <a class="collapse-item" href="../manageMembers/MembersList.do">회원 목록</a>
-                        <a class="collapse-item" href="../manageMembers/MembersList.do">탈퇴 목록</a>
+                        <a class="collapse-item" href="MembersList.do">회원 목록</a>
+                        <a class="collapse-item active" href="Withdrawals.do">탈퇴 목록</a>
                     </div>
                 </div>
             </li>
@@ -137,7 +137,7 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <h1 class="h3 mb-4 text-gray-800" style="margin-bottom: 0.5rem !important">컨텐츠 관리</h1>
+                    <h1 class="h3 mb-4 text-gray-800" style="margin-bottom: 0.5rem !important">회원 관리</h1>
 
 
                 </nav>
@@ -147,36 +147,36 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">컨텐츠 목록</h1>
-                    <p class="mb-4">현재 등록한 컨텐츠의 목록을 볼 수 있습니다.</p>
+                    <h1 class="h3 mb-2 text-gray-800">탈퇴 목록</h1>
+                    <p class="mb-4">~년 이내의 탈퇴한 회원의 목록을 볼 수 있습니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">컨텐츠 목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">탈퇴 목록</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-											<th>작성일</th>
-											<th>글번호</th>
-											<th>제목</th>
-											<th>작성자</th>
-											<th>조회수</th>
-											<th>추천수</th>
+											<th>탈퇴일</th>
+											<th>회원번호</th>
+											<th>아이디</th>
+											<th>이름</th>
+											<th>성별</th>
+											<th>생년월일</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-										<c:forEach items="${contentsList}" var="content">
+										<c:forEach items="${membersList}" var="member">
 											<tr>
-												<td>${content.postdate}</td>
-												<td>${content.connum}</td>
-												<td><a href='view.do?connum=${content.connum}'>${content.title}</a></td>
-												<td>${content.memnum}</td>
-												<td>${content.cview}</td>
-												<td>${content.creco}</td>
+												<td>${member.outdate}</td>
+												<td>${member.memnum}</td>
+												<td><a href='view.do?memnum=${member.memnum}'>${member.id}</a></td>
+												<td>${member.name}</td>
+												<td>${member.gender}</td>
+												<td>${member.birth}</td>
 											</tr>
 										</c:forEach>
                                         <tr>
