@@ -63,38 +63,38 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>컨텐츠 관리</span>
                 </a>
-                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
-                        <a class="collapse-item" href="ContentsList.do">컨텐츠 목록</a>
-                        <a class="collapse-item active" href="ContentSave.do">컨텐츠 등록</a>
+                        <a class="collapse-item" href="../manageContents/ContentsList.do">컨텐츠 목록</a>
+                        <a class="collapse-item" href="../manageContents/ContentSave.do">컨텐츠 등록</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            <li class="nav-item active">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>회원 관리</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
-                        <a class="collapse-item" href="../manageMembers/MembersList.do">회원 목록</a>
-                        <a class="collapse-item" href="../manageMembers/MembersList.do">탈퇴 목록</a>
+                        <a class="collapse-item" href="MembersList.do">회원 목록</a>
+                        <a class="collapse-item" href="Withdrawals.do">탈퇴 목록</a>
                     </div>
                 </div>
             </li>
-            
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -137,14 +137,9 @@
 
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
                     
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800" style="margin-bottom: 0.5rem !important">컨텐츠 관리</h1>
+                    <h1 class="h3 mb-4 text-gray-800" style="margin-bottom: 0.5rem !important">회원 관리</h1>
                     
 				</nav>
 
@@ -152,47 +147,55 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">컨텐츠 등록</h1>
-                    <p class="mb-4">컨텐츠를 등록 할 수 있습니다.</p>
+                    <h1 class="h3 mb-2 text-gray-800">회원 정보 수정</h1>
+                    <p class="mb-4">회원의 정보를 수정하거나 삭제 할 수 있습니다.</p>
                     
                     <div class="row">
 
                         <div class="col-lg-6">
 
                             <div class="card shadow mb-4">
-                            	<form class="user" id="myform" action="saveContent.do" method="post" enctype="multipart/form-data">
-	                                <div class="card-header py-3">
-	                                    <div class="form-group">
-	                                    	<h6 class="m-0 font-weight-bold text-primary" style="margin-bottom: 0.5rem !important">컨텐츠 타이틀</h6>
-	                                    	<input class="form-control form-control-user" type="text" name="title" placeholder="타이틀을 입력해주세요."/>
-	                                    </div>
-	                                </div>
+                            	<form class="user" id="myform" action="modifyMember.do" method="post">
 	                                <div class="card-body">
-	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">카테고리</h6>
-	                                    
-										<select id="cate" name="cate">
-											<c:forEach items="${list}" var="category">
-												<option>${category}</option>
-											</c:forEach>
-											<option value="direct">직접입력</option>
+	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">아이디</h6>
+										<input type="text" name="id" value="${member.id}"/>
+	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">이 름</h6>
+										<input type="text" name="name" value="${member.name}"/>
+	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">이메일</h6>
+										<p>${member.email}</p>
+	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">생년월일</h6>
+										<p>${member.birth}</p>
+	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">성 별</h6>
+										<p>${member.gender}</p>
+		                                <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">권 한</h6>
+										<select name="auth">
+											<option <c:if test="${member.auth == 1}">selected</c:if> value="1">일반</option>
+											<option <c:if test="${member.auth == 5}">selected</c:if> value="5">에디터</option>
+											<option <c:if test="${member.auth == 10}">selected</c:if> value="10">서브 관리자</option>
 										</select>
-										<input type="text" id="direct" name="">
-	                                
-	                                    <h6 class="m-0 font-weight-bold text-primary" style="margin: 0.5rem 0 !important">내용</h6>
-	                                	<textarea name="ccontent" rows="20" cols="77" placeholder="내용을 입력해주세요."></textarea>
+	                                	<h6 class="m-0 font-weight-bold text-primary" style="margin: 0.5rem 0 !important">프로필 이미지</h6>
+	                                    <c:choose>
+	                                    	<c:when test="${member.pic ne null}">
+												<img src="../resources/upload/${member.pic}">
+	                                    	</c:when>
+	                                    	<c:otherwise>
+	                                    		이미지가 없습니다.
+	                                    	</c:otherwise>
+	                                    </c:choose>
+	                                    <br>
+	                                    <input type="checkbox" name="pic" value="null" style="margin-left: 0.5rem"/>이미지 삭제
+	                                    <input type="checkbox" name="state" value="차단"  <c:if test="${member.state eq '차단'}">checked</c:if> style="margin-left: 0.5rem" />차단하기
 	                                	
-										<input type="hidden" name="memnum" value="1"/>
-	                                	
-	                                    <h6 class="m-0 font-weight-bold text-primary" style="margin: 0.5rem 0 !important">이미지 첨부</h6>
-	                                    <input type="file" name="file" />
-	                                    <p><code>이미지만 넣어주세요. 이미지가 아니면 표기되지 않습니다.</code></p>
+	                                    <br>
+										<input type="hidden" name="memnum" value="${member.memnum}"/>
+	
 	                                    <a href="#" class="btn btn-primary btn-icon-split" onclick="$('#myform').submit();">
 	                                        <span class="icon text-white-50">
 	                                            <i class="fas fa-check"></i>
 	                                        </span>
-	                                        <span class="text">작성하기</span>
+	                                        <span class="text">수정하기</span>
 	                                    </a>
-	                                    <a href="ContentsList.do"" class="btn btn-secondary btn-icon-split">
+	                                    <a href="MembersList.do"" class="btn btn-secondary btn-icon-split">
 	                                        <span class="icon text-white-50">
 	                                            <i class="fas fa-arrow-right"></i>
 	                                        </span>

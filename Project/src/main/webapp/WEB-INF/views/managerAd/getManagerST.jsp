@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>광고 목록</title>
 
-       <h2>광고 통계 목록</h2>
+       <h2 align="center" >광고 통계 목록</h2> 
        
  <table class="managertable">
   <tr>
@@ -19,10 +19,11 @@
   </tr>
  <c:forEach items="${managerSTList}" var="manager">
  <tr>
-      <td>${manager.adnum}</td><td align="left">
-       <a href="getManagerSTList.do?adnum=${manager.adnum}">
-        ${manager.adname}</a></td>
-    <td><img  width="70"  alt="" src="/Project/resources/upload/${manager.adimg}"></td>
+      <td align="center">${manager.adnum}</td>
+      <td align="center">
+      <a href="getManagerSTList.do?adnum=${manager.adnum}">
+      ${manager.adname}</a></td>
+    <td align="center"><img  width="70" alt="" src="/Project/resources/upload/${manager.adimg}"></td>
  
  
  </tr>
