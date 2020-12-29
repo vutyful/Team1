@@ -27,5 +27,7 @@ public interface MemberDAO {
 	
 	int memberLeave(MemberVO vo);
 	
+	int tempPass(MemberVO vo);
+	
 	List<Map<String,Object>> getReply(Map<String,Integer> reply);
 }

@@ -22,6 +22,13 @@
 		SELECT * FROM AD ORDER BY adnum DESC
 		]]>
 </select>	
+
+<select id="managerST" resultType="manager">
+		<![CDATA[
+		select click10,click20,click30,click40,click50ov,clickm,clickf from AD where adnum=adnum;
+		]]>
+</select>	
+
 	
 <select id="getManager"  parameterType="manager" resultType="manager">
 		<![CDATA[

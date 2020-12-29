@@ -1,13 +1,42 @@
 @charset "UTF-8";
 
 .text-info {
-	color: #357ebd  !important;
+	color: black !important;
 }
 
+.btn-info {
+	color: #fff;
+    background-color: black;
+    border-color: #666666;
+}
+
+.container{
+       margin-top :150px;
+     
+}
+
+.text-url {
+	color: black !important;
+}
+.text-url:hover {
+	color: #a0a0a0 !important;
+}
 
 
 .btn-info {
 	color: #fff;
-    background-color: #428bca;
-    border-color: #357ebd;
+    background-color: black;
+    border-color: #666666;
 }
+
+.btn-info:hover{
+	color: fff;
+	background-color:#666666;
+	
+}
+
+
+
+
+
+

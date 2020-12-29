@@ -9,20 +9,13 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../resources/hjresources/js/join.js"></script>
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"	rel="stylesheet" id="bootstrap-css">
+<script	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link 	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"	rel="stylesheet" id="bootstrap-css">
+<script	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<link href="../resources/hjresources/css/loginCss.css" rel="stylesheet" />
 
 <title>join</title>
 </head>
@@ -32,7 +25,7 @@
 	<div class="container">
 		<form method="get" action="userInsert.do" id="join" 
 			class="form-horizontal" role="form">
-			<h2>회원가입</h2>
+			<h2>회원가입</h2><br/><br/>
 			<div class="form-group">
 				<label for="name" class="col-sm-3 control-label">이름(별명)</label>
 				<label class="col-sm-3 ">${nameCheck}</label>
@@ -115,7 +108,7 @@
 -->
 			<div class="form-group float-right">
 				<label id="info"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<button type="button" id="joinBtn" class="btn btn-primary">가입</button>
+				<button type="button" id="joinBtn" class="btn btn-info">가입</button>
 			</div>
 		</form>
 		<!-- /form -->
