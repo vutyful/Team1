@@ -11,8 +11,10 @@
 <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
 	<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+
 	<property name="username" value="scott"></property>
 	<property name="password" value="tiger"></property>
+
 </bean>	
 	
 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
@@ -25,6 +27,8 @@
    <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
  </bean>
  
+ <!--  비밀번호 암호화-->
+ <bean id="bcryptPasswordEncoder"    class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
     		
 </beans>
 

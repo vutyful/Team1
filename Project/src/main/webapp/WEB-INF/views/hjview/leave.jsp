@@ -5,11 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"	rel="stylesheet" id="bootstrap-css">
+<script	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="../resources/hjresources/css/loginCss.css" rel="stylesheet" />
 <title>leave.jsp</title>
 </head>
 <body>
@@ -17,6 +16,7 @@
 	<div class="container">
 		<form action="bye.do" class="form-horizontal" id="bye">
 			<h2>다음에 또 만나요!</h2>
+			<br/><br/>
 			<fieldset>
 				<!-- Select Basic -->
 
@@ -56,7 +56,7 @@
 				<div class="form-group">
 					<label class="col-md-4 control-label" for="submit"></label>
 					<div class="col-md-4">
-						<button type="submit" id="bye"  class="btn btn-primary">확인</button>
+						<button type="submit" id="bye"  class="btn btn-info">확인</button>
 					</div>
 
 				</div>

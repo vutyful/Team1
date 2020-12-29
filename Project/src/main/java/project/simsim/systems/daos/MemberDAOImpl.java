@@ -61,6 +61,12 @@ public class MemberDAOImpl implements MemberDAO{
 		return mybatis.update("MemberMAP.memberLeave",vo);
 
 	}
+	@Override
+	public int tempPass(MemberVO vo) {
+		System.out.println("===>  MemberMapper tempPass() 호출");
+		return mybatis.update("MemberMAP.tempPass",vo);
+		
+	}
 
 	@Override
 	public List<Map<String,Object>> getReply(Map<String,Integer> reply) {

@@ -2,7 +2,7 @@
 CREATE TABLE Member (
 	memnum NUMBER NOT NULL, /* 회원번호 */
 	id VARCHAR2(20), /* 아이디 */
-	pass VARCHAR2(20), /* 비밀번호 */
+	pass VARCHAR2(100), /* 비밀번호 */
 	name VARCHAR2(20), /* 이름 */
 	birth DATE, /* 생년월일 */
 	gender CHAR(4), /* 성별 */

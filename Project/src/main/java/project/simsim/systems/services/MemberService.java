@@ -26,6 +26,8 @@ public interface MemberService {
 	
 	public int memberLeave(MemberVO vo );
 	
+	public int tempPass(MemberVO vo );
+	
 	public List<Map<String,Object>> getReply(Map<String,Integer> reply );
 	
 }
