@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.aspectj.lang.annotation.SuppressAjWarnings;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import project.simsim.systems.daos.MemberDAO;
@@ -18,6 +20,8 @@ public class MemberServiceImpl implements MemberService{
 
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
+	BCryptPasswordEncoder pwdEncoder;
 	
 	
 	/**
@@ -25,17 +29,17 @@ public class MemberServiceImpl implements MemberService{
 	  * 회원정보 하나 가져오기
 	  */
 	  public MemberVO idCheck( MemberVO vo)
-	  {
+	  {	
 		  return memberDAO.idCheck(vo);
 	  }
-	  
+
 	  
 	  /**
 	   * 회원가입 sql
 	   */
 	   public int userInsert(MemberVO vo )
-	   {
-		   
+	   { String psw = pwdEncoder.encode(vo.getPass());
+		vo.setPass(psw);
 		  return memberDAO.memberInsert(vo);
 	   }
 
@@ -52,6 +56,8 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int memberUpdate(MemberVO vo) {
+		String psw = pwdEncoder.encode(vo.getPass());
+		vo.setPass(psw);
 
 		return memberDAO.memberUpdate(vo);
 	}
@@ -67,6 +73,14 @@ public class MemberServiceImpl implements MemberService{
 	public int memberLeave(MemberVO vo) {
 
 		return memberDAO.memberLeave(vo);
+	}
+	
+	@Override
+	public int tempPass(MemberVO vo) {
+		String psw = pwdEncoder.encode(vo.getPass());
+		vo.setPass(psw);
+		
+		return memberDAO.tempPass(vo);
 	}
 	
 	
@@ -91,6 +105,8 @@ public class MemberServiceImpl implements MemberService{
 
 		return memberDAO.getReply(reply);
 	}
+	
+	
 	
 
 	

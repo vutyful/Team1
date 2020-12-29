@@ -3,9 +3,14 @@ $(function() {
 
 
 
-
-
-			
+	//페이지 바꾸면 내 댓글로 자동
+	//내댓글 위치
+	
+	$('html, body').animate({
+	scrollTop: $('#second').offset().top
+	}, 1000);
+	
+		
 
 		//프로필 사진 바꾸기
 
@@ -187,14 +192,8 @@ $(function() {
 		
 		
 		
-		//내 댓글
-		
+
 			
-		
-		
-		
-		
-		
 
 		
 
@@ -238,6 +237,7 @@ $(function() {
 	 		if(leaveInfo.text() == '이메일을 확인해주세요.' &&
 	 		$('#leaveBtn').text()=='확인'
 	 		) {
+	 		alert("이메일이 전송되었습니다. \n확인 후, 인증번호를 입력해 주세요.");
 		//인증번호칸 보이기
 		    $('#confirmNumDiv').show();
   		//버튼 확인->탈퇴
@@ -245,6 +245,7 @@ $(function() {
   			}
   			
  		if(result=='탈퇴'){
+ 		alert("탈퇴 되었습니다.")
   		$('#leaveForm').submit();
 		}
 		

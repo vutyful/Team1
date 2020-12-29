@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.simsim.systems.domains.MemberVO;
+import project.simsim.systems.services.MailSendService;
 import project.simsim.systems.services.MemberService;
 
 @Controller
@@ -26,14 +28,13 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberservice;
+	@Autowired
+	private MailSendService mailservice;
 	
+	@Autowired
+	BCryptPasswordEncoder pwdEncoder;
 	
-	//비밀번호 찾기
-	@RequestMapping("/hjview/passFind.do")
-	public void passFind() {
-		
-	}
-	
+
 	
 	@RequestMapping("/hjview/loginOk.do")
 	public void loginMain() {
@@ -42,27 +43,22 @@ public class MemberController {
 	
 	//로그인
 	@RequestMapping("/hjview/userLogin.do")
-	public String login(MemberVO vo  , HttpSession session, @RequestParam("remember-id") String[] remember) {
-	
-
+	public String login(MemberVO vo  , HttpSession session) {
+		
+//pwdEncoder.matches(입력된 비밀번호(), 암호화된 비밀번호()) 
 		MemberVO result = memberservice.idCheck(vo);
+		//암호화 된 비밀번호
+		boolean pwsIs = pwdEncoder.matches(vo.getPass(), result.getPass());
+		
 		//로그인 실패
-		if(result==null || result.getId()==null) {
-			//로그인 페이지 그대로
+		if(result==null || result.getId()==null || !pwsIs) {
+			//로그인 실패,  페이지 그대로
 			return "hjview/login";
 		}else {
 			//session에 로그인 기록 저장
 			session.setAttribute("login",result.getId());	
 			//session에 로그인한 맴버 넘버 저장
 			session.setAttribute("longinNo", result.getMemnum());
-			//체크박스 체크 시, 세션에 다른이름으로 기록 저장
-			if(remember[0]=="Y") {
-			session.setAttribute("id", result.getId());
-			session.setAttribute("pass", result.getPass());
-			}else {
-			session.setAttribute("id", "");
-			session.setAttribute("pass", "");
-			}
 			
 			return "redirect:/main/main_login.do";
 		}
@@ -94,7 +90,7 @@ public class MemberController {
 	public String insert(MemberVO vo) {
 		//삽입
 		memberservice.userInsert(vo);
-		return "redirect:/hjview/joinResult.do";
+		return "redirect:/hjview/login.do";
 	}
 	
 	
@@ -132,8 +128,7 @@ public class MemberController {
 	//프로필 눌렀을 때 회원 정보 세팅
 	@RequestMapping(value ="/hjview/profile.do")
 	public String profile( HttpSession session, Model m, 
-			@RequestParam(value="page", required=false, defaultValue="1") Integer page,
-			@RequestParam(value="page", required=false, defaultValue="1") Integer block) {
+			@RequestParam(value="page", required=false, defaultValue="1") Integer page) {
 		MemberVO vo = new MemberVO();
 		vo.setId((String)session.getAttribute("login"));
 		//로그인 안했을 때
@@ -152,7 +147,7 @@ public class MemberController {
 		}
 		m.addAttribute("member",result);	
 		
-		//댓글 세팅
+		//댓글 세팅 페이지
 		int memnum = (int)session.getAttribute("longinNo");
 		Map<String, Integer> reply = new HashMap<String, Integer>();
 		reply.put("memnum", memnum);
@@ -160,25 +155,40 @@ public class MemberController {
 		
 		
 		List<Map<String,Object>> replyList=memberservice.getReply(reply);
-		
+
 		int totalCount;//총 댓글 수
 		int pageTotalCount; //총 페이지
 		int countPerPage=10; //한 인덱스당 게시물 갯수
+		int pagePerBlock=5; //블록 당 인덱스 개수
+		int thisBlock; //지금 블록 0부터 시작
+		int firstPage;//지금 블록 처음 페이지
+		int lastPage;//지금 블록 마지막 페이지
+
 
 		
 		//총게시글 수
+		//값이 없으면 리턴
+		if(replyList.size()==0) {return "hjview/profile";}
 		totalCount =Integer.parseInt((String.valueOf(replyList.get(1).get("COUNT"))));
 		//총 page 수
 		pageTotalCount = totalCount/countPerPage;
 		if(totalCount%countPerPage !=0)pageTotalCount++;
-
 		
+		//블록 0부터 시작
+		thisBlock=(page-1)/pagePerBlock;
+		//지금 블록 처음 페이지
+		firstPage=thisBlock*pagePerBlock+1;
+		if(firstPage<1) {firstPage=1;}
+		
+		//지금 블록 마지막 페이지
+		lastPage=thisBlock*pagePerBlock+pagePerBlock;
+		if(lastPage>pageTotalCount) {lastPage=pageTotalCount;}
 		
 		
 		m.addAttribute("replyList",replyList);
-		m.addAttribute("totalCount",totalCount);
+		m.addAttribute("firstPage",firstPage);
+		m.addAttribute("lastPage",lastPage);
 		m.addAttribute("pageTotalCount",pageTotalCount);
-		m.addAttribute("countPerPage",countPerPage);
 		
 		return "hjview/profile";
 	}
@@ -189,9 +199,11 @@ public class MemberController {
 	@ResponseBody
 	public String checkProfile(MemberVO vo,  HttpSession session, @RequestParam("newPass") String newPass) {
 		vo.setId((String)session.getAttribute("login"));
-
+		MemberVO result = memberservice.idCheck(vo);
+		//비밀번호 맞는지 확인
+		boolean passIs = pwdEncoder.matches(vo.getPass(), result.getPass());
 		//pass맞는지 확인
-		if(memberservice.idCheck(vo)==null) {
+		if(!passIs) {
 			return "비밀번호가 틀립니다.";
 		}
 
@@ -247,19 +259,31 @@ public class MemberController {
 	@ResponseBody
 	public String leave(MemberVO vo, HttpSession session, @RequestParam("confirmNum") String confirmNum) {
 		MemberVO result =  memberservice.idCheck(vo);
-		//아이디가 일치할 때
+		//비밀번호 같나 
+		boolean passIs = pwdEncoder.matches(vo.getPass(), result.getPass());
+		//랜덤문자
+		String tempPass =mailservice.makeTempPass();
+		//세션에서 랜덤문자 가져옴
+		String tempPassSession = (String)session.getAttribute("tempPass");
+		//세션에 랜덤문자 기존의 랜덤문자가 없으면 새로 생성
+		if(tempPassSession==null) {
+			session.setAttribute("tempPass", tempPass);
+			tempPassSession=(String)session.getAttribute("tempPass");
+		}
 		if(!vo.getId().equals(session.getAttribute("login"))) {
 			return "아이디가 일치하지 않습니다.";
-		
+		//아이디가 일치할 때
 		//비밀번호가 틀렸거나 맞는 비밀번호가 비었을 때
-		}else if(result==null ) {
+		}else if(!passIs) {
 			return "비밀번호가 틀렸습니다.";
 		}else if(confirmNum==null ||confirmNum==""){
+			//세션에 있는 랜덤문자 보냄
+			mailservice.leaveMailSend(tempPassSession, result.getEmail());
 			return "이메일을 확인해주세요.";
-		}else if(!confirmNum.equals("123")) {
-			return "인증번호가 일치하지 않습니다.";
-		}else {
+		}else if(confirmNum.equals(tempPassSession)) {
 			return "탈퇴";
+		}else {
+			return "인증번호가 일치하지 않습니다.";
 		}
 	}
 	
@@ -277,6 +301,36 @@ public class MemberController {
 		return "redirect:/main/main_login.do";
 		
 	}
+	
+	
+	//비밀번호 찾기
+	@RequestMapping(value="/hjview/checkEmail.do",  produces="application/text;charset=utf-8")
+	@ResponseBody
+	public String checkEmail(MemberVO vo) {
+		MemberVO result = memberservice.idCheck(vo);
+		
+		if(!result.getEmail().equals(vo.getEmail())) {
+			return "아이디와 일치하는 이메일이 없습니다.";
+		}else {
+			String tempPass = mailservice.makeTempPass();
+			result.setPass(tempPass);
+			memberservice.tempPass(result);
+			mailservice.mailSend(tempPass, vo.getEmail());
+			
+			return "성공";
+		}
+		
+		
+	}
+	
+	@RequestMapping
+	public void passFind() {
+		
+	}
+	
+	
+	
+	
 	
 
 

@@ -8,45 +8,51 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no,  user-scalable=no">
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript"
-	src="../resources/hjresources/js/profile.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript"	src="../resources/hjresources/js/profile.js"></script>
 
 <link rel="stylesheet" href="../resources/hjresources/css/main.css" />
+<link rel="stylesheet" href="../resources/hjresources/css/loginCss.css" />
 <link rel="stylesheet" href="../resources/hjresources/css/noscript.css" />
 
-<link
-	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"	rel="stylesheet" id="bootstrap-css">
+<script	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"	rel="stylesheet" id="bootstrap-css">
+<script	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 
 <!-- Bootstrap CSS -->
-<link href="../resources/hjresources/css/profile/assets/fonts/style.css"
-	rel="stylesheet">
-<link rel="stylesheet"
-	href="../resources/hjresources/css/profile/libs/style.css">
+<link href="../resources/hjresources/css/profile/assets/fonts/style.css"	rel="stylesheet">
+
 
 <title>profile</title>
 </head>
 
 <body class="is-preload">
-
+</head>
+<body>
+			
 	<!-- Wrapper -->
 	<div id="wrapper">
+	<header>
 
-		<!-- Header -->
-		<header id="header" class="alt"> </header>
+				<div >
+					<a href="../main/main_login.do"><img id="logo"	src="../resources/hyein/img/logo.png" alt="" /></a>
+				<div class="btn-group" role="group" >
+					<button type="button" class="btn btn-default btn-info">
+						<span class="glyphicon glyphicon-bookmark">북마크</span>
+					</button>
+					<button type="button" class="btn btn-default btn-info">
+						<span class="glyphicon glyphicon-log-out">로그아웃</span>
+					</button>
+				</div>
+			</div>
+			
+
+
+		</header>
 
 		<!-- Nav -->
 		<nav id="nav">
@@ -78,7 +84,7 @@
 							</ul>
 						</div>
 						<span class="image"><img
-								src="../resources/upload/${member.pic}" alt="profile" /></span>
+								src="../resources/upload/${member.pic}" 	t="profile" /></span>
 					</div>
 				</form>
 					<!-- /.form-group -->
@@ -178,10 +184,12 @@
 
 			<!-- Second Section -->
 			<section id="second" class="main special">
-				<header class="major">
+				<header  class="major">
 					<h2>내가 쓴 댓글</h2>
-					<div class="row" >
-						<div>
+
+				</header>
+
+				
 							<div class="card " >
 								<div class="card-body p-0">
 									<div class="table-responsive">
@@ -190,54 +198,66 @@
 												<tr class="border-0">
 													<th class="border-0">#</th>
 													<th class="border-0"> 컨 텐 츠  이 미 지 </th>
-													<th class="border-0"> --------컨 텐 츠  제 목--------- </th>
-													<th class="border-0"> ----------댓 글  날 짜----------  </th>
-													<th class="border-0"> ----------댓 글  내 용----------  </th>
+													<th class="border-0"> 제 목 </th>
+													<th class="border-0"> 댓 글  날 짜  </th>
+													<th class="border-0"> 댓 글  내 용  </th>
 													<th class="border-0"> 추 천 수  </th>
 												</tr>
 											</thead>
 											<tbody>
+										<c:forEach items="${replyList}" var="map">
+												<!-- 프라퍼티이름 변경 -->
 												<tr>
-												<c:forEach items="${replyList}" var="map">
-				<!-- 프라퍼티이름 변경 -->
-				<tr>
-				<td>${map.RNUM}</td>
-				<td>
-					<div class="m-r-10">
-				<a href="profile.do?connum=${map.CONNUM}">
-					<img src="../resources/upload/${map.IMG}" alt="user" class="rounded" width="45">
-				</a>
-					</div>
-				</td>
-					<td>${map.TITLE}</td>
-					<td >${map.REDATE}</td>
-					<td>${map.RCONTENT}</td>
-					<td>${map.RRECO}</td>
-				</tr>
-			</c:forEach>
-	
-
-												
+												<td>${map.RNUM}</td>
+												<td>
+													<div class="m-r-10">
+												<a href="profile.do?connum=${map.CONNUM}">
+													<img src="../resources/upload/${map.IMG}" alt="user" class="rounded" width="45">
+												</a>
+													</div>
+												</td>
+													<td>${map.TITLE}</td>
+													<td >${map.REDATE}</td>
+													<td>${map.RCONTENT}</td>
+													<td>${map.RRECO}</td>
+												</tr>
+											</c:forEach>
 											</tbody>
-										</table>
+									</table>
 									</div>
 								</div>
 							</div>
-						</div>
 
-					</div>
-
-				</header>
+		
+					<table  class="table" >
+					<tr>
+						<td><c:choose>
+								<c:when test="${firstPage gt 1}">
+									<a href="profile.do?page=${firstPage-1}"><span>이전페이지</span></a>
+								</c:when>
+								<c:otherwise>
+									<span>이전페이지</span>
+								</c:otherwise>
+							</c:choose></td>
+						<td><c:forEach var="i" begin="${firstPage}" end="${lastPage}">
+								<a href="profile.do?page=${i}"><span><c:out
+											value="[${i}]" /></span></a>
+							</c:forEach></td>
+						<td><c:choose>
+								<c:when test="${lastPage lt pageTotalCount}">
+									<a href="profile.do?page=${lastPage+1}"><span>다음페이지</span></a>
+								</c:when>
+								<c:otherwise>
+									<span>다음페이지</span>
+								</c:otherwise>
+							</c:choose></td>
+					</tr>
+					</table>
+	
 
 			</section>
+
 			<footer class="major">
-		
-			<div style="text-align: center">
-				<c:forEach var="i" begin="1" end="${pageTotalCount}" >
-				<a href="profile.do?page=${i}"><span><c:out value="[${i}]" /></span></a>
-				</c:forEach>
-			</div>
-		
 			</footer>
 
 			<!-- Get Started -->
