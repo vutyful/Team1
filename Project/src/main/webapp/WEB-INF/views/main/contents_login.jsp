@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,9 @@
 		<link rel="stylesheet" type="text/css" id="app-stylesheet" href="../resources/hyein/css/main.css"><!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<![endif]-->
+ 
 </head>
+
 <body>
 <div class="page-wrap" id="root">
 			
@@ -43,14 +46,14 @@
 						
 						<!--  -->
 						<ul class="wil-menu-list">
-							<li class="current-menu-item box"><a href="main.jsp">
+							<li class="current-menu-item box"><a href="/Project/hjview/profile.do">
 							<img class="profile" src="../resources/upload/아닌데여.png"></a>
 							</li>
 							<br/><br/>
 							<li><a href="bookmark.do">북마크</a>
 							</li>
 							<li><a href="logout.do">로그아웃</a>
-							</li>
+							</li>0
 						</ul><!--  -->
 						
 					</nav><!-- End / overlay-menu -->
@@ -68,10 +71,18 @@
 						
 						<!-- page-title -->
 						<div class="page-title pb-40">
-							<a href="bm.do"><img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
-							<h2 class="page-title__title">The Myth of Ugly Design</h2>
-							<p class="page-title__text">by hyein</p>
-							<p class="page-title__text">작성한 시각 2020.12.22</p>
+							<a href="bm.do?connum=${content.connum}">
+							<c:choose>
+								<c:when test="${check eq 'true'}">
+									<img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
+								</c:when>
+								<c:when test="${check eq 'false'}">
+									<img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
+								</c:when>
+							</c:choose>
+							<h2 class="page-title__title"> ${content.title} </h2>
+							<p class="page-title__text">by ${content.memnum} </p>
+							<p class="page-title__text">${content.postdate} </p>
 							<div class="page-title__divider"></div>
 						</div><!-- End / page-title -->
 						
@@ -87,11 +98,8 @@
 						<!--  -->
 						<div>
 							<div class="work-detail__entry">
-								<p>In nec porttitor nisi. Nunc at egestas ante. Sed vestibulum velit eu nibh commodo, non fermentum libero pellentesque. Fusce sed posuere ex, non ultrices nibh. Fusce quis leo non ex rutrum convallis non ut ante. Phasellus hendrerit ante nec est porta, et elementum massa euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-								<p>Quisque et quam facilisis, posuere justo ut, maximus nulla. Quisque id fermentum tortor. Duis sem mi, luctus sed luctus eget, viverra et ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec faucibus imperdiet porttitor. Etiam fringilla ligula et porttitor tristique..</p><br>
-								<div class="work-img"><img src="../resources/hyein/img/works/01.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/02.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/03.jpg" alt=""></div>
+								<p> ${content.ccontent} </p>
+								<div class="work-img"><img src="../resources/upload/${content.img}" alt=""></div>
 							</div>
 							
 							<p class="best_comment">BEST</p>
@@ -106,36 +114,54 @@
 						
 							<p class="best_comment">REVIEWS</p>
 						<div id="comments">	
-							<div class="comment_text best_comment">
-								<dl  class="cmt_item" id="content_area_dl_565920886">
+							<c:forEach items="${replys}" var="rep">
+							<div class="comment_text best_comment replys">
+								<dl  class="cmt_item">
 									<dt>
-										<span class="profile_img" title="아이디">아이디</span>
-										<i>2020.12.21 16:10</i>
-									</dt>
+										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/${rep.memberVO.pic}"/></span>
+										<span id="reply_id" title="아이디"> ${rep.memberVO.id}${sessionScope.login}</span>
+										<i id="reply_date"> ${rep.redate} </i>
+									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<span class="comment_option">
-											<span>현재 추천수</span>
+											<span id="reply_reco">${rep.rreco}</span>
 											<span>
-												<a href="#" type="button">추천</a>
+												<a href="reco.do?rreco=${rep.rreco}&replynum=${rep.replynum}" class="reply_reco" type="button">추천</a>
 											</span>
-											<span>
-												<a href="#" type="button">수정</a>
-											</span>
-											<span>
-												<a href="#" type="button">삭제</a>
-											</span>
+											<c:choose>
+												<c:when test="${sessionScope.login eq rep.memberVO.id}">
+													<span class="reply_modify">
+														<span>수정</span>
+													</span>
+													<span class="reply_delete">
+														<span>삭제</span>
+													</span>
+												</c:when>
+												<c:when test="${sessionScope.login ne rep.memberVO.id}">
+													<span class="reply_modify">
+														<span>수정</span>
+													</span>
+													<span class="reply_delete">
+														<input type="button">삭제</a>
+													</span>
+												</c:when>
+											</c:choose>
 									</span>
-									<dd >
-										<span>댓글 내용~~~</span>
+									<dd>
+										<span>
+										<textarea class="ta_comment ta_modify">${rep.rcontent}</textarea>
+										<input class="modify_btn" type="button" value="등록"/>
+										<input class="replynum" type="hidden" value="${rep.replynum}"/>
+										<p class="rcontent">&nbsp;&nbsp;${rep.rcontent}</p>
+										</span>
 									</dd>
 								</dl>
 							</div>
-							<div class="comment_text best_comment">
-							<p>댓글자리 최신순</p>
-							</div>
+							</c:forEach>
 						</div>	<br/><br/><br/>
 							<div>
-								<input id="write_comment" type="textarea"/>
-								<input type="button" value="글쓰기"/>
+								<textarea id="ta_comment"></textarea>
+								<input id="connum" type="hidden" value="${content.connum}"/>
+								<button id="write_comment">글쓰기</button>
 							</div>
 						</div><!-- End /  -->
 						
@@ -145,7 +171,7 @@
 						</div><br/><br/><br/>
 					<div id="contents_zone">
 						<p class="best_comment awe-text-center">
-							추천컨텐츠
+							연관컨텐츠
 						</p>
 						<div id="contents_slider">
 							<ul>
@@ -233,5 +259,20 @@
 		<!-- App-->
 		<script type="text/javascript" src="../resources/hyein/js/main.js"></script>
 		<script type="text/javascript" src="../resources/hyein/js/contents.js"></script>
+  <!-- 	<script type="text/javascript">
+		
+  	$('.comment_text best_comment').each(function(){
+		var reply_modifys = $(this).find('input[class="reply_modify"]');
+	
+		reply_modifys.click(function(){
+			alert('수정 클릭');
+				$('.taxtarea').css('display','inline-block');
+				$('.modify_btn').css('display','inline-block');
+				$('.rcontent').css('display','none');
+			})
+	})
+
+			
+		</script>  -->
 </body>
 </html>

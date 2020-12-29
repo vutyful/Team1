@@ -9,7 +9,15 @@ public class ReplyVO {
 	private int connum; /* 컨텐츠번호 */
 	private int memnum; /* 작성자 */
 	
+	private MemberVO memberVO; /* 댓글 불러오기 서브쿼리에 필요*/
 	
+	
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
+	}
 	public int getReplynum() {
 		return replynum;
 	}

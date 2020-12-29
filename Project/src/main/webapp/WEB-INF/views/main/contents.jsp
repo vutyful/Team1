@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +50,7 @@
 							<br/><br/>
 							<li><a href="/Project/hjview/login.do">북마크</a>
 							</li>
-							<li><a href="main_login.do">로그인</a>
+							<li><a href="/Project/hjview/login.do">로그인</a>
 							</li>
 						</ul><!--  -->
 						
@@ -68,10 +69,10 @@
 						
 						<!-- page-title -->
 						<div class="page-title pb-40">
-							<a href="bm.do"><img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
+							<a href="/Project/hjview/login.do"><img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
 							<h2 class="page-title__title"> ${content.title} </h2>
 							<p class="page-title__text">by ${content.memnum} </p>
-							<p class="page-title__text">작성한 시각 ${content.postdate} </p>
+							<p class="page-title__text"> ${content.postdate} </p>
 							<div class="page-title__divider"></div>
 						</div><!-- End / page-title -->
 						
@@ -88,10 +89,7 @@
 						<div>
 							<div class="work-detail__entry">
 								<p> ${content.ccontent} </p>
-								<p>Quisque et quam facilisis, posuere justo ut, maximus nulla. Quisque id fermentum tortor. Duis sem mi, luctus sed luctus eget, viverra et ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec faucibus imperdiet porttitor. Etiam fringilla ligula et porttitor tristique..</p><br>
-								<div class="work-img"><img src="../resources/hyein/img/works/01.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/02.jpg" alt=""></div>
-								<div class="work-img"><img src="../resources/hyein/img/works/03.jpg" alt=""></div>
+								<div class="work-img"><img src="../resources/upload/${content.img}" alt=""></div>
 							</div>
 							
 							<p class="best_comment">BEST</p>
@@ -106,36 +104,38 @@
 						
 							<p class="best_comment">REVIEWS</p>
 						<div id="comments">	
+							<c:forEach items="${replys}" var="rep">
 							<div class="comment_text best_comment">
-								<dl  class="cmt_item" id="content_area_dl_565920886">
+								<dl  class="cmt_item">
 									<dt>
-										<span class="profile_img" title="아이디">아이디</span>
-										<i>2020.12.21 16:10</i>
-									</dt>
+										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/${rep.memberVO.pic}"/></span>
+										<span id="reply_id" title="아이디"> ${rep.memberVO.id} </span>
+										<i id="reply_date"> ${rep.redate} </i>
+									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<span class="comment_option">
-											<span>현재 추천수</span>
+											<span id="reply_reco">${rep.rreco}</span>
 											<span>
-												<a href="#" type="button">추천</a>
+												<a href="/Project/hjview/login.do" type="button">추천</a>
+											</span>
+											
+											<span>
+												<a href="#" type="button" hidden>수정</a>
 											</span>
 											<span>
-												<a href="#" type="button">수정</a>
-											</span>
-											<span>
-												<a href="#" type="button">삭제</a>
+												<a href="#" type="button" hidden>삭제</a>
 											</span>
 									</span>
 									<dd >
-										<span>댓글 내용~~~</span>
+										<span>${rep.rcontent}</span>
 									</dd>
 								</dl>
 							</div>
-							<div class="comment_text best_comment">
-							<p>댓글자리 최신순</p>
-							</div>
+							</c:forEach>
 						</div>	<br/><br/><br/>
 							<div>
-								<input id="write_comment" type="textarea"/>
-								<input type="button" value="글쓰기"/>
+								<textarea id="ta_comment"></textarea>
+								<input id="connum" type="hidden" value="${content.connum}"/>
+								<button id="write_comment">글쓰기</button>
 							</div>
 						</div><!-- End /  -->
 						
@@ -145,10 +145,25 @@
 						</div><br/><br/><br/>
 					<div id="contents_zone">
 						<p class="best_comment awe-text-center">
-							추천컨텐츠
+							연관컨텐츠
 						</p>
 						<div id="contents_slider">
 							<ul>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
+								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
+										<strong>컨텐츠 제목</strong>
+									</span></a></li>
 								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
 										<strong>컨텐츠 제목</strong>
 									</span></a></li>

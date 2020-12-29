@@ -2,6 +2,9 @@ package project.simsim.systems.domains;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,10 +35,13 @@ public class MemberVO {
 	}
 	public void setFile(MultipartFile file) {
 		this.file = file;
-
+		
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyMMddhhmmss");
+		
 		// 업로드 파일 접근
 		if(! file.isEmpty()){
-			this.pic = file.getOriginalFilename();
+			this.pic = file.getOriginalFilename()+format.format(now);
 			this.picSize = file.getSize();
 			
 			//***********************************************
@@ -80,7 +86,7 @@ public class MemberVO {
 	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
+	public void setBirth(String birth) {		
 		this.birth = birth;
 	}
 	public String getGender() {

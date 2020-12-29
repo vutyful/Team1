@@ -10,4 +10,60 @@
 	<select id="getOneContent" parameterType="content" resultType="content">
 		SELECT * FROM content WHERE connum = #{connum}
 	</select>
+	
+	<select id="getContentOne" parameterType="string" resultType="content">
+		SELECT * FROM content WHERE connum = #{connum}
+	</select>
+	
+	<select id="getbookmark" parameterType="string" resultType="string">
+		SELECT bookmark FROM member WHERE id = #{id}
+	</select>
+	
+	<update id="updateBookmark" parameterType="hashmap">
+		UPDATE member SET bookmark = #{bm} WHERE id = #{id}
+	</update>
+	
+	<select id="getMemnum" parameterType="string" resultType="string">
+		SELECT memnum FROM member WHERE id = #{id}
+	</select>
+	
+	<insert id="regist_reply" parameterType="reply">
+		INSERT INTO reply(replynum,redate,rcontent,rreco,connum,memnum) 
+		VALUES (seq_reply_replynum.NEXTVAL,sysdate,#{rcontent},0,#{connum},#{memnum})
+	</insert>
+	
+	<resultMap type="member" id="member">
+		<result column="id" property="id"/>
+		<result column="pic" property="pic"/>
+		<result column="memnum" property="memnum"/>
+	</resultMap>
+	
+	<resultMap type="reply" id="reply">
+		<result column="replynum" property="replynum"/>
+		<result column="redate" property="redate"/>
+		<result column="rcontent" property="rcontent"/>
+		<result column="rreco" property="rreco"/>
+		<result column="connum" property="connum"/>
+		<collection property="memberVO" resultMap="member"/>
+	</resultMap>
+	
+	<select id="selectAllReply" parameterType="content" resultMap="reply">
+		SELECT m.id, m.pic, m.memnum,r.replynum, r.redate, r.rcontent,
+		r.rreco , r.connum 
+		FROM member m INNER JOIN reply r
+		ON m.memnum = r.memnum
+		WHERE r.connum = #{connum}
+		ORDER BY r.redate DESC
+	</select>
+	
+	<update id="updateReply" parameterType="reply">
+		UPDATE reply SET rcontent = #{rcontent} WHERE replynum= #{replynum}		
+	</update>
 </mapper>
+
+
+
+
+
+
+

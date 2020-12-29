@@ -24,7 +24,7 @@ public class ManageContentsController
 		return "/manageContents/"+temp;
 	}
 	
-	@RequestMapping("manageContents/save.do")
+	@RequestMapping("manageContents/ContentSave.do")
 	public void callCategory(Model model)
 	{
 		List<String> cate = manageContentsService.getCategoryList();
@@ -40,7 +40,7 @@ public class ManageContentsController
 		return "redirect:view.do?connum=" + vo.getConnum();
 	}
 	
-	@RequestMapping("manageContents/getContentsList.do")
+	@RequestMapping("manageContents/ContentsList.do")
 	public String getContentsList(Model model)
 	{
 		System.out.println("Controller : getContentsList");
@@ -71,6 +71,6 @@ public class ManageContentsController
 	{
 		System.out.println("Controller : delete");
 		manageContentsService.deleteContent(vo);
-		return "redirect:getContentsList.do";
+		return "redirect:ContentsList.do";
 	}
 }

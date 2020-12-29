@@ -1,6 +1,11 @@
 package project.simsim.systems.services;
 
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.aspectj.lang.annotation.SuppressAjWarnings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,10 +40,15 @@ public class MemberServiceImpl implements MemberService{
 	   }
 
 	   @Override
-	   public MemberVO CheckUnique(MemberVO vo) {
+	   public List<MemberVO> CheckUnique(MemberVO vo) {
 		   return memberDAO.CheckUnique(vo);
 	   }
 
+	   @Override
+	   public List<MemberVO> checkUniqueProfile(MemberVO vo) {
+		   return memberDAO.checkUniqueProfile(vo);
+
+	   }
 
 	@Override
 	public int memberUpdate(MemberVO vo) {
@@ -58,6 +68,32 @@ public class MemberServiceImpl implements MemberService{
 
 		return memberDAO.memberLeave(vo);
 	}
+	
+	
+	
+
+	private int countPerPage=10; //한 인덱스당 게시물 갯수
+
+	@Override
+	public List<Map<String,Object>> getReply(Map<String,Integer> reply) {
+		// pageNo에 따른 결과만 검색
+				/*페이지 번호	시작 레코드번호 	끝 레코드번호
+				 * 1			1			5
+				 * 2			6			10
+				 * 3			11			15
+				 * 4			16			20
+				 */
+		int endRow = reply.get("page")*countPerPage;
+		int firstRow = endRow-countPerPage+1;
+		reply.put("endRow", endRow);
+		reply.put("firstRow", firstRow);
+		
+
+		return memberDAO.getReply(reply);
+	}
+	
+
+	
 
 
 }
