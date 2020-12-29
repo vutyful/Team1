@@ -1,6 +1,7 @@
 package project.simsim.systems.controllers;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class MainController {
 	private MainServiceImpl mainService;
 	
 	//메인화면 연결 (로그인 전)
-	@RequestMapping("/main/main.do")
+	@RequestMapping("main/main.do")
 	public void start(ContentVO vo,Model m) {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(vo)); 
@@ -96,8 +97,24 @@ public class MainController {
 		/**
 		 *  해당 게시글의 댓글 전부 불러오기
 		 */
-		m.addAttribute("replys", mainService.getAllReply(vo));
-		System.out.println(mainService.getAllReply(vo));
+		List<ReplyVO> replyList = mainService.getAllReply(vo);
+		m.addAttribute("replys", replyList);
+	/*
+		//해당 게시글의 댓글 중 내가 추천한 댓글 가져와서 하트표시
+		String like = mainService.getLikeReply(id);
+		if(like != null) 
+		{
+			String[] likes = like.split("/");
+			List<String> list = new ArrayList<String>();
+			Collections.addAll(list, likes);
+		}*/
+		//가져온 댓글 리스트 중 아이디값만 추출
+		List<String> list = new ArrayList<String>();
+		for(int i =0;i<replyList.size();i++) {
+			String ids = replyList.get(i).getMemberVO().getId();
+			list.add(ids);
+		}
+		//내 현재 아이디와
 		
 	}
 	
@@ -108,7 +125,9 @@ public class MainController {
 		m.addAttribute("content", mainService.getSelectByconnum(vo));
 		//해당 게시글의 댓글 전부 불러오기
 		m.addAttribute("replys", mainService.getAllReply(vo));
-		
+		//연관컨텐츠 가져오기
+		List<ContentVO> list = mainService.getLinkContent(vo);
+		m.addAttribute("link_content", list);
 		}
 
 	//해당 게시글을 북마크하기(hover)
@@ -154,26 +173,90 @@ public class MainController {
 	//댓글 달기 (해당 게시글 번호, 회원번호(아이디 이용),댓글 내용 필요)
 	@RequestMapping(value = "/main/insertReply.do",produces = "application/text;charset=utf-8")
 	@ResponseBody
-	public String insertReply(HttpSession session,ReplyVO vo) {
+	public String insertReply(HttpSession session,ReplyVO rvo,ContentVO cvo) {
 		String id = (String)session.getAttribute("login");
-		String message = "댓글이 등록되었습니다.";
 		//아이디로 회원번호 얻어오기
 		int memnum = Integer.parseInt(mainService.getMemnumById(id));
 		//댓글 작성
-		vo.setMemnum(memnum);
-		int result = mainService.insertReply(vo);
-		if(result==0) message = "댓글 작성에 실패했습니다.";
+		rvo.setMemnum(memnum);
+		int result = mainService.insertReply(rvo);
+		//해당 게시글의 모든 댓글 가져오기
+		List<ReplyVO> replyList = mainService.getAllReply(cvo);
 		
-		return message;
-	}
-	
-	//댓글 추천
-	@RequestMapping(value = "/main/updateReco.do", produces = "application/text;charset=utf-8")
-	@ResponseBody
-	public String updateReco(ReplyVO vo) {
-		//
 		return null;
 	}
+	
+	//댓글 추천/취소
+	@RequestMapping(value = "/main/updateReco.do", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String updateReco(ReplyVO vo,HttpSession session) {
+		String id = (String)session.getAttribute("login");
+		int replynum = vo.getReplynum();
+		System.out.println("ajax로 넘긴 댓글번호:"+replynum);
+		
+		//해당 아이디로 추천 눌렀던 댓글들 가져오기
+		String likes = mainService.getLikeReply(id);
+		System.out.println("가져온 추천목록:"+likes);
+		String result = "ok"; //추천 눌러지면 ok, 취소하면 no 리턴
+		
+		if(likes==null) { //만약 추천한 댓글이 하나도 없다면
+			//추천 댓글 목록에 바로 넣기
+			mainService.updateLikeReply(id, Integer.toString(replynum));
+			//해당 댓글 추천수 가져오기
+			int rreco = Integer.parseInt(mainService.getRreco(vo));
+			System.out.println("해당댓글 추천수:"+rreco);
+			//추천 수 업데이트
+			rreco+=1;
+			vo.setRreco(rreco);
+			mainService.updateRreco(vo);
+			return result;
+		}
+		
+		String[] myLikes = likes.split("/");
+		List<String> list = new ArrayList<String>();
+		Collections.addAll(list, myLikes);
+		String likes_result = new String();
+		System.out.println("likes length : " + likes.length());
+		if(!(likes.isEmpty())) { //가져온 추천 문자열에 해당 댓글 번호가 없다면 list에 추가,이미 있다면 해당 댓글 번호를 list에서 제거
+			if(list.contains(Integer.toString(replynum))) {
+				list.remove(Integer.toString(replynum));
+				result = "no";
+				//해당 댓글 추천수 가져오기
+				int rreco = Integer.parseInt(mainService.getRreco(vo));
+				//추천 수 -1 후 업데이트 
+				rreco-=1;
+				vo.setRreco(rreco);
+				mainService.updateRreco(vo);
+				
+			}else {
+				list.add(Integer.toString(replynum));
+				//해당 댓글 추천수 가져오기
+				int rreco = Integer.parseInt(mainService.getRreco(vo));
+				//추천 수  +1 후 업데이트
+				rreco+=1;
+				vo.setRreco(rreco);
+				mainService.updateRreco(vo);
+			}
+			for(int i=0;i<list.size();i++) { //북마크 list를 다시 "/" 붙여서 String으로
+				if(i==0) {
+					likes_result = list.get(i);
+				}else {
+					likes_result = likes_result + "/" +list.get(i);
+				}
+			}
+			//수정된 추천댓글 string을 id에 맞는 테이블에 넣음
+			mainService.updateLikeReply(id, likes_result);
+			System.out.println(likes_result);
+		}
+		return result;
+	}
+	
+	@RequestMapping(value = "/main/getReco.do", produces = "application/text;charset=utf-8")
+	@ResponseBody
+	//댓글 추천/취소 후 추천 수 가져와서 화면에 실시간 반영
+	public String getReco(ReplyVO vo) {
+		return mainService.getRreco(vo);
+	};
 	
 	//댓글 수정
 	@RequestMapping(value = "/main/updateReply.do" , produces = "application/text;charset=utf-8")
@@ -181,7 +264,25 @@ public class MainController {
 	public String updateReply(ReplyVO vo) {
 		int result = mainService.updateReply(vo);
 		return String.valueOf(result);
-		
+	}
+	
+	//댓글 삭제
+	@RequestMapping(value = "/main/deleteReply.do" , produces = "application/text;charset=utf-8")
+	@ResponseBody
+	public String deleteReply(ReplyVO vo) {
+		System.out.println(vo.getReplynum());
+		System.out.println("댓글삭제");
+		int result = mainService.deleteReply(vo);
+		System.out.println(result);
+		return String.valueOf(result);
+	}
+	
+	//댓글 삭제 후 댓글 리스트 다시 띄우기
+	@RequestMapping(value = "/main/getAllreply.do", produces = "application/text;charset=utf-8" )
+	@ResponseBody
+	public List<ReplyVO> getAllreply(ContentVO vo){
+		System.out.println(vo.getConnum());
+		return mainService.getAllReply(vo);
 	}
 
 	//로그아웃

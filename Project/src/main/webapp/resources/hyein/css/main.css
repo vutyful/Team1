@@ -85,6 +85,12 @@
     object-fit: cover;
 }
 
+.reply_reco_icon {
+    width: 20px;
+    height: 20px; 
+    overflow: hidden;
+}
+
 /*----------------------------------------*/
 a[disabled], input[disabled], button[disabled], textarea[disabled] {
     cursor: not-allowed !important;

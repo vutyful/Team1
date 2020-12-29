@@ -115,7 +115,8 @@
 									<span class="comment_option">
 											<span id="reply_reco">${rep.rreco}</span>
 											<span>
-												<a href="/Project/hjview/login.do" type="button">추천</a>
+												<a href="/Project/hjview/login.do">
+												<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/></a>
 											</span>
 											
 											<span>
@@ -149,35 +150,10 @@
 						</p>
 						<div id="contents_slider">
 							<ul>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
-										<strong>컨텐츠 제목</strong>
+							<c:forEach items="#{link_content}" var="link_con">
+								<li><a href="contents_login.do?connum=${link_con.cate}"><img src="../resources/upload/${link_con.img}"><span>
+										<strong>${link_con.title}</strong>
+							</c:forEach>
 									</span></a></li>
 							</ul>
 						</div>

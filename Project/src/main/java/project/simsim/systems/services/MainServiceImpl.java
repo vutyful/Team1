@@ -30,6 +30,7 @@ public class MainServiceImpl implements MainService {
 		 * Collections.shuffle(list); //랜덤하게 섞기 for(int i=0;i<20;i++) {
 		 * result.add(list[i]); }
 		 */
+		
 		return mainDAO.getAllContent(vo);
 	}
 
@@ -87,15 +88,37 @@ public class MainServiceImpl implements MainService {
 	@Override
 	//해당 댓글 삭제
 	public int deleteReply(ReplyVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return mainDAO.deleteReply(vo);
 	}
 
 	@Override
-	//해당 댓글 추천 여부 업데이트
-	public int updateReco(ReplyVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	//해당 아이디로 추천 누른 댓글번호 문자열 가져오기
+	public String getLikeReply(String id) {
+		return mainDAO.getLikeReply(id);
+	}
+
+	@Override
+	//해당 아이디로 추천 누른 댓글번호 문자열 업데이트
+	public void updateLikeReply(String id, String like_reply) {
+		mainDAO.updateLikeReply(id, like_reply);
+	}
+
+	@Override
+	//해당 댓글의 추천 수 가져오기 (댓글 번호 필요)
+	public String getRreco(ReplyVO vo) {
+		return mainDAO.getRreco(vo);
+	}
+
+	@Override
+	//해당 댓글의 추천 수 업데이트 (댓글번호, 업데이트된 추천수 필요 )
+	public void updateRreco(ReplyVO vo) {
+		mainDAO.updateRreco(vo);
+	}
+
+	@Override
+	//연관 컨텐츠 가져오기
+	public List<ContentVO> getLinkContent(ContentVO vo) {
+		return null;
 	}
 
 	

@@ -4,7 +4,11 @@
 
 <mapper namespace="MainMAP">
 	<select id="selectAll" resultType="content">
-		SELECT * FROM content
+		<![CDATA[
+		SELECT *
+		FROM (SELECT * FROM content ORDER BY dbms_random.value)
+		WHERE rownum <=20
+		]]>
 	</select>
 	
 	<select id="getOneContent" parameterType="content" resultType="content">
@@ -59,6 +63,34 @@
 	<update id="updateReply" parameterType="reply">
 		UPDATE reply SET rcontent = #{rcontent} WHERE replynum= #{replynum}		
 	</update>
+	
+	<delete id="deleteReply" parameterType="reply">
+		DELETE reply WHERE replynum=#{replynum}
+	</delete>
+	
+	<select id="getLikeReply" parameterType="string" resultType="string">
+		SELECT like_reply FROM member WHERE id=#{id}
+	</select>
+	
+	<update id="updateLikeReply" parameterType="hashmap">
+		UPDATE member SET like_reply=#{like_reply} WHERE id=#{id}
+	</update>
+	
+	<select id="getRreco" parameterType="reply" resultType="string">
+		SELECT rreco FROM reply WHERE replynum = #{replynum}
+	</select>
+	
+	<update id="updateRreco" parameterType="reply">
+		UPDATE reply SET rreco = #{rreco} WHERE replynum = #{replynum}
+	</update>
+	
+	<select id="getLinkContent" parameterType="content" resultType="content">
+		<![CDATA[
+		SELECT *
+		FROM (SELECT * FROM content WHERE cate = #{cate} ORDER BY dbms_random.value)
+		WHERE rownum <30;
+		]]>
+	</select>
 </mapper>
 
 
