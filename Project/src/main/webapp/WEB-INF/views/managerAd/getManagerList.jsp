@@ -11,6 +11,10 @@
 
 <link rel="stylesheet" type="text/css"  href="../resources/managerAd/css/managerAd.css">
 
+<style type="text/css">
+a{text-decoration:none}
+</style>
+
 <title>광고 목록</title>
 </head>
 <body>
@@ -40,7 +44,7 @@
       </tr>
         </c:forEach>
    </table>
-   <br>
+
    <input class="manager-but" onclick="location.href='insertManager.do'" type="button" value="광고등록">
 
 </body>

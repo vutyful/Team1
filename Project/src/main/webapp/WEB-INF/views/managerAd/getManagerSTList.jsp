@@ -13,7 +13,7 @@
 google.charts.load('current', {packages: ['corechart']});
 //묶은 세로 막대형 차트 1
 function managerChart() {
-//버튼 클릭 시 ajax를 사용하여 서버로부터 json 배열 객체를 가져왔다고 가정함
+//버튼 클릭 시 ajax를 사용하여 서버로부터 json 배열 객체를 가져왔다
 var arr = [['나이(성별)', '클릭수',],
 ['10대',${manager.click10}],['20대',${manager.click20}],
 ['30대',${manager.click30}],['40대',${manager.click40}],
