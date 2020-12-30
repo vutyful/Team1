@@ -86,7 +86,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	
 
-	private int countPerPage=10; //한 인덱스당 게시물 갯수
+	private int countPerPage=5; //한 인덱스당 게시물 갯수
 
 	@Override
 	public List<Map<String,Object>> getReply(Map<String,Integer> reply) {

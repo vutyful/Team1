@@ -50,7 +50,7 @@
 							<br/><br/>
 							<li><a href="/Project/hjview/login.do">북마크</a>
 							</li>
-							<li><a href="main_login.do">로그인</a>
+							<li><a href="/Project/main/main_login.do">로그인</a>
 							</li>
 						</ul><!--  -->
 						
@@ -108,7 +108,7 @@
 									<div class="grid-item__inner">
 										<div class="grid-item__content-wrapper">
 											<!-- work -->
-											<div class="work"><a href="contents.do?connum=${con.connum}">
+											<div class="work"><a href="/Project/main/contents.do?connum=${con.connum}">
 													
 													<!-- hoverbox ef-slide-right -->
 													<div class="hoverbox ef-move-right light">

@@ -12,7 +12,6 @@
 <script type="text/javascript"	src="../resources/hjresources/js/profile.js"></script>
 
 <link rel="stylesheet" href="../resources/hjresources/css/main.css" />
-<link rel="stylesheet" href="../resources/hjresources/css/loginCss.css" />
 <link rel="stylesheet" href="../resources/hjresources/css/noscript.css" />
 
 <link	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"	rel="stylesheet" id="bootstrap-css">
@@ -22,7 +21,6 @@
 <link	href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"	rel="stylesheet" id="bootstrap-css">
 <script	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-
 <!-- Bootstrap CSS -->
 <link href="../resources/hjresources/css/profile/assets/fonts/style.css"	rel="stylesheet">
 
@@ -33,27 +31,29 @@
 <body class="is-preload">
 </head>
 <body>
-			
+
 	<!-- Wrapper -->
 	<div id="wrapper">
-	<header>
+	  	<header>
 
-				<div >
-					<a href="../main/main_login.do"><img id="logo"	src="../resources/hyein/img/logo.png" alt="" /></a>
-				<div class="btn-group" role="group" >
-					<button type="button" class="btn btn-default btn-info">
-						<span class="glyphicon glyphicon-bookmark">북마크</span>
-					</button>
-					<button type="button" class="btn btn-default btn-info">
-						<span class="glyphicon glyphicon-log-out">로그아웃</span>
-					</button>
+			<div class="headMargin">
+				<a href="../main/main_login.do"><img id="logo"
+					src="../resources/hyein/img/logo.png" alt="logo" /></a>
+				<div style="float: right">
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-header" id="bookMarkLink">
+							<span class="glyphicon glyphicon-bookmark">북마크</span>
+						</button>
+						<button type="button" class="btn btn-header" id="logOutLink">
+							<span class="glyphicon glyphicon-log-out">로그아웃</span>
+						</button>
+					</div>
 				</div>
 			</div>
-			
+
 
 
 		</header>
-
 		<!-- Nav -->
 		<nav id="nav">
 			<ul>
@@ -84,7 +84,7 @@
 							</ul>
 						</div>
 						<span class="image"><img
-								src="../resources/upload/${member.pic}" 	t="profile" /></span>
+								src="../resources/upload/${member.pic}" alt="profile" /></span>
 					</div>
 				</form>
 					<!-- /.form-group -->
@@ -186,10 +186,8 @@
 			<section id="second" class="main special">
 				<header  class="major">
 					<h2>내가 쓴 댓글</h2>
-
 				</header>
 
-				
 							<div class="card " >
 								<div class="card-body p-0">
 									<div class="table-responsive">
@@ -211,7 +209,7 @@
 												<td>${map.RNUM}</td>
 												<td>
 													<div class="m-r-10">
-												<a href="profile.do?connum=${map.CONNUM}">
+												<a href="/Project/main/contents_login.do?	connum=${map.CONNUM}">
 													<img src="../resources/upload/${map.IMG}" alt="user" class="rounded" width="45">
 												</a>
 													</div>
@@ -233,19 +231,19 @@
 					<tr>
 						<td><c:choose>
 								<c:when test="${firstPage gt 1}">
-									<a href="profile.do?page=${firstPage-1}"><span>이전페이지</span></a>
+									<a href="profile.do?page=${firstPage-1}&loca=reply"><span>이전페이지</span></a>
 								</c:when>
 								<c:otherwise>
 									<span>이전페이지</span>
 								</c:otherwise>
 							</c:choose></td>
 						<td><c:forEach var="i" begin="${firstPage}" end="${lastPage}">
-								<a href="profile.do?page=${i}"><span><c:out
+								<a href="profile.do?page=${i}&loca=reply"><span><c:out
 											value="[${i}]" /></span></a>
 							</c:forEach></td>
 						<td><c:choose>
 								<c:when test="${lastPage lt pageTotalCount}">
-									<a href="profile.do?page=${lastPage+1}"><span>다음페이지</span></a>
+									<a href="profile.do?page=${lastPage+1}&loca=reply"><span>다음페이지</span></a>
 								</c:when>
 								<c:otherwise>
 									<span>다음페이지</span>
@@ -306,12 +304,12 @@
 				</ul>
 			</section>
 
-		</div>
 
 		<!-- Footer -->
 
 		<footer id="footer"> </footer>
 
+	</div>
 	</div>
 
 	<!-- Scripts -->
