@@ -3,12 +3,14 @@ package project.simsim.systems.controllers;
 import java.util.ArrayList;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import project.simsim.systems.domains.ContentVO;
+import project.simsim.systems.domains.ManagerAdVO;
 import project.simsim.systems.domains.ReplyVO;
 import project.simsim.systems.services.MainServiceImpl;
 
@@ -31,7 +34,9 @@ public class MainController {
 	public void start(ContentVO vo,Model m) {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(vo)); 
-		System.out.println("모든 컨텐츠 가져옴"+mainService.getAllContent(vo).get(0).getCcontent());
+		//랜덤 광고 전체 가져오기
+		m.addAttribute("ad", mainService.getAllAd().get(0));
+		
 	}
 	
 	//메인화면 연결 (로그인 후)
@@ -39,6 +44,8 @@ public class MainController {
 	public void main(ContentVO vo,Model m) {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(vo)); 
+		//랜덤 광고 전체 가져오기
+		m.addAttribute("ad", mainService.getAllAd().get(0));
 	}
 	
 	
@@ -72,7 +79,7 @@ public class MainController {
 		return url;
 	}
  
-	//로그인 상태의 메인에서 컨텐츠 view로 이동
+	//메인에서 컨텐츠 view로 이동 (로그인 후)
 	@RequestMapping("/main/contents_login.do")
 	public void contents_login(HttpSession session,ContentVO vo,Model m,String check) {
 		
@@ -99,22 +106,18 @@ public class MainController {
 		 */
 		List<ReplyVO> replyList = mainService.getAllReply(vo);
 		m.addAttribute("replys", replyList);
-	/*
-		//해당 게시글의 댓글 중 내가 추천한 댓글 가져와서 하트표시
-		String like = mainService.getLikeReply(id);
-		if(like != null) 
-		{
-			String[] likes = like.split("/");
-			List<String> list = new ArrayList<String>();
-			Collections.addAll(list, likes);
-		}*/
-		//가져온 댓글 리스트 중 아이디값만 추출
-		List<String> list = new ArrayList<String>();
-		for(int i =0;i<replyList.size();i++) {
-			String ids = replyList.get(i).getMemberVO().getId();
-			list.add(ids);
-		}
-		//내 현재 아이디와
+		
+		// 내가 추천누른 댓글번호 리스트 가져오기
+		// split("/")적용한 list Model로 값 넘겨주기
+		// 화면단에서 댓글번호와 
+		
+		System.out.println(id); 
+		
+		m.addAttribute("myLike", mainService.getLikeReply(id));
+		System.out.println(mainService.getLikeReply(id));
+		
+		//연관컨텐츠 가져오기
+		m.addAttribute("link_content", mainService.getLinkContent(vo));
 		
 	}
 	
@@ -126,8 +129,8 @@ public class MainController {
 		//해당 게시글의 댓글 전부 불러오기
 		m.addAttribute("replys", mainService.getAllReply(vo));
 		//연관컨텐츠 가져오기
-		List<ContentVO> list = mainService.getLinkContent(vo);
-		m.addAttribute("link_content", list);
+		m.addAttribute("link_content", mainService.getLinkContent(vo));
+		
 		}
 
 	//해당 게시글을 북마크하기(hover)
@@ -173,7 +176,7 @@ public class MainController {
 	//댓글 달기 (해당 게시글 번호, 회원번호(아이디 이용),댓글 내용 필요)
 	@RequestMapping(value = "/main/insertReply.do",produces = "application/text;charset=utf-8")
 	@ResponseBody
-	public String insertReply(HttpSession session,ReplyVO rvo,ContentVO cvo) {
+	public List<ReplyVO> insertReply(HttpSession session,ReplyVO rvo,ContentVO cvo) {
 		String id = (String)session.getAttribute("login");
 		//아이디로 회원번호 얻어오기
 		int memnum = Integer.parseInt(mainService.getMemnumById(id));
@@ -183,17 +186,18 @@ public class MainController {
 		//해당 게시글의 모든 댓글 가져오기
 		List<ReplyVO> replyList = mainService.getAllReply(cvo);
 		
-		return null;
+		return replyList;
 	}
 	
 	//댓글 추천/취소
 	@RequestMapping(value = "/main/updateReco.do", produces = "application/text;charset=utf-8")
 	@ResponseBody
+	@Transactional
 	public String updateReco(ReplyVO vo,HttpSession session) {
 		String id = (String)session.getAttribute("login");
 		int replynum = vo.getReplynum();
 		System.out.println("ajax로 넘긴 댓글번호:"+replynum);
-		
+
 		//해당 아이디로 추천 눌렀던 댓글들 가져오기
 		String likes = mainService.getLikeReply(id);
 		System.out.println("가져온 추천목록:"+likes);
@@ -209,6 +213,7 @@ public class MainController {
 			rreco+=1;
 			vo.setRreco(rreco);
 			mainService.updateRreco(vo);
+			
 			return result;
 		}
 		

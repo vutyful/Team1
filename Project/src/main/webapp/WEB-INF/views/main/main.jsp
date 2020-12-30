@@ -103,12 +103,36 @@
 						<div class="grid-css grid-css--masonry" data-col-lg="3" data-col-md="2" data-col-sm="2" data-col-xs="1" data-gap="30">
 							<div id="grid__inner" class="grid__inner">
 								<div class="grid-sizer"></div>
-							<c:forEach items="${contents}" var="con"> <!-- 프라퍼티 이름변경 -->
+									<div id="ad" class="grid-item">  <!-- 광고 고정위치 -->
+										<div class="grid-item__inner">
+											<div class="grid-item__content-wrapper">
+												<!-- work -->
+												<div class="work"><a href="${ad.adlink}">
+														
+														<!-- hoverbox ef-slide-right -->
+														<div class="hoverbox ef-move-right light">
+															<!-- hb_front -->
+															<div class="hb_front"><img src="../resources/upload/${ad.adimg}"/>
+															</div><!-- End / hb_front -->
+															
+															
+															<!-- hb_back -->
+															<div class="hb_back">
+																<h2 class="work__title"> ${ad.adname} </h2><span class="work__text">광고</span>
+															</div><!-- End / hb_back -->
+															
+														</div><!-- End / hoverbox ef-slide-bottom -->
+														</a>
+												</div><!-- End / work -->
+											</div>
+										</div>
+									</div>
+							<c:forEach items="${contents}" var="con"> <!-- 랜덤 컨텐츠 -->
 								<div class="grid-item">
 									<div class="grid-item__inner">
 										<div class="grid-item__content-wrapper">
 											<!-- work -->
-											<div class="work"><a href="contents.do?connum=${con.connum}">
+											<div class="work"><a href="contents.do?connum=${con.connum}&cate=${con.cate}">
 													
 													<!-- hoverbox ef-slide-right -->
 													<div class="hoverbox ef-move-right light">

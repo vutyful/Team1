@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions"  prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,6 +82,9 @@
 								<c:when test="${check eq 'false'}">
 									<img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
 								</c:when>
+								<c:otherwise>
+									<img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
+								</c:otherwise>
 							</c:choose>
 							<h2 class="page-title__title"> ${content.title} </h2>
 							<p class="page-title__text">by ${content.memnum} </p>
@@ -127,15 +131,13 @@
 									<span class="comment_option">
 											<span class="reply_reco">${rep.rreco}</span>&nbsp;&nbsp;&nbsp;
 											<span>
-<%-- 												<a href="reco.do?rreco=${rep.rreco}&replynum=${rep.replynum}" class="reply_reco">추천</a> --%>
-												<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
 												<c:choose>
-													<c:when test="">
+													<c:when test="${fn:contains(myLike,rep.replynum)}">
 														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_ok.png"/>
 													</c:when>
-													<c:when test="">
+													<c:otherwise>
 														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
-													</c:when>
+													</c:otherwise>
 												</c:choose>
 											</span>
 												<c:if test="${sessionScope.login eq rep.memberVO.id}">
@@ -158,25 +160,24 @@
 								</dl>
 							</div>
 							</c:forEach>
+						<div id="ajaxReplyList">
+						<div id="ajax_list">
 							<div class="comment_text best_comment replys aja" style='display:none'>
-								<dl  class="cmt_item">
-									<dt>
-										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/${rep.memberVO.pic}"/></span>
+								<dl  class="cmt_item"><dt>
+										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/"+${rep.memberVO.pic}+"/></span>"
 										<span id="reply_id" title="아이디"> ${rep.memberVO.id}</span>
 										<i id="reply_date"> ${rep.redate} </i>
 									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<span class="comment_option">
 											<span class="reply_reco">${rep.rreco}</span>&nbsp;&nbsp;&nbsp;
 											<span>
-<%-- 												<a href="reco.do?rreco=${rep.rreco}&replynum=${rep.replynum}" class="reply_reco">추천</a> --%>
-												<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
 												<c:choose>
-													<c:when test="">
+													<c:when test="${fn:contains(myLike,rep.replynum)}">
 														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_ok.png"/>
 													</c:when>
-													<c:when test="">
+													<c:otherwise>
 														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
-													</c:when>
+													</c:otherwise>
 												</c:choose>
 											</span>
 												<c:if test="${sessionScope.login eq rep.memberVO.id}">
@@ -198,6 +199,8 @@
 									</dd>
 								</dl>
 							</div>
+						</div>
+						</div>
 						</div>	<br/><br/><br/>
 							<div>
 				
@@ -217,20 +220,10 @@
 						</p>
 						<div id="contents_slider">
 							<ul>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/4.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
-										<strong>컨텐츠 제목</strong>
-									</span></a></li>
-								<li><a href="#"><img src="../resources/hyein/img/works/5.jpg"><span>
-										<strong>컨텐츠 제목</strong>
+							<c:forEach items="${link_content}" var="link_con">
+								<li><a href="contents_login.do?connum=${link_con.cate}"><img src="../resources/upload/${link_con.img}"><span>
+										<strong>${link_con.title}</strong>
+							</c:forEach>
 									</span></a></li>
 							</ul>
 						</div>

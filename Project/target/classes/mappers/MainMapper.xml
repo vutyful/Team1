@@ -5,8 +5,9 @@
 <mapper namespace="MainMAP">
 	<select id="selectAll" resultType="content">
 		<![CDATA[
-		SELECT *
-		FROM (SELECT * FROM content ORDER BY dbms_random.value)
+		SELECT c.connum connum,c.title title,c.ccontent ccontent, c.img img,c.postdate postdate,
+				c.cview cview,c.cate cate
+		FROM (SELECT * FROM content ORDER BY dbms_random.value) c
 		WHERE rownum <=20
 		]]>
 	</select>
@@ -88,8 +89,19 @@
 		<![CDATA[
 		SELECT *
 		FROM (SELECT * FROM content WHERE cate = #{cate} ORDER BY dbms_random.value)
-		WHERE rownum <30;
+		WHERE rownum <=30
 		]]>
+	</select>
+	
+	<select id="getAllAd" resultType="manager">
+		SELECT *
+		FROM (SELECT * FROM ad ORDER BY dbms_random.value)
+	</select>
+	
+	<select id="getOneAd" parameterType="manager" resultType="manager">
+		SELECT *
+		FROM ad
+		WHERE adnum = #{adnum}
 	</select>
 </mapper>
 
