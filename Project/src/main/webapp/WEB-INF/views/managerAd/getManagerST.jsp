@@ -6,6 +6,10 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../resources/managerAd/css/managerAd.css">
 
+<style type="text/css">
+a{text-decoration:none}
+</style>
+
 <meta charset="UTF-8">
 <title>광고 목록</title>
 
