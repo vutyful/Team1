@@ -14,15 +14,12 @@
 
 <title>HEADER</title>
 <body>
-		<!--   <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include> -->
 	<header>
+		<div class="headMargin">
+			<a href="../main/main.do"><img id="logo"
+				src="../resources/hyein/img/logo.png" alt="logo" /></a>
+		</div>
 
-			<div class="headMargin">
-				<a href="../main/main_login.do"><img id="logo"
-					src="../resources/hyein/img/logo.png" alt="logo" /></a>
-			</div>
-
-		</header>
-
+	</header>
 </body>
 </html>

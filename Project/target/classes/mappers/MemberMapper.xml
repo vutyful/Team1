@@ -29,10 +29,10 @@
 	
 	<select id="getReply" parameterType="map" resultType="map">
 	
-	SELECT (SELECT count(*) FROM reply WHERE memnum=#{memnum}) count, rnum, connum, img, title, replynum, redate, rcontent, rreco 
+	SELECT (SELECT count(*) FROM reply WHERE memnum=#{memnum}) count, rnum, connum, cate, img, title, replynum, redate, rcontent, rreco 
 	FROM
-	(SELECT rownum rnum,  connum, img, title, replynum, redate, rcontent, rreco 
-	FROM (SELECT c.connum connum, c.img img, c.title title, r.redate redate, r.rcontent rcontent, r.rreco rreco, r.replynum replynum
+	(SELECT rownum rnum,  connum, cate, img, title, replynum, redate, rcontent, rreco 
+	FROM (SELECT c.connum connum, c.cate cate, c.img img, c.title title, r.redate redate, r.rcontent rcontent, r.rreco rreco, r.replynum replynum
 	FROM content c INNER JOIN (SELECT * FROM reply WHERE memnum=#{memnum}) r
 	ON c.connum = r.connum  ORDER BY r.redate desc))
 	

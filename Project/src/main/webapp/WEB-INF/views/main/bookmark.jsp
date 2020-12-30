@@ -45,11 +45,13 @@
 						<!--  -->
 						<ul class="wil-menu-list">
 							<li class="current-menu-item box"><a href="/Project/hjview/profile.do">
-							<img class="profile" src="../resources/upload/아닌데여.png"></a>
+							<img class="profile" src="../resources/upload/${sessionScope.pic}"></a>
 							</li>
 							<br/><br/>
 							<li><a href="#">북마크</a>
 							</li>
+							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/admin.do">관리자</a>
+							</li></c:if>
 							<li><a href="logout.do">로그아웃</a>
 							</li>
 						</ul><!--  -->
@@ -92,7 +94,7 @@
 											
 											<!-- post -->
 											<div class="post">
-												<div class="post__media"><a href="contents_login.do?connum=${bms.connum}&check=true"><img src="../resources/upload/${bms.img}" alt=""/></a></div>
+												<div class="post__media"><a href="contents_login.do?connum=${bms.connum}&cate=${bms.cate}&check=true"><img src="../resources/upload/${bms.img}" alt=""/></a></div>
 												<div class="post__body">
 													<div class="post__meta"><span class="date">${bms.postdate}</span><span class="author"><a href="contents_login.do">by ${bms.memnum}</a></span></div>
 													<h2 class="post__title"><a href="contents_login.do?connum=${bms.connum}">${bms.title} </a></h2>

@@ -19,8 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import project.simsim.systems.domains.ContentVO;
 import project.simsim.systems.domains.MemberVO;
 import project.simsim.systems.services.MailSendService;
+import project.simsim.systems.services.MainService;
+import project.simsim.systems.services.MainServiceImpl;
 import project.simsim.systems.services.MemberService;
 
 @Controller
@@ -56,7 +59,11 @@ public class MemberController {
 			//session에 로그인 기록 저장
 			session.setAttribute("login",result.getId());	
 			//session에 로그인한 맴버 넘버 저장
-			session.setAttribute("longinNo", result.getMemnum());
+			session.setAttribute("loginNo", result.getMemnum());
+			//session에 사진 이름 저장
+			session.setAttribute("member", vo);
+			session.setAttribute("pic", result.getPic());
+			session.setAttribute("auth", result.getAuth());
 			return"성공";
 		}
 	}
@@ -115,6 +122,12 @@ public class MemberController {
 		//프로필 업로드
 		memberservice.picUpdate(vo);
 		m.addAttribute("member",vo);
+        try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "redirect:/hjview/profile.do";
 
 	}
@@ -146,7 +159,7 @@ public class MemberController {
 		m.addAttribute("member",result);	
 		
 		//댓글 세팅 페이지
-		int memnum = (int)session.getAttribute("longinNo");
+		int memnum = (int)session.getAttribute("loginNo");
 		Map<String, Integer> reply = new HashMap<String, Integer>();
 		reply.put("memnum", memnum);
 		reply.put("page", page);
@@ -156,18 +169,18 @@ public class MemberController {
 
 		int totalCount;//총 댓글 수
 		int pageTotalCount; //총 페이지
-		int countPerPage=10; //한 인덱스당 게시물 갯수
+		int countPerPage=5; //한 인덱스당 게시물 갯수
 		int pagePerBlock=5; //블록 당 인덱스 개수
 		int thisBlock; //지금 블록 0부터 시작
 		int firstPage;//지금 블록 처음 페이지
 		int lastPage;//지금 블록 마지막 페이지
 
-
 		
 		//총게시글 수
 		//값이 없으면 리턴
 		if(replyList.size()==0) {return "hjview/profile";}
-		totalCount =Integer.parseInt((String.valueOf(replyList.get(1).get("COUNT"))));
+		totalCount =Integer.parseInt((String.valueOf(replyList.get(0).get("COUNT"))));
+		System.out.println("total: " + totalCount);
 		//총 page 수
 		pageTotalCount = totalCount/countPerPage;
 		if(totalCount%countPerPage !=0)pageTotalCount++;
@@ -294,7 +307,7 @@ public class MemberController {
 	
 	@RequestMapping("/hjview/bye.do")
 	public String leave() {
-		return "redirect:/main/main_login.do";
+		return "redirect:/main/main.do";
 		
 	}
 	

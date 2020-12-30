@@ -1,6 +1,7 @@
 package project.simsim.systems.daos;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,10 @@ public class ContentDAOImpl implements ContentDAO {
 	}
 
 	@Override
-	public List<ContentVO> getContentsList() {
+	public List<Map> getContentsList() {
 		System.out.println("DAO : getContentsList");
-		return mybatis.selectList("ContentMAP.getContentsList");
+		//return mybatis.selectList("ContentMAP.getContentsList");
+		return mybatis.selectList("ContentMAP.getJoinList");
 	}
 
 	@Override

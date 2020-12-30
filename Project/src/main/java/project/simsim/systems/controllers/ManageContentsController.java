@@ -28,7 +28,8 @@ public class ManageContentsController
 	public void callCategory(Model model)
 	{
 		List<String> cate = manageContentsService.getCategoryList();
-		cate.remove(0);
+		if(cate.get(0)==null)
+			cate.remove(0);
 		model.addAttribute("list", cate);
 	}
 	
@@ -37,7 +38,7 @@ public class ManageContentsController
 	{
 		System.out.println("Controller : saveContent");
 		manageContentsService.saveContent(vo);
-		return "redirect:view.do?connum=" + vo.getConnum();
+		return "redirect:ContentsList.do";
 	}
 	
 	@RequestMapping("manageContents/ContentsList.do")
@@ -64,7 +65,7 @@ public class ManageContentsController
 	{
 		System.out.println("Controller : modify");
 		manageContentsService.modifyContent(vo);
-		return "redirect:view.do?connum=" + vo.getConnum();
+		return "redirect:ContentsList.do";
 	}
 	
 	@RequestMapping("manageContents/deleteContent.do")

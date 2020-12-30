@@ -1,6 +1,7 @@
 package project.simsim.systems.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ public class ManageContentsServiceImpl implements ManageContentsService {
 	}
 
 	@Override
-	public List<ContentVO> getContentsList() {
+	public List<Map> getContentsList() {
 		System.out.println("Service : getContentsList");
 		return contentDAO.getContentsList();
 	}

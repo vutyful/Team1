@@ -37,7 +37,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../admin.do">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../main/main_login.do">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -90,7 +90,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
                         <a class="collapse-item" href="../manageMembers/MembersList.do">회원 목록</a>
-                        <a class="collapse-item" href="../manageMembers/MembersList.do">탈퇴 목록</a>
+                        <a class="collapse-item" href="../manageMembers/Withdrawals.do">탈퇴 목록</a>
                     </div>
                 </div>
             </li>
@@ -105,15 +105,16 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>광고?</span>
+                    <span>광고</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="#">광고라던가</a>
+                        <a class="collapse-item" href="../managerAd/getManagerList.do">광고 목록</a>
+                        <a class="collapse-item" href="../managerAd/getManagerST.do">통계 목록</a>
                     </div>
                 </div>
             </li>
@@ -155,13 +156,13 @@
                         <div class="col-lg-6">
 
                             <div class="card shadow mb-4">
-                            	<form class="user" id="myform" action="saveContent.do" method="post" enctype="multipart/form-data">
+                            	<form class="user" id="myform" action="modifyContent.do" method="post" enctype="multipart/form-data">
 	                                <div class="card-header py-3">
 	                                    <div class="form-group">
 	                                    	<h6 class="m-0 font-weight-bold text-primary" style="margin-bottom: 0.5rem !important">컨텐츠 타이틀</h6>
 	                                    	<input class="form-control form-control-user" type="text" name="title" value="${content.title}" placeholder="타이틀을 입력해주세요."/>
 	                                    </div>
-	                                    <input type="checkbox" name="cstate" value="hidden" style="margin-left: 0.5rem"/>숨기기
+	                                    <input type="checkbox" name="cstate" value="hidden" <c:if test="${content.cstate eq 'hidden'}">checked</c:if> style="margin-left: 0.5rem"/>숨기기
 	                                </div>
 	                                <div class="card-body">
 	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">카테고리</h6>
@@ -186,7 +187,9 @@
 	                                    <h6 class="m-0 font-weight-bold text-primary" style="margin: 0.5rem 0 !important">내용</h6>
 	                                	<textarea name="ccontent" rows="20" cols="77" placeholder="내용을 입력해주세요.">${content.ccontent}</textarea>
 	                                	
-										<input type="hidden" name="memnum" value="1"/>
+	                                    <h6 class="m-0 font-weight-bold text-primary" style="margin-bottom: 0.5rem !important">링크</h6>
+	                                	<input class="form-control form-control-user" type="text" name="link" value="${content.link}" "/>
+										<input type="hidden" name="memnum" value="${sessionScope.loginNo}"/>
 	                                	
 	                                    <h6 class="m-0 font-weight-bold text-primary" style="margin: 0.5rem 0 !important">이미지 첨부</h6>
 	                                    <input type="file" name="file" />

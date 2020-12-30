@@ -23,7 +23,9 @@
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
 <!-- Bootstrap CSS -->
 <link href="../resources/hjresources/css/profile/assets/fonts/style.css"	rel="stylesheet">
-
+<style type="text/css">
+a{text-decoration: none;}
+</style>
 
 <title>profile</title>
 </head>
@@ -90,7 +92,7 @@
 					<!-- /.form-group -->
 					<footer class="major">
 						<ul class="actions special">
-							<button type="submit" id="picBtn" class="btn btn-primary btn-block">확인</button>
+							<button id="picBtn" class="btn btn-primary btn-block">확인</button>
 						</ul>
 					</footer>
 
@@ -209,7 +211,7 @@
 												<td>${map.RNUM}</td>
 												<td>
 													<div class="m-r-10">
-												<a href="/Project/main/contents_login.do?	connum=${map.CONNUM}">
+												<a href="/Project/main/contents_login.do?connum=${map.CONNUM}&cate=${map.CATE}">
 													<img src="../resources/upload/${map.IMG}" alt="user" class="rounded" width="45">
 												</a>
 													</div>

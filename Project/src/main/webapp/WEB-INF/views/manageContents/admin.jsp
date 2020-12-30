@@ -12,13 +12,13 @@
     <title>SimSim AdminPage</title>
 
     <!-- Custom fonts for this template-->
-    <link href="resources/manage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../resources/manage/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="resources/manage/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../resources/manage/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../admin.do">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../main/main_login.do">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -66,8 +66,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
-                        <a class="collapse-item" href="manageContents/ContentsList.do">컨텐츠 목록</a>
-                        <a class="collapse-item" href="manageContents/ContentSave.do">컨텐츠 등록</a>
+                        <a class="collapse-item" href="ContentsList.do">컨텐츠 목록</a>
+                        <a class="collapse-item" href="ContentSave.do">컨텐츠 등록</a>
                     </div>
                 </div>
             </li>
@@ -83,8 +83,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
-                        <a class="collapse-item" href="manageMembers/MembersList.do">회원 목록</a>
-                        <a class="collapse-item" href="manageMembers/Withdrawals.do">탈퇴 목록</a>
+                        <a class="collapse-item" href="../manageMembers/MembersList.do">회원 목록</a>
+                        <a class="collapse-item" href="../manageMembers/Withdrawals.do">탈퇴 목록</a>
                     </div>
                 </div>
             </li>
@@ -99,15 +99,16 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>광고?</span>
+                    <span>광고</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="#">광고라던가</a>
+                        <a class="collapse-item" href="../managerAd/getManagerList.do">광고 목록</a>
+                        <a class="collapse-item" href="../managerAd/getManagerST.do">통계 목록</a>
                     </div>
                 </div>
             </li>
@@ -709,21 +710,21 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="resources/manage/vendor/jquery/jquery.min.js"></script>
-    <script src="resources/manage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../resources/manage/vendor/jquery/jquery.min.js"></script>
+    <script src="../resources/manage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="resources/manage/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../resources/manage/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="resources/manage/js/sb-admin-2.min.js"></script>
+    <script src="../resources/manage/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="resources/manage/vendor/chart.js/Chart.min.js"></script>
+    <script src="../resources/manage/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="resources/manage/js/demo/chart-area-demo.js"></script>
-    <script src="resources/manage/js/demo/chart-pie-demo.js"></script>
+    <script src="../resources/manage/js/demo/chart-area-demo.js"></script>
+    <script src="../resources/manage/js/demo/chart-pie-demo.js"></script>
 
 </body>
 

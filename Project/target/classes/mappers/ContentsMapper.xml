@@ -4,12 +4,12 @@
 <mapper namespace="ContentMAP">
 
 	<insert id="saveContent" parameterType="content">
-		INSERT INTO content(connum, title, ccontent, postdate, cview, creco, cstate, memnum, cate
+		INSERT INTO content(connum, title, ccontent, postdate, cview, creco, cstate, memnum, cate, link
 		<if test="img != null">
 			, img, imgsize
 		</if>
 		) 
-		VALUES (seq_content_connum.nextval, #{title}, #{ccontent}, sysdate, 0, 0, 'none', #{memnum}, #{cate}
+		VALUES (seq_content_connum.nextval, #{title}, #{ccontent}, sysdate, 0, 0, 'none', #{memnum}, #{cate}, #{link}
 		<if test="img != null">
 			, #{img}, #{imgsize}
 		</if>
@@ -17,13 +17,13 @@
 	</insert>
 	
 	<update id="modifyContent">
-		UPDATE content SET title = #{title}, ccontent = #{ccontent}, cate = #{cate}
+		UPDATE content SET title = #{title}, ccontent = #{ccontent}, cate = #{cate}, link = #{link}
 		<choose>
 			<when test="cstate != null">
 				, cstate = #{cstate}
 			</when>
 			<when test="cstate == null">
-				, cstate = 'normal'
+				, cstate = 'none'
 			</when>
 		</choose>
 		<if test="img != null">
@@ -38,6 +38,10 @@
 	
 	<select id="getContentsList" resultType="content">
 		SELECT * FROM content ORDER BY connum DESC
+	</select>
+	
+	<select id="getJoinList" resultType="map">
+		SELECT * FROM content INNER JOIN member ON content.memnum = member.memnum
 	</select>
 	
 	<select id="getContent" parameterType="content" resultType="content">

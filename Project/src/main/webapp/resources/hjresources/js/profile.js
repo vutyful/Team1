@@ -49,10 +49,12 @@ $(function() {
 		$('#picBtn').click(function() {
 			
 			//파일 업로드 없을 때
-			if(picFile.val() == null || picFile.val() ==''){
+			if(picFile.val() == null || picFile.val() =='')
+			{
 				alert("프로필 사진을 업로드해 주세요. \n(사진 로딩에는 시간이 걸립니다.)")
 				location.reload();
 			}else{
+				alert("프로필 사진이 갱신되는 중 입니다. 약 5초정도 소요되니 마법을 쓰며 기다려주세요.");
 				$('#picForm').submit();
 			}
 			

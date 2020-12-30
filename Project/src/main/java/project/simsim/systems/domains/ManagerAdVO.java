@@ -2,6 +2,8 @@ package project.simsim.systems.domains;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -31,13 +33,15 @@ MultipartFile file;	// write.jsp에 파일첨부시 name="file"과 동일한 변
 	}
 	public void setFile(MultipartFile file) {
 		this.file = file;
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyMMddhhmmss");
 		
 		// 업로드 파일 접근
 		if(! file.isEmpty()){
-			this.adimg = file.getOriginalFilename();
+			this.adimg = "AD" + format.format(now)+ file.getOriginalFilename();
 			
 			// 해당 경로로 변경
-			File f = new File("C:\\Users\\admin\\git\\Team1v2\\Project\\src\\main\\webapp\\resources\\upload\\"+adimg);
+			File f = new File("C:\\Users\\Kosmo_22\\git\\Team1\\Project\\src\\main\\webapp\\resources\\upload\\"+adimg);
 
 			try {
 				file.transferTo(f);

@@ -2,6 +2,7 @@ package project.simsim.systems.daos;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,10 @@ public class MainDAOImpl implements MainDAO{
 
 	@Override
 	//클릭된 컨텐츠 레코드 가져오기
-	public ContentVO getSelectByconnum(ContentVO vo) {
+	public Map getSelectByconnum(ContentVO vo) {
 		
-		return mybatis.selectOne("MainMAP.getOneContent",vo);
+		//return mybatis.selectOne("MainMAP.getOneContent",vo);
+		return mybatis.selectOne("MainMAP.getJoinContent",vo);
 	}
 	
 	@Override

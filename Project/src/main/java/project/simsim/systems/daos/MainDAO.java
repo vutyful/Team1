@@ -1,6 +1,7 @@
 package project.simsim.systems.daos;
 
 import java.util.List;
+import java.util.Map;
 
 import project.simsim.systems.domains.ContentVO;
 import project.simsim.systems.domains.ManagerAdVO;
@@ -12,7 +13,7 @@ public interface MainDAO {
 	public List<ContentVO> getAllContent(ContentVO vo);
 	
 	//클릭된 컨텐츠 레코드 가져오기
-	public ContentVO getSelectByconnum(ContentVO vo);
+	public Map getSelectByconnum(ContentVO vo);
 	
 	//클릭된 컨텐츠 레코드 가져오기
 	public ContentVO getSelectByconnum(String connum);
