@@ -32,7 +32,18 @@ $(function() {
 
 
 
+
+
 	//로그인
+	
+	//엔터키
+	$('#pass').keypress(function(e){
+	if(e.keyCode ===13){
+		$('#loginBtn').click();
+	}
+	})
+	
+	
 		$('#loginBtn').click(function() {
 			
 
@@ -48,9 +59,48 @@ $(function() {
 				return;
 			}
 			
+		$.ajax({
+	 	type : 'post',
+	 	
+	 	async : true, //비동기 통신
+	 	
+	 	url : 'userCheck.do', //*****요청(request) jsp는x mvc안타겠다는 얘기
+	 	
+	 	contentType : 'application/x-www-form-urlencoded;charset=utf-8', //한글처리
+	 	
+	 	data : {'id' : $('#id').val(),
+	 				'pass' : $('#pass').val()
+	 	},
+	 	
+	 	success : function(result){
+  			
+ 		if(result=='실패'){
+ 		alert("아이디와 비밀번호가 정확하지 않습니다.")
+  		return;
+		}
+ 		if(result=='탈퇴'){
+ 		alert("탈퇴한 회원입니다 \n관리자에게 문의하세요.")
+  		return;
+		}
+		if(result=='차단'){
+		alert("차단된 회원입니다 \n관리자에게 문의하세요.")
+		return;
+		}
+		if(result=='성공'){
+		$('#login').submit();
+		}
+		
+	 	},
+	 	
+	 	error : function(err){
+	 		console.log(err);
+	 	}
+  
+  		})	
+		
 			
 			
-			$('#login').submit();
+			
 			
 		});
         

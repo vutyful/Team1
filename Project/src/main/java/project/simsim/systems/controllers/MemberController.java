@@ -36,33 +36,31 @@ public class MemberController {
 	
 
 	
-	@RequestMapping("/hjview/loginOk.do")
-	public void loginMain() {
-		
-	}
 	
 	//로그인
-	@RequestMapping("/hjview/userLogin.do")
-	public String login(MemberVO vo  , HttpSession session) {
-		
-//pwdEncoder.matches(입력된 비밀번호(), 암호화된 비밀번호()) 
+	@RequestMapping(value="/hjview/userCheck.do",  produces="application/text;charset=utf-8")
+	@ResponseBody
+	public String userCheck(MemberVO vo,  HttpSession session) {
+		//pwdEncoder.matches(입력된 비밀번호(), 암호화된 비밀번호()) 
 		MemberVO result = memberservice.idCheck(vo);
 		//암호화 된 비밀번호
 		boolean pwsIs = pwdEncoder.matches(vo.getPass(), result.getPass());
-		
 		//로그인 실패
 		if(result==null || result.getId()==null || !pwsIs) {
-			//로그인 실패,  페이지 그대로
-			return "hjview/login";
-		}else {
+		return "실패";
+		}else if(result.getState().equals("탈퇴")){
+			return "탈퇴";
+		}else if(result.getState().equals("차단")){
+			return "차단";
+		}else{
 			//session에 로그인 기록 저장
 			session.setAttribute("login",result.getId());	
 			//session에 로그인한 맴버 넘버 저장
 			session.setAttribute("longinNo", result.getMemnum());
-			
-			return "redirect:/main/main_login.do";
+			return"성공";
 		}
 	}
+
 
 	
 	//회원가입 시 이름, 이메일, 아이디 중복 확인
@@ -232,7 +230,7 @@ public class MemberController {
 		vo.setPass(newPass);
 		}
 		memberservice.memberUpdate(vo);
-		return "redirect:/hjview/profile.do";
+		return "redirect:/hjview/profile.do?loca=profile";
 		
 	}
 	
@@ -248,10 +246,7 @@ public class MemberController {
 	public void login() {
 		
 	}
-	@RequestMapping("/hjview/leaveOk.do")
-	public void leaveOK() {
-		
-	}
+
 	
 	//탈퇴
 	//아이디, 비밀번호, 이메일 인증번호 확인
@@ -265,6 +260,7 @@ public class MemberController {
 		String tempPass =mailservice.makeTempPass();
 		//세션에서 랜덤문자 가져옴
 		String tempPassSession = (String)session.getAttribute("tempPass");
+		System.out.println("/"+tempPassSession);
 		//세션에 랜덤문자 기존의 랜덤문자가 없으면 새로 생성
 		if(tempPassSession==null) {
 			session.setAttribute("tempPass", tempPass);
@@ -309,7 +305,9 @@ public class MemberController {
 	public String checkEmail(MemberVO vo) {
 		MemberVO result = memberservice.idCheck(vo);
 		
-		if(!result.getEmail().equals(vo.getEmail())) {
+		if(result==null) {
+			return "아이디와 이메일을 정확히 입력해 주세요.";
+		}else if(!result.getEmail().equals(vo.getEmail())) {
 			return "아이디와 일치하는 이메일이 없습니다.";
 		}else {
 			String tempPass = mailservice.makeTempPass();

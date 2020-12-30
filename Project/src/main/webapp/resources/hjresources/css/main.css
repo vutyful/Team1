@@ -3812,7 +3812,18 @@ input, select, textarea {
 		clip:rect(0,0,0,0); 
 		border: 0; }
 
+
+	.btn-header {
+	color: #fff;
+    background-color: black;
+    border-color: #666666;
+}
+
+	.btn-header:hover{
+		color: fff;
+		background-color:#666666;
 		
+	}
 		
 		
 		
