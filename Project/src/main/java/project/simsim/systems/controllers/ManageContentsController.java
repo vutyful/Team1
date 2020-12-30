@@ -53,7 +53,8 @@ public class ManageContentsController
 	{
 		System.out.println("Controller : view");
 		List<String> cate = manageContentsService.getCategoryList();
-		cate.remove(0);
+		if(cate.get(0)==null)
+			cate.remove(0);
 		model.addAttribute("list", cate);
 		model.addAttribute("content", manageContentsService.getContent(vo));
 	}

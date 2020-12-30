@@ -166,13 +166,13 @@
 	                                <div class="card-body">
 	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">카테고리</h6>
 	                                    
-										<select id="cate" name="cate">
+										<select id="cate" <c:if test="${list.size() > 0}"> name="cate" </c:if>>
 											<c:forEach items="${list}" var="category">
 												<option <c:if test="${category == content.cate}">selected</c:if> >${category}</option>
 											</c:forEach>
 											<option value="direct">직접입력</option>
 										</select>
-										<input type="text" id="direct" name="">
+										<input type="text" id="direct" <c:choose><c:when test="${list.size() > 0}">style="display:none;"</c:when><c:otherwise> name="cate"</c:otherwise></c:choose>>
 	                                
 	                                    <h6 class="m-0 font-weight-bold text-primary" style="margin: 0.5rem 0 !important">이미지</h6>
 	                                    <c:choose>
@@ -269,19 +269,17 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../resources/manage/vendor/jquery/jquery.min.js"></script>
+    <script src="../resources/manage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../resources/manage/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
-		$('#direct').hide();
-		
 		$('#cate').change(function(){
 			if($(this).val()=="direct")
 			{
