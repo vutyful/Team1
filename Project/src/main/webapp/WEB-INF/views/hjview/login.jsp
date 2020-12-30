@@ -18,11 +18,12 @@
 <body>
 	<div>
 		<div class="container">
+		  <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 			<div id="login-row"	class="row justify-content-center align-items-center">
 				<div id="login-column" class="col-md-6">
 					<div id="login-box" class="col-md-12">
 
-						<form method="post" action="userLogin.do" id="login" class="form">
+						<form method="post" action="../main/main.do" id="login" class="form">
 							<h3 class="text-center text-info">로그인</h3>
 							<div class="form-group">
 								<label for="id" class="text-info">아이디:</label><br> 

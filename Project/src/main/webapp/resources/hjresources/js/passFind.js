@@ -51,6 +51,7 @@ $(function() {
 	 	},
 	 	
 	 	success : function(result){
+
 	 	
 	 	if(result=='성공'){
 	 	alert("임시 비밀번호가 발급되었습니다. \n이메일을 확인하세요.")

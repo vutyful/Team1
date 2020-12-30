@@ -90,7 +90,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
                         <a class="collapse-item" href="../manageMembers/MembersList.do">회원 목록</a>
-                        <a class="collapse-item" href="../manageMembers/MembersList.do">탈퇴 목록</a>
+                        <a class="collapse-item" href="../manageMembers/Withdrawals.do">탈퇴 목록</a>
                     </div>
                 </div>
             </li>
@@ -254,11 +254,11 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../resources/manage/vendor/jquery/jquery.min.js"></script>
+    <script src="../resources/manage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../resources/manage/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>

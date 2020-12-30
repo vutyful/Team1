@@ -25,6 +25,7 @@
 
 
 	<div class="container">
+	  <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 		<form action="login.do" method="post" id="passFind"
 			class="form-horizontal" role="form">
 			<h2>비밀번호 찾기</h2>
