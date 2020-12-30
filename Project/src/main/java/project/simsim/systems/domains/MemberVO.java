@@ -41,12 +41,12 @@ public class MemberVO {
 		
 		// 업로드 파일 접근
 		if(! file.isEmpty()){
-			this.pic = file.getOriginalFilename()+format.format(now);
+			this.pic = format.format(now)+ file.getOriginalFilename();
 			this.picSize = file.getSize();
 			
 			//***********************************************
 			// 해당 경로로 변경
-			File f = new File("C:\\Users\\moonm\\git\\Team1\\Project\\src\\main\\webapp\\resources\\upload\\"+pic);
+			File f = new File("C:\\Users\\Kosmo_22\\git\\Team1\\Project\\src\\main\\webapp\\resources\\upload\\"+pic);
 			try {
 				file.transferTo(f);
 				

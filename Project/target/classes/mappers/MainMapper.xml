@@ -8,12 +8,15 @@
 		SELECT c.connum connum,c.title title,c.ccontent ccontent, c.img img,c.postdate postdate,
 				c.cview cview,c.cate cate
 		FROM (SELECT * FROM content ORDER BY dbms_random.value) c
-		WHERE rownum <=20
+		WHERE rownum <=20 and cstate != 'hidden'
 		]]>
 	</select>
 	
 	<select id="getOneContent" parameterType="content" resultType="content">
 		SELECT * FROM content WHERE connum = #{connum}
+	</select>
+	<select id="getJoinContent" parameterType="content" resultType="map">
+		SELECT * FROM content INNER JOIN member ON content.memnum = member.memnum WHERE connum = #{connum}
 	</select>
 	
 	<select id="getContentOne" parameterType="string" resultType="content">

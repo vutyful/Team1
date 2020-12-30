@@ -2,6 +2,8 @@ package project.simsim.systems.domains;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,6 +15,7 @@ public class ContentVO {
 	private String img;
 	private long imgsize;
 	private String postdate;
+	private String link;
 	private int cview;
 	private int creco;
 	private String cstate;
@@ -26,9 +29,12 @@ public class ContentVO {
 	public void setFile(MultipartFile file) {
 		this.file = file;
 		
+		Date now = new Date();
+		SimpleDateFormat format = new SimpleDateFormat("yyMMddhhmmss");
+		
 		// 업로드 파일 접근
 		if(! file.isEmpty()){
-			this.img = file.getOriginalFilename();
+			this.img = "Content" + format.format(now)+ file.getOriginalFilename();
 			this.imgsize = file.getSize();
 			
 			//***********************************************
@@ -47,6 +53,12 @@ public class ContentVO {
 		}
 	}
 
+	public String getLink() {
+		return link;
+	}
+	public void setLink(String link) {
+		this.link = link;
+	}
 	public String getCate() {
 		return cate;
 	}

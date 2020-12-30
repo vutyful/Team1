@@ -3,6 +3,7 @@ package project.simsim.systems.services;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,7 @@ public class MainServiceImpl implements MainService {
 
 	@Override
 	//선택된 컨텐츠의 레코드 가져오기 
-	public ContentVO getSelectByconnum(ContentVO vo) {
+	public Map getSelectByconnum(ContentVO vo) {
 		return mainDAO.getSelectByconnum(vo);
 	}
 

@@ -48,8 +48,6 @@
 							<img class="profile" src="../resources/hyein/img/works/unknown.jpg"></a>
 							</li>
 							<br/><br/>
-							<li><a href="/Project/hjview/login.do">북마크</a>
-							</li>
 							<li><a href="/Project/hjview/login.do">로그인</a>
 							</li>
 						</ul><!--  -->
@@ -70,9 +68,9 @@
 						<!-- page-title -->
 						<div class="page-title pb-40">
 							<a href="/Project/hjview/login.do"><img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
-							<h2 class="page-title__title"> ${content.title} </h2>
-							<p class="page-title__text">by ${content.memnum} </p>
-							<p class="page-title__text"> ${content.postdate} </p>
+							<h2 class="page-title__title"> ${content.TITLE} </h2>
+							<p class="page-title__text">by ${content.ID} </p>
+							<p class="page-title__text"> ${content.POSTDATE} </p>
 							<div class="page-title__divider"></div>
 						</div><!-- End / page-title -->
 						
@@ -88,8 +86,9 @@
 						<!--  -->
 						<div>
 							<div class="work-detail__entry">
-								<p> ${content.ccontent} </p>
-								<div class="work-img"><img src="../resources/upload/${content.img}" alt=""></div>
+								<div class="work-img"><img src="../resources/upload/${content.IMG}" alt=""></div>
+								<p> ${content.CCONTENT} </p>
+								관련링크:<a href="${content.LINK}">${content.LINK}</a>
 							</div>
 							
 							<p class="best_comment">BEST</p>
@@ -135,8 +134,8 @@
 						</div>	<br/><br/><br/>
 							<div>
 								<textarea id="ta_comment"></textarea>
-								<input id="connum" type="hidden" value="${content.connum}"/>
-								<a href="/Project/hjview/login.do"><button id="write_comment">글쓰기</button></a>
+								<input id="connum" type="hidden" value="${content.CONNUM}"/>
+								<a href="/Project/hjview/login.do"><button>글쓰기</button></a>
 							</div>
 						</div><!-- End /  -->
 						
@@ -151,7 +150,7 @@
 						<div id="contents_slider">
 							<ul>
 							<c:forEach items="${link_content}" var="link_con">
-								<li><a href="contents_login.do?connum=${link_con.cate}"><img src="../resources/upload/${link_con.img}"><span>
+								<li><a href="contents.do?connum=${link_con.connum}&cate=${link_con.cate}"><img src="../resources/upload/${link_con.img}"><span>
 										<strong>${link_con.title}</strong>
 							</c:forEach>
 									</span></a></li>

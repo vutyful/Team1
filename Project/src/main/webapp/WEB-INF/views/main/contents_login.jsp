@@ -48,15 +48,15 @@
 						<!--  -->
 						<ul class="wil-menu-list">
 							<li class="current-menu-item box"><a href="/Project/hjview/profile.do">
-							<img class="profile" src="../resources/upload/아닌데여.png"></a>
+							<img class="profile" src="../resources/upload/${sessionScope.pic}"></a>
 							</li>
 							<br/><br/>
 							<li><a href="bookmark.do">북마크</a>
 							</li>
 							<li><a href="logout.do">로그아웃</a>
 							</li>
-							<li><a href="../admin.do">관리자</a>
-							</li>
+							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/admin.do">관리자</a>
+							</li></c:if>
 						</ul><!--  -->
 						
 					</nav><!-- End / overlay-menu -->
@@ -74,7 +74,7 @@
 						
 						<!-- page-title -->
 						<div class="page-title pb-40">
-							<a href="bm.do?connum=${content.connum}">
+							<a href="bm.do?connum=${content.CONNUM}&cate=${content.CATE}">
 							<c:choose>
 								<c:when test="${check eq 'true'}">
 									<img id="bm_img" src="../resources/hyein/img/works/bm_ok.jpg"></a>
@@ -86,9 +86,9 @@
 									<img id="bm_img" src="../resources/hyein/img/works/bm_no.jpg"></a>
 								</c:otherwise>
 							</c:choose>
-							<h2 class="page-title__title"> ${content.title} </h2>
-							<p class="page-title__text">by ${content.memnum} </p>
-							<p class="page-title__text">${content.postdate} </p>
+							<h2 class="page-title__title"> ${content.TITLE} </h2>
+							<p class="page-title__text">by ${content.ID} </p>
+							<p class="page-title__text">${content.POSTDATE} </p>
 							<div class="page-title__divider"></div>
 						</div><!-- End / page-title -->
 						
@@ -104,8 +104,9 @@
 						<!--  -->
 						<div>
 							<div class="work-detail__entry">
-								<p> ${content.ccontent} </p>
-								<div class="work-img"><img src="../resources/upload/${content.img}" alt=""></div>
+								<div class="work-img"><img src="../resources/upload/${content.IMG}" alt=""></div>
+								<p> ${content.CCONTENT} </p>
+								관련링크:<a href="${content.LINK}">${content.LINK}</a>
 							</div>
 							
 							<p class="best_comment">BEST</p>
@@ -205,7 +206,7 @@
 							<div>
 				
 								<textarea id="ta_comment"></textarea>
-								<input id="connum" type="hidden" value="${content.connum}"/>
+								<input id="connum" type="hidden" value="${content.CONNUM}"/>
 								<button id="write_comment">글쓰기</button>
 							</div>
 						</div><!-- End /  -->
@@ -221,7 +222,7 @@
 						<div id="contents_slider">
 							<ul>
 							<c:forEach items="${link_content}" var="link_con">
-								<li><a href="contents_login.do?connum=${link_con.cate}"><img src="../resources/upload/${link_con.img}"><span>
+								<li><a href="contents_login.do?connum=${link_con.connum}&cate=${link_con.cate}"><img src="../resources/upload/${link_con.img}"><span>
 										<strong>${link_con.title}</strong>
 							</c:forEach>
 									</span></a></li>

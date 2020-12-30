@@ -45,15 +45,15 @@
 						<!--  -->
 						<ul class="wil-menu-list">
 							<li class="current-menu-item box"><a href="/Project/hjview/profile.do">
-							<img class="profile" src="../resources/upload/아닌데여.png"></a>
+							<img class="profile" src="../resources/upload/${sessionScope.pic}"></a>
 							</li>
 							<br/><br/>
 							<li><a href="../main/bookmark.do">북마크</a>
 							</li>
 							<li><a href="logout.do">로그아웃</a>
 							</li>
-							<li><a href="../admin.do">관리자</a>
-							</li>
+							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/admin.do">관리자</a>
+							</li></c:if>
 						</ul><!--  -->
 						
 					</nav><!-- End / overlay-menu -->
@@ -109,7 +109,7 @@
 										<div class="grid-item__inner">
 											<div class="grid-item__content-wrapper">
 												<!-- work -->
-												<div class="work"><a href="${ad.adlink}">
+												<div class="work"><a href="../managerAd/click_login.do?gender=${sessionScope.member.gender}&birth=${sessionScope.member.birth}&link=${ad.adlink}&adnum=${ad.adnum}">
 														
 														<!-- hoverbox ef-slide-right -->
 														<div class="hoverbox ef-move-right light">

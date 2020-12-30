@@ -1,6 +1,7 @@
 package project.simsim.systems.services;
 
 import java.util.List;
+import java.util.Map;
 
 import project.simsim.systems.domains.ContentVO;
 import project.simsim.systems.domains.ManagerAdVO;
@@ -12,7 +13,7 @@ public interface MainService {
 	public List<ContentVO> getAllContent(ContentVO vo);
 	
 	//선택된 컨텐츠의 레코드 가져오기
-	public ContentVO getSelectByconnum(ContentVO vo);
+	public Map getSelectByconnum(ContentVO vo);
 	
 	//선택된 컨텐츠의 레코드 가져오기
 	public ContentVO getSelectByconnum(String connum);

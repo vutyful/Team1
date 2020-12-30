@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import project.simsim.systems.domains.ContentVO;
 import project.simsim.systems.domains.ManagerAdVO;
+import project.simsim.systems.domains.MemberVO;
 import project.simsim.systems.domains.ReplyVO;
 import project.simsim.systems.services.MainServiceImpl;
 
@@ -41,11 +43,12 @@ public class MainController {
 	
 	//메인화면 연결 (로그인 후)
 	@RequestMapping("/main/main_login.do")
-	public void main(ContentVO vo,Model m) {
+	public void main(ContentVO cvo,Model m, HttpSession session) {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
-		m.addAttribute("contents", mainService.getAllContent(vo)); 
+		m.addAttribute("contents", mainService.getAllContent(cvo)); 
 		//랜덤 광고 전체 가져오기
 		m.addAttribute("ad", mainService.getAllAd().get(0));
+		
 	}
 	
 	
@@ -81,7 +84,7 @@ public class MainController {
  
 	//메인에서 컨텐츠 view로 이동 (로그인 후)
 	@RequestMapping("/main/contents_login.do")
-	public void contents_login(HttpSession session,ContentVO vo,Model m,String check) {
+	public void contents_login(HttpSession session,ContentVO vo,Model m, String cate, String check) {
 		
 		/**
 		 * 컨텐츠 띄우기 전 북마크 여부 확인하기
@@ -117,6 +120,7 @@ public class MainController {
 		System.out.println(mainService.getLikeReply(id));
 		
 		//연관컨텐츠 가져오기
+		vo.setCate(cate);
 		m.addAttribute("link_content", mainService.getLinkContent(vo));
 		
 	}
@@ -135,7 +139,7 @@ public class MainController {
 
 	//해당 게시글을 북마크하기(hover)
 	@RequestMapping("/main/bm.do")
-	public String bm_regist(HttpSession session, String connum,Model m) {
+	public String bm_regist(HttpSession session, String connum, String cate, Model m) {
 		String id = (String) session.getAttribute("login");
 		System.out.println(id+"/"+connum);
 		//아이디로 해당 북마크 값 가져오기
@@ -145,7 +149,7 @@ public class MainController {
 			bm = connum;
 			mainService.updateBookmark(id, bm); //바로 북마크 db에 넣기
 			m.addAttribute("check", check);
-			return "redirect:/main/contents_login.do?connum=" + connum;
+			return "redirect:/main/contents_login.do?connum=" + connum + "&cate=" + cate;
 		}
 		String[] bms = bm.split("/");
 		List<String> list = new ArrayList<String>();
@@ -170,7 +174,7 @@ public class MainController {
 			mainService.updateBookmark(id, bms_result);
 			System.out.println(bms_result);
 		}
-		return "redirect:/main/contents_login.do?connum=" + connum + "&check=" + check;
+		return "redirect:/main/contents_login.do?connum=" + connum + "&cate=" + cate + "&check=" + check;
 	}
 	
 	//댓글 달기 (해당 게시글 번호, 회원번호(아이디 이용),댓글 내용 필요)
@@ -292,7 +296,9 @@ public class MainController {
 
 	//로그아웃
 	@RequestMapping("/main/logout.do")
-	public String logout() {
+	public String logout(HttpSession session) {
+		session.invalidate();
+		session.setMaxInactiveInterval(0);
 		return "redirect:main.do";
 	}
 

@@ -48,9 +48,7 @@
 							<img class="profile" src="../resources/hyein/img/works/unknown.jpg"></a>
 							</li>
 							<br/><br/>
-							<li><a href="/Project/hjview/login.do">북마크</a>
-							</li>
-							<li><a href="main_login.do">로그인</a>
+							<li><a href="/Project/hjview/login.do">로그인</a>
 							</li>
 						</ul><!--  -->
 						
@@ -107,7 +105,7 @@
 										<div class="grid-item__inner">
 											<div class="grid-item__content-wrapper">
 												<!-- work -->
-												<div class="work"><a href="${ad.adlink}">
+												<div class="work"><a href="../managerAd/click.do?link=${ad.adlink}&adnum=${ad.adnum}">
 														
 														<!-- hoverbox ef-slide-right -->
 														<div class="hoverbox ef-move-right light">
