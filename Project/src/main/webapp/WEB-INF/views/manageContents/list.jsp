@@ -90,7 +90,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">MANAGE LIST:</h6>
                         <a class="collapse-item" href="../manageMembers/MembersList.do">회원 목록</a>
-                        <a class="collapse-item" href="../manageMembers/MembersList.do">탈퇴 목록</a>
+                        <a class="collapse-item" href="../manageMembers/Withdrawals.do">탈퇴 목록</a>
                     </div>
                 </div>
             </li>
@@ -164,8 +164,8 @@
 											<th>글번호</th>
 											<th>제목</th>
 											<th>작성자</th>
-											<th>조회수</th>
-											<th>추천수</th>
+											<th>카테고리</th>
+											<th>상태</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -175,8 +175,8 @@
 												<td>${content.connum}</td>
 												<td><a href='view.do?connum=${content.connum}'>${content.title}</a></td>
 												<td>${content.memnum}</td>
-												<td>${content.cview}</td>
-												<td>${content.creco}</td>
+												<td>${content.cate}</td>
+												<td>${content.cstate}</td>
 											</tr>
 										</c:forEach>
                                         <tr>
