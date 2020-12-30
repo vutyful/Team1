@@ -2887,6 +2887,11 @@ ul {
     width: 100%;
 }
 
+#reply_date{
+	font-size: 10px;
+	font-family: "Montserrat", sans-serif;
+}
+
 .best_comment{
     padding: 10px 0;
     font-family: "Montserrat", sans-serif;
@@ -2904,9 +2909,9 @@ ul {
 	border-top: 2px solid #cfcfcf;
 }
 
+
 .comment_text {
     border-bottom: 1px solid #ebebeb;
-    font-family: "Montserrat", sans-serif;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;

@@ -3,6 +3,7 @@ package project.simsim.systems.daos;
 import java.util.List;
 
 import project.simsim.systems.domains.ContentVO;
+import project.simsim.systems.domains.ManagerAdVO;
 import project.simsim.systems.domains.ReplyVO;
 
 public interface MainDAO {
@@ -51,4 +52,10 @@ public interface MainDAO {
 	
 	//연관 컨텐츠 가져오기
 	public List<ContentVO> getLinkContent(ContentVO vo);
+	
+	//광고 전체 랜덤하게 가져오기
+	public List<ManagerAdVO> getAllAd();
+	
+	//해당 광고번호로 광고 레코드 가져오기
+	public ManagerAdVO getOneAd(ManagerAdVO vo);
 }

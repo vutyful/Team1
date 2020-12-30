@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import project.simsim.systems.daos.MainDAO;
 import project.simsim.systems.domains.ContentVO;
+import project.simsim.systems.domains.ManagerAdVO;
 import project.simsim.systems.domains.ReplyVO;
 
 @Service("mainService")
@@ -118,8 +119,24 @@ public class MainServiceImpl implements MainService {
 	@Override
 	//연관 컨텐츠 가져오기
 	public List<ContentVO> getLinkContent(ContentVO vo) {
-		return null;
+		return mainDAO.getLinkContent(vo);
 	}
+
+	@Override
+	//광고 전체 랜덤하게 가져오기
+	public List<ManagerAdVO> getAllAd() {
+		return mainDAO.getAllAd();
+	}
+
+	@Override
+	//해당 광고번호로 광고 레코드 가져오기
+	public ManagerAdVO getOneAd(ManagerAdVO vo) {
+		return mainDAO.getOneAd(vo);
+	}
+	
+	
+	
+	
 
 	
 

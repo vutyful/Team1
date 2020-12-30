@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.simsim.systems.domains.ContentVO;
+import project.simsim.systems.domains.ManagerAdVO;
 import project.simsim.systems.domains.ReplyVO;
 
 @Repository("mainDAO")
@@ -20,7 +21,7 @@ public class MainDAOImpl implements MainDAO{
 	//메인에 띄울 컨텐츠 전부 끌어오기
 	public List<ContentVO> getAllContent(ContentVO vo) {
 		System.out.println("DAO : getAllContent");
-		return mybatis.selectList("MainMAP.selectAll",vo);
+		return mybatis.selectList("MainMAP.selectAll");
 	}
 
 	@Override
@@ -115,7 +116,20 @@ public class MainDAOImpl implements MainDAO{
 	@Override
 	//연관 컨텐츠 가져오기
 	public List<ContentVO> getLinkContent(ContentVO vo) {
+		System.out.println(mybatis.selectList("MainMAP.getLinkContent", vo));
 		return mybatis.selectList("MainMAP.getLinkContent", vo);
+	}
+
+	@Override
+	//광고 전체 랜덤하게 가져오기
+	public List<ManagerAdVO> getAllAd() {
+		return mybatis.selectList("MainMAP.getAllAd");
+	}
+
+	@Override
+	//해당 광고번호로 광고 레코드 가져오기
+	public ManagerAdVO getOneAd(ManagerAdVO vo) {
+		return mybatis.selectOne("MainMAP.getOneAd",vo);
 	}
 
 }

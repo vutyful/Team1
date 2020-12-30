@@ -30,7 +30,7 @@
 			<header class="header header--fixed">
 				<div class="header__inner">
 				<p></p>
-					<div class="header__logo"><a href="main_login.do"><img id="logo"  src="../resources/hyein/img/logo.png" alt=""/></a></div>
+					<div class="header__logo"><a href="main.do"><img id="logo"  src="../resources/hyein/img/logo.png" alt=""/></a></div>
 					<div class="navbar-toggle" id="fs-button">
 						<div class="navbar-icon"><span></span></div>
 					</div>
@@ -136,7 +136,7 @@
 							<div>
 								<textarea id="ta_comment"></textarea>
 								<input id="connum" type="hidden" value="${content.connum}"/>
-								<button id="write_comment">글쓰기</button>
+								<a href="/Project/hjview/login.do"><button id="write_comment">글쓰기</button></a>
 							</div>
 						</div><!-- End /  -->
 						
@@ -150,7 +150,7 @@
 						</p>
 						<div id="contents_slider">
 							<ul>
-							<c:forEach items="#{link_content}" var="link_con">
+							<c:forEach items="${link_content}" var="link_con">
 								<li><a href="contents_login.do?connum=${link_con.cate}"><img src="../resources/upload/${link_con.img}"><span>
 										<strong>${link_con.title}</strong>
 							</c:forEach>

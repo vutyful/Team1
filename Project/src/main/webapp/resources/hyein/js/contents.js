@@ -13,24 +13,57 @@
     });
     
     //댓글 작성
-   	$('#write_comment').click(function(){
-   		alert("글쓰기 클릭");
-					$.ajax({
-						type: 'post',
-						async : true, 
-						url : 'insertReply.do',
-						contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-						data : {'rcontent':$('#ta_comment').val(),
-								'connum':$('#connum').val()
-								},//보내는 데이터
-						success : function(result){
-							$('#ta_comment').val('');
-							alert('댓글 작성이 완료되었습니다.');
-							
-						},
-						error : function(err){console.log(err);}
-					})
-				});
+   $('#write_comment').click(function(){
+    alert("글쓰기 클릭");
+    $.ajax({
+        type: 'post',
+        async : true,
+        url : 'insertReply.do',
+        contentType : 'application/x-www-form-urlencoded;charset=utf-8',
+        data : {'rcontent':$('#ta_comment').val(),
+            'connum':$('#connum').val()
+        },//보내는 데이터
+        success : function(result){
+            $('#ta_comment').val('');
+            alert('댓글 작성이 완료되었습니다.');
+            //기존 댓글 리스트 없애기
+            $('.foreach').css('display','none');
+                    test(result)
+            $('.aja').css('display','inline-block');
+            },
+        error : function(err){
+        alert("ERR");
+        console.log(err);}
+    })
+
+    function test(result)
+    {
+        let html = "<div id=\'ajax_list\'>";
+        $.each(result,function (index,item){
+        html = "<div class=\'comment_text best_comment replys aja\' style='display:none'>";
+        html+="<dl  class=\'cmt_item\'><dt>";
+        html+="<span><img id=\'profile_pic\' class=\'profile_reply box_reply\' src=\'../resources/upload/" + item.memberVO.pic + "\'/></span>";
+        html+="<span id=\'reply_id\' title=\'아이디\'>" +  item.memberVO.id + "</span>";
+        html+="<i id=\'reply_date\'>" + item.redate + "</i>";
+        html+="</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\'comment_option\'><span class=\'reply_reco\'>" + item.rreco + "</span>&nbsp;&nbsp;&nbsp;";
+        html+="<span><c:choose><c:when test=\'${fn:contains(myLike," + item.replynum + ")}\'>";
+        html+="<img class=\'reply_reco_icon\' src=\'../resources/hyein/img/works/like_ok.png\'/></c:when>";
+        html+="<c:otherwise><img class=\'reply_reco_icon\' src=\'../resources/hyein/img/works/like_no.png\'/></c:otherwise></c:choose></span>";
+        html+="<c:if test=\'${sessionScope.login eq "+ item.memberVO.id + "}\'>";
+        html+="<span class=\'reply_modify\'><span>수정</span></span>";
+        html+="<span class=\'reply_delete\'><span>삭제</span></span></c:if></span>";
+        html+="<dd><span><textarea class=\'ta_comment ta_modify\'>" + item.rcontent + "</textarea>";
+        html+="<input class=\'modify_btn\' type=\'button\' value=\'등록\'/>";
+        html+="<input class=\'replynum\' type=\'hidden\' value=\'" + item.replynum + "\'/>";
+        html+="<p class=\'rcontent\'>&nbsp;&nbsp;" + item.rcontent + "</p></span></dd></dl></div>";
+        });
+        html+="</div>";
+
+        $('#ajaxReplyList').html(html);
+         $('.aja').css('display','inline-block');
+    }
+
+});
 
 //--------------------------------------------------------------
 				
@@ -49,7 +82,6 @@
             },// 해당 댓글번호 보내기
             success : function(result){
                 like = result;
-               // resultFunc(result);
             },
             error : function(err){console.log(err);}
         });
