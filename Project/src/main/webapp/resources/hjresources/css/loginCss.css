@@ -4,16 +4,6 @@
 	color: black !important;
 }
 
-.btn-info {
-	color: #fff;
-    background-color: black;
-    border-color: #666666;
-}
-
-.container{
-       margin-top :150px;
-     
-}
 
 .text-url {
 	color: black !important;
@@ -35,8 +25,13 @@
 	
 }
 
+.btn-header {
+	color: #fff;
+	background-color: black;
+	border-color: #666666;
+}
 
-
-
-
-
+.btn-header:hover {
+	color: fff;
+	background-color: #666666;
+}

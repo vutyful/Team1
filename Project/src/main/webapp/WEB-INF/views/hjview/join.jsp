@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +21,9 @@
 <body>
 
 
+
 	<div class="container">
+	  <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 		<form method="get" action="userInsert.do" id="join" 
 			class="form-horizontal" role="form">
 			<h2>회원가입</h2><br/><br/>
@@ -94,18 +95,6 @@
 			</div>
 			<!-- /.form-group -->
 
-			<!--                			
-<div class="form-group">
-  <label class="col-md-4 control-label" for="Fulldayorhalfday">Full day or half day</label>
-  <div class="col-md-4">
-    <select id="Fulldayorhalfday" name="Fulldayorhalfday" class="form-control">
-      <option value="1">Morning</option>
-      <option value="2">Afternoon</option>
-      <option value="3">Full Day</option>
-    </select>
-  </div>
-</div>
--->
 			<div class="form-group float-right">
 				<label id="info"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<button type="button" id="joinBtn" class="btn btn-info">가입</button>
@@ -114,7 +103,6 @@
 		<!-- /form -->
 	</div>
 	<!-- ./container -->
-
 </body>
 </html>
 

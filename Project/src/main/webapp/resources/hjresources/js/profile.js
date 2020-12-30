@@ -1,14 +1,44 @@
 $(function() {
 
+//파라미터 구하는 함수
+	function getParam(sname) {
+    var params = location.search.substr(location.search.indexOf("?") + 1);
+    var sval = "";
+    params = params.split("&");
+    for (var i = 0; i < params.length; i++) {
+        temp = params[i].split("=");
+        if ([temp[0]] == sname) { sval = temp[1]; }
+    }
+    return sval;
+}
 
 
-
-	//페이지 바꾸면 내 댓글로 자동
-	//내댓글 위치
-	
+//댓글 페이지 클릭 후 위치 내 댓글 고정	
+	if(getParam("loca")=='profile'){
+	$('html, body').animate({
+	scrollTop: $('#first').offset().top
+	}, 0);
+	}
+//프로필 수정 후 위치 프로필 수정 고정
+	if(getParam("loca")=='reply'){
 	$('html, body').animate({
 	scrollTop: $('#second').offset().top
-	}, 1000);
+	}, 0);
+	}
+	
+	
+	
+	//북마크
+	$('#bookMarkLink').click(function(){
+		location.href='/Project/main/bookmark.do'
+	})
+	//로그아웃
+		$('#logOutLink').click(function(){
+		location.href='/Project/main/logout.do'
+	})
+	
+	
+
 	
 		
 
@@ -266,3 +296,8 @@ $(function() {
 		
 		
 	});
+	
+	
+
+
+	

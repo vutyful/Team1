@@ -14,6 +14,7 @@
 <body>
 
 	<div class="container">
+	  <jsp:include page="/WEB-INF/views/header.jsp"></jsp:include>
 		<form action="bye.do" class="form-horizontal" id="bye">
 			<h2>다음에 또 만나요!</h2>
 			<br/><br/>
