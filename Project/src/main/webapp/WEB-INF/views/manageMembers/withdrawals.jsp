@@ -47,13 +47,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="../admin.do">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>구현 미정</span></a>
-            </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 

@@ -37,7 +37,9 @@ public class MainController {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(vo)); 
 		//랜덤 광고 전체 가져오기
-		m.addAttribute("ad", mainService.getAllAd().get(0));
+		List<ManagerAdVO> ad = mainService.getAllAd();
+		if(ad.size() > 0)
+			m.addAttribute("ad", ad.get(0));
 		
 	}
 	
@@ -47,8 +49,9 @@ public class MainController {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(cvo)); 
 		//랜덤 광고 전체 가져오기
-		m.addAttribute("ad", mainService.getAllAd().get(0));
-		
+		List<ManagerAdVO> ad = mainService.getAllAd();
+		if(ad.size() > 0)
+			m.addAttribute("ad", ad.get(0));
 	}
 	
 	

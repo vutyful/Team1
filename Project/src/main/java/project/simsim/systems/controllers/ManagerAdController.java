@@ -43,14 +43,16 @@ public class ManagerAdController {
 		}
 		
 		//3. total(광고 총 클릭수) +1 증가시키는거 보낸다. */
-		return link;
+		final String red="redirect:http://" + link;
+		return red;
 	}
 	
 	@RequestMapping("managerAd/click.do")
 	public String click(String link)
 	{	
 		//3. total(광고 총 클릭수) +1 증가시키는거 보낸다. 
-		return link;
+		final String red="redirect:http://" + link;
+		return red;
 	}
 	
 	@RequestMapping("{manager}.do")
