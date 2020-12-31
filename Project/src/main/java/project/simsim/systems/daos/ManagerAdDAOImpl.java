@@ -47,5 +47,15 @@ public class ManagerAdDAOImpl implements ManagerAdDAO{
 		return mybatis.selectList("ManagerAdDAO.getManagerList",vo);
 	}
 
+	@Override
+	public void clickLogin(ManagerAdVO vo) {
+		mybatis.insert("ManagerAdDAO.clickLogin", vo);
+	}
+
+	@Override
+	public void click(String adnum) {
+		mybatis.insert("ManagerAdDAO.click", adnum);
+	}
+
 
 }

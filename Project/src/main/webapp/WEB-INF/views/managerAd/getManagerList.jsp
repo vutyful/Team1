@@ -47,13 +47,6 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="../admin.do">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>구현 미정</span></a>
-            </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -154,7 +147,13 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">광고 목록</h6>
+                            <h6 class="m-0 font-weight-bold text-primary" style="display:inline">광고 목록</h6>
+                            <a href="insertManager.do" class="btn btn-primary btn-icon-split" style="float:right">
+	                                        <span class="icon text-white-50">
+	                                            <i class="fas fa-check"></i>
+	                                        </span>
+	                                        <span class="text">광고 등록</span>
+	                                    </a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

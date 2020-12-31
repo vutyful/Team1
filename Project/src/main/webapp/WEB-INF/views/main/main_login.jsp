@@ -52,7 +52,7 @@
 							</li>
 							<li><a href="logout.do">로그아웃</a>
 							</li>
-							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/admin.do">관리자</a>
+							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/ContentsList.do">관리자</a>
 							</li></c:if>
 						</ul><!--  -->
 						
@@ -109,7 +109,7 @@
 										<div class="grid-item__inner">
 											<div class="grid-item__content-wrapper">
 												<!-- work -->
-												<div class="work"><a href="../managerAd/click_login.do?gender=${sessionScope.member.gender}&birth=${sessionScope.member.birth}&link=${ad.adlink}&adnum=${ad.adnum}">
+												<div class="work"><a href="../managerAd/click_login.do?gender=${sessionScope.gender}&birth=${sessionScope.birth}&link=${ad.adlink}&adnum=${ad.adnum}">
 														
 														<!-- hoverbox ef-slide-right -->
 														<div class="hoverbox ef-move-right light">

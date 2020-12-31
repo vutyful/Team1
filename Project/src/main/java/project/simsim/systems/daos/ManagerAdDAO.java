@@ -18,7 +18,7 @@ public interface ManagerAdDAO {
 	
 	public List<ManagerAdVO> getManagerList(ManagerAdVO vo) ;
 	
-
+	public void clickLogin(ManagerAdVO vo);
 	
-
+	public void click(String adnum);
 }

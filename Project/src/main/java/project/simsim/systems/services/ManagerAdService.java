@@ -29,8 +29,8 @@ public interface ManagerAdService {
 		// 광고 목록 조회
 		List<ManagerAdVO> getManagerList(ManagerAdVO vo);
 		
+		void clickLogin(ManagerAdVO vo);
 
-
-
+		void click(String adnum);
 	
 }

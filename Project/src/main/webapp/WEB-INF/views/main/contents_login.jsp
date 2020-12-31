@@ -55,7 +55,7 @@
 							</li>
 							<li><a href="logout.do">로그아웃</a>
 							</li>
-							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/admin.do">관리자</a>
+							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/ContentsList.do">관리자</a>
 							</li></c:if>
 						</ul><!--  -->
 						
@@ -119,6 +119,7 @@
 										<span id="reply_id" title="아이디"> ${be.ID}</span>
 										<i id="reply_date"> ${be.REDATE} </i>
 									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									
 									<span class="comment_option">
 											<span class="reply_reco">${be.RRECO}</span>&nbsp;&nbsp;&nbsp;
 											<span>
@@ -238,10 +239,14 @@
 						</div>
 						</div>	<br/><br/><br/>
 							<div>
-				
-								<textarea id="ta_comment"></textarea>
-								<input id="connum" type="hidden" value="${content.CONNUM}"/>
-								<button id="write_comment">글쓰기</button>
+								<form action="insertReply.do" method="get">
+								<input type="text" id="ta_comment" name="rcontent"/>
+								<input  name="connum" type="hidden" value="${content.CONNUM}"/>
+								<input  name="cate" type="hidden" value="${content.CATE}"/>
+								<input  name="check" type="hidden" value="${check}"/>
+								<input  name="memnum" type="hidden" value="${content.MEMNUM}"/>
+								<input type="submit" value="글쓰기" id="write_comment" />
+								</form>
 							</div>
 						</div><!-- End /  -->
 						

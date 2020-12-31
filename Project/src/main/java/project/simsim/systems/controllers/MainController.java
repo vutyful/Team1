@@ -37,7 +37,9 @@ public class MainController {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(vo)); 
 		//랜덤 광고 전체 가져오기
-		m.addAttribute("ad", mainService.getAllAd().get(0));
+		List<ManagerAdVO> ad = mainService.getAllAd();
+		if(ad.size() > 0)
+			m.addAttribute("ad", ad.get(0));
 		
 	}
 	
@@ -47,8 +49,9 @@ public class MainController {
 		//DB에서 가져온 모든 컨텐츠 메인으로 넘기기
 		m.addAttribute("contents", mainService.getAllContent(cvo)); 
 		//랜덤 광고 전체 가져오기
-		m.addAttribute("ad", mainService.getAllAd().get(0));
-		
+		List<ManagerAdVO> ad = mainService.getAllAd();
+		if(ad.size() > 0)
+			m.addAttribute("ad", ad.get(0));
 	}
 	
 	
@@ -177,19 +180,21 @@ public class MainController {
 	}
 	
 	//댓글 달기 (해당 게시글 번호, 회원번호(아이디 이용),댓글 내용 필요)
-	@RequestMapping(value = "/main/insertReply.do",produces = "application/text;charset=utf-8")
-	@ResponseBody
-	public List<ReplyVO> insertReply(HttpSession session,ReplyVO rvo,ContentVO cvo) {
+	@RequestMapping("/main/insertReply.do")
+	public String insertReply(HttpSession session,ReplyVO rvo,ContentVO cvo,String check,String rcontent) {
+		System.out.println(rvo.getRcontent() + " & " + rcontent);
+		
 		String id = (String)session.getAttribute("login");
 		//아이디로 회원번호 얻어오기
 		int memnum = Integer.parseInt(mainService.getMemnumById(id));
-		//댓글 작성
+		// 댓글 입력
+		System.out.println("memnum:"+memnum +"connum"+cvo.getConnum()+"rcontent"+rcontent);
 		rvo.setMemnum(memnum);
+		rvo.setConnum(cvo.getConnum());
+
 		int result = mainService.insertReply(rvo);
-		//해당 게시글의 모든 댓글 가져오기
-		List<ReplyVO> replyList = mainService.getAllReply(cvo);
 		
-		return replyList;
+		return "redirect:/main/contents_login.do?connum="+ cvo.getConnum() + "&cate="+cvo.getCate() + "&check=" + check + "&link=true";
 	}
 	
 	//댓글 추천/취소
