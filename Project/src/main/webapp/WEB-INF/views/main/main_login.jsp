@@ -52,7 +52,7 @@
 							</li>
 							<li><a href="logout.do">로그아웃</a>
 							</li>
-							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/admin.do">관리자</a>
+							<c:if test="${sessionScope.auth >= 5}"><li><a href="../manageContents/ContentsList.do">관리자</a>
 							</li></c:if>
 						</ul><!--  -->
 						
