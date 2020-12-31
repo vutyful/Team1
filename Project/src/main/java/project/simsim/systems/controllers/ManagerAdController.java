@@ -1,7 +1,10 @@
 package project.simsim.systems.controllers;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import project.simsim.systems.domains.ManagerAdVO;
 import project.simsim.systems.services.ManagerAdService;
@@ -26,8 +30,8 @@ public class ManagerAdController {
 	}
 	
 	@RequestMapping("managerAd/click_login.do")
-	public String click(String gender, String birth, String link, String adnum)
-	{/*
+	public String click(String gender, String birth, String link, String adnum) 
+		{/*
 		//1. 젠더를 구해서 해당 젠더만 1 증가시키는거 보낸다.
 		int number = Integer.parseInt(adnum);
 		if(gender.equals("남"))
@@ -43,7 +47,8 @@ public class ManagerAdController {
 		}
 		
 		//3. total(광고 총 클릭수) +1 증가시키는거 보낸다. */
-		return link;
+		
+		return "redirect:../"+link;
 	}
 	
 	@RequestMapping("managerAd/click.do")

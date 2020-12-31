@@ -99,7 +99,7 @@
 													<div class="post__meta"><span class="date">${bms.postdate}</span><span class="author"><a href="contents_login.do">by ${bms.memnum}</a></span></div>
 													<h2 class="post__title"><a href="contents_login.do?connum=${bms.connum}">${bms.title} </a></h2>
 													<p class="post__text"> ${bms.ccontent} </p>
-													<a class="md-btn md-btn--outline-primary" href="contents_login.do?connum=${bms.connum}">read more
+													<a class="md-btn md-btn--outline-primary" href="contents_login.do?connum=${bms.connum}&cate=${bms.cate}&check=true">read more
 													</a>
 												</div>
 											</div><!-- End / post -->

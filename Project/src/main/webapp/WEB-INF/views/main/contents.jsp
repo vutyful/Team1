@@ -91,17 +91,32 @@
 								관련링크:<a href="${content.LINK}">${content.LINK}</a>
 							</div>
 							
-							<p class="best_comment">BEST</p>
+							<p class="best_comment">BEST</p> <!-- 베스트 댓글 -->
 						<div id="comments">	
+							<c:forEach items="${best}" var="be">
 							<div class="comment_text best_comment">
-							<p>베스트 댓글 자리</p>
+								<dl  class="cmt_item">
+									<dt>
+										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/${be.PIC}"/></span>
+										<span id="reply_id" title="아이디"> ${be.ID} </span>
+										<i id="reply_date"> ${be.REDATE} </i>
+									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span class="comment_option">
+											<span id="reply_reco">${be.RRECO}</span>
+											<span>
+												<a href="/Project/hjview/login.do">
+												<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/></a>
+											</span>
+									</span>
+									<dd >
+										<span>${be.RCONTENT}</span>
+									</dd>
+								</dl>
 							</div>
-							<div class="comment_text best_comment">
-							<p>베스트 댓글 자리</p>
-							</div>
+							</c:forEach>
 						</div>	<br/><br/><br/>
 						
-							<p class="best_comment">REVIEWS</p>
+							<p class="best_comment">REVIEWS</p> <!-- 일반 댓글들 -->
 						<div id="comments">	
 							<c:forEach items="${replys}" var="rep">
 							<div class="comment_text best_comment">
@@ -116,13 +131,6 @@
 											<span>
 												<a href="/Project/hjview/login.do">
 												<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/></a>
-											</span>
-											
-											<span>
-												<a href="#" type="button" hidden>수정</a>
-											</span>
-											<span>
-												<a href="#" type="button" hidden>삭제</a>
 											</span>
 									</span>
 									<dd >

@@ -134,6 +134,12 @@ public class MainServiceImpl implements MainService {
 	public ManagerAdVO getOneAd(ManagerAdVO vo) {
 		return mainDAO.getOneAd(vo);
 	}
+
+	@Override
+	//해당 게시글의 베스트 댓글 가져오기 (3개)
+	public List<Map> getBestReply(ContentVO vo) {
+		return mainDAO.getBestReply(vo);
+	}
 	
 	
 	

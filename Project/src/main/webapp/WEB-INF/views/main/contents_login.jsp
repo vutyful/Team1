@@ -111,12 +111,46 @@
 							
 							<p class="best_comment">BEST</p>
 						<div id="comments">	
-							<div class="comment_text best_comment">
-							<p>베스트 댓글 자리</p>
+							<c:forEach items="${best}" var="be">
+							<div class="comment_text best_comment replys foreach">
+								<dl  class="cmt_item">
+									<dt>
+										<span><img id="profile_pic" class="profile_reply box_reply" src="../resources/upload/${be.PIC}"/></span>
+										<span id="reply_id" title="아이디"> ${be.ID}</span>
+										<i id="reply_date"> ${be.REDATE} </i>
+									</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<span class="comment_option">
+											<span class="reply_reco">${be.RRECO}</span>&nbsp;&nbsp;&nbsp;
+											<span>
+												<c:choose>
+													<c:when test="${fn:contains(myLike,be.REPLYNUM)}">
+														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_ok.png"/>
+													</c:when>
+													<c:otherwise>
+														<img class="reply_reco_icon" src="../resources/hyein/img/works/like_no.png"/>
+													</c:otherwise>
+												</c:choose>
+											</span>
+												<c:if test="${sessionScope.login eq be.ID}">
+													<span class="reply_modify">
+														<span>수정</span>
+													</span>
+													<span class="reply_delete">
+														<span>삭제</span>
+													</span>
+												</c:if>
+									</span>
+									<dd>
+										<span>
+										<textarea class="ta_comment ta_modify">${be.RCONTENT}</textarea>
+										<input class="modify_btn" type="button" value="등록"/>
+										<input class="replynum" type="hidden" value="${be.REPLYNUM}"/>
+										<p class="rcontent">&nbsp;&nbsp;${be.RCONTENT}</p>
+										</span>
+									</dd>
+								</dl>
 							</div>
-							<div class="comment_text best_comment">
-							<p>베스트 댓글 자리</p>
-							</div>
+							</c:forEach>
 						</div>	<br/><br/><br/>
 						
 							<p class="best_comment">REVIEWS</p>
