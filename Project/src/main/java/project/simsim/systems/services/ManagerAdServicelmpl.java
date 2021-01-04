@@ -43,7 +43,12 @@ import project.simsim.systems.domains.ManagerAdVO;
 		public List<ManagerAdVO> getManagerList(ManagerAdVO vo) {
 			return ManagerAdDAO.getManagerList(vo);
 		}
-		
-
-		
+		@Override
+		public void clickLogin(ManagerAdVO vo) {
+			ManagerAdDAO.clickLogin(vo);
+		}
+		@Override
+		public void click(String adnum) {
+			ManagerAdDAO.click(adnum);
+		}
 	}

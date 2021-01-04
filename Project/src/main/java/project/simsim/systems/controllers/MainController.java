@@ -107,18 +107,15 @@ public class MainController {
 		m.addAttribute("check", check);
 		//메인에서 넘어온 컨텐츠의 connum으로 해당 컨텐츠 레코드 가져오기
 		m.addAttribute("content", mainService.getSelectByconnum(vo));
-		/**
-		 *  해당 게시글의 댓글 전부 불러오기
-		 */
+		
+		// 해당 게시글의 베스트 댓글 가져오기 (3개)
+		m.addAttribute("best", mainService.getBestReply(vo));
+		
+		//해당 게시글의 댓글 전부 가져오기
 		List<ReplyVO> replyList = mainService.getAllReply(vo);
 		m.addAttribute("replys", replyList);
-		
-		// 내가 추천누른 댓글번호 리스트 가져오기
-		// split("/")적용한 list Model로 값 넘겨주기
-		// 화면단에서 댓글번호와 
-		
-		System.out.println(id); 
-		
+
+		//내가 이미 추천 누른 댓글 표시하기
 		m.addAttribute("myLike", mainService.getLikeReply(id));
 		System.out.println(mainService.getLikeReply(id));
 		
@@ -135,6 +132,8 @@ public class MainController {
 		m.addAttribute("content", mainService.getSelectByconnum(vo));
 		//해당 게시글의 댓글 전부 불러오기
 		m.addAttribute("replys", mainService.getAllReply(vo));
+		// 해당 게시글의 베스트 댓글 가져오기 (3개)
+		m.addAttribute("best", mainService.getBestReply(vo));
 		//연관컨텐츠 가져오기
 		m.addAttribute("link_content", mainService.getLinkContent(vo));
 		
@@ -181,19 +180,21 @@ public class MainController {
 	}
 	
 	//댓글 달기 (해당 게시글 번호, 회원번호(아이디 이용),댓글 내용 필요)
-	@RequestMapping(value = "/main/insertReply.do",produces = "application/text;charset=utf-8")
-	@ResponseBody
-	public List<ReplyVO> insertReply(HttpSession session,ReplyVO rvo,ContentVO cvo) {
+	@RequestMapping("/main/insertReply.do")
+	public String insertReply(HttpSession session,ReplyVO rvo,ContentVO cvo,String check,String rcontent) {
+		System.out.println(rvo.getRcontent() + " & " + rcontent);
+		
 		String id = (String)session.getAttribute("login");
 		//아이디로 회원번호 얻어오기
 		int memnum = Integer.parseInt(mainService.getMemnumById(id));
-		//댓글 작성
+		// 댓글 입력
+		System.out.println("memnum:"+memnum +"connum"+cvo.getConnum()+"rcontent"+rcontent);
 		rvo.setMemnum(memnum);
+		rvo.setConnum(cvo.getConnum());
+
 		int result = mainService.insertReply(rvo);
-		//해당 게시글의 모든 댓글 가져오기
-		List<ReplyVO> replyList = mainService.getAllReply(cvo);
 		
-		return replyList;
+		return "redirect:/main/contents_login.do?connum="+ cvo.getConnum() + "&cate="+cvo.getCate() + "&check=" + check + "&link=true";
 	}
 	
 	//댓글 추천/취소

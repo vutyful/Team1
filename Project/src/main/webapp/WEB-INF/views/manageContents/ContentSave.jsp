@@ -163,13 +163,13 @@
 	                                <div class="card-body">
 	                                    <h6 class="m-0 font-weight-bold text-primary"style="margin-bottom: 0.5rem !important">카테고리</h6>
 	                                    
-										<select id="cate" name="cate">
+										<select id="cate" <c:if test="${list.size() > 0}"> name="cate" </c:if>>
 											<c:forEach items="${list}" var="category">
-												<option>${category}</option>
+												<option <c:if test="${category == content.cate}">selected</c:if> >${category}</option>
 											</c:forEach>
 											<option value="direct">직접입력</option>
 										</select>
-										<input type="text" id="direct" name="">
+										<input type="text" id="direct" <c:choose><c:when test="${list.size() > 0}">style="display:none;"</c:when><c:otherwise> name="cate"</c:otherwise></c:choose>>
 	                                
 	                                    <h6 class="m-0 font-weight-bold text-primary" style="margin: 0.5rem 0 !important">내용</h6>
 	                                	<textarea name="ccontent" rows="20" cols="77" placeholder="내용을 입력해주세요."></textarea>
@@ -262,8 +262,6 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(function(){
-		$('#direct').hide();
-		
 		$('#cate').change(function(){
 			if($(this).val()=="direct")
 			{

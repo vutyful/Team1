@@ -28,7 +28,7 @@ public class ManageContentsController
 	public void callCategory(Model model)
 	{
 		List<String> cate = manageContentsService.getCategoryList();
-		if(cate.get(0)==null)
+		if(cate.size()>0)
 			cate.remove(0);
 		model.addAttribute("list", cate);
 	}

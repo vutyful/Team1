@@ -109,7 +109,7 @@
 										<div class="grid-item__inner">
 											<div class="grid-item__content-wrapper">
 												<!-- work -->
-												<div class="work"><a href="../managerAd/click_login.do?gender=${sessionScope.member.gender}&birth=${sessionScope.member.birth}&link=${ad.adlink}&adnum=${ad.adnum}">
+												<div class="work"><a href="../managerAd/click_login.do?gender=${sessionScope.gender}&birth=${sessionScope.birth}&link=${ad.adlink}&adnum=${ad.adnum}">
 														
 														<!-- hoverbox ef-slide-right -->
 														<div class="hoverbox ef-move-right light">

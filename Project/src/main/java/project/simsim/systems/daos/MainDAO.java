@@ -33,6 +33,9 @@ public interface MainDAO {
 	//해당 게시글의 댓글 전부 불러오기
 	public List<ReplyVO> getAllReply(ContentVO vo);
 	
+	//해당 게시글의 베스트 댓글 가져오기 (3개)
+	public List<Map> getBestReply(ContentVO vo);
+	
 	//해당 댓글 수정
 	public int updateReply(ReplyVO vo);
 		

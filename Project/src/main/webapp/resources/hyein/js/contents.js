@@ -12,56 +12,41 @@
         pager : false
     });
     
-    //댓글 작성
-  $('#write_comment').click(function(){
-    alert("글쓰기 클릭");
-    $.ajax({
-        type: 'post',
-        async : true,
-        url : 'insertReply.do',
-        contentType : 'application/x-www-form-urlencoded;charset=utf-8',
-        data : {'rcontent':$('#ta_comment').val(),
-            'connum':$('#connum').val()
-        },//보내는 데이터
-        success : function(result){
-            $('#ta_comment').val('');
-            alert('댓글 작성이 완료되었습니다.');
-            //기존 댓글 리스트 없애기
-            $('.foreach').css('display','none');
-                    test(result);
-            $('.aja').css('display','inline-block');
-            },
-        error : function(err){console.log(err);}
-    })
-
-    function test(result)
+    
+    
+    
+    
+    //파라미터 구하는 함수
+	function getParam(sname) {
+    var params = location.search.substr(location.search.indexOf("?") + 1);
+    var sval = "";
+    params = params.split("&");
+    for (var i = 0; i < params.length; i++) 
     {
-        let html = "<div id=\'ajax_list\'>";
-        $.each(result,function (index,item){
-        html = "<div class=\'comment_text best_comment replys aja\' style='display:none'>";
-        html+="<dl  class=\'cmt_item\'><dt>";
-        html+="<span><img id=\'profile_pic\' class=\'profile_reply box_reply\' src=\'../resources/upload/" + item[index].memberVO.pic + "\'/></span>";
-        html+="<span id=\'reply_id\' title=\'아이디\'>" +  item[index].memberVO.id + "</span>";
-        html+="<i id=\'reply_date\'>" + item[index].redate + "</i>";
-        html+="</dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\'comment_option\'><span class=\'reply_reco\'>" + item[index].rreco + "</span>&nbsp;&nbsp;&nbsp;";
-        html+="<span><c:choose><c:when test=\'${fn:contains(myLike," + item[index].replynum + ")}\'>";
-        html+="<img class=\'reply_reco_icon\' src=\'../resources/hyein/img/works/like_ok.png\'/></c:when>";
-        html+="<c:otherwise><img class=\'reply_reco_icon\' src=\'../resources/hyein/img/works/like_no.png\'/></c:otherwise></c:choose></span>";
-        html+="<c:if test=\'${sessionScope.login eq "+ item[index].memberVO.id + "}\'>";
-        html+="<span class=\'reply_modify\'><span>수정</span></span>";
-        html+="<span class=\'reply_delete\'><span>삭제</span></span></c:if></span>";
-        html+="<dd><span><textarea class=\'ta_comment ta_modify\'>" + item[index].rcontent + "</textarea>";
-        html+="<input class=\'modify_btn\' type=\'button\' value=\'등록\'/>";
-        html+="<input class=\'replynum\' type=\'hidden\' value=\'" + item[index].replynum + "\'/>";
-        html+="<p class=\'rcontent\'>&nbsp;&nbsp;" + item[index].rcontent + "</p></span></dd></dl></div>";
-        });
-        html+="</div>";
-
-        $('#ajaxReplyList').html(html);
-        $('.aja').css('display','inline-block');
+        temp = params[i].split("=");
+        if ([temp[0]] == sname) { sval = temp[1]; }
     }
+    return sval;
+	}
+	
+	if(getParam("link")=='true')
+	{
+    	$('html, body').animate(
+    	{
+			scrollTop: $('#comments').offset().top
+		}, 0);
+	}
+	
+    
+    //댓글 작성
+  
+  
+  
 
-});
+    
+    
+
+
 //--------------------------------------------------------------
 				
 	// 댓글 추천 (hover)			
@@ -161,7 +146,6 @@
 
 	modify_btns.click(function (){
 		var moidfy_comment = $(this).prev().val(); //수정한 내용
-		alert(moidfy_comment);
 	
     $.ajax({
         type : 'post',
@@ -172,7 +156,6 @@
         		'replynum' : $(this).next().val()
         		},
         success : function (result){
-				alert(result);
            		
         },
         error : function (err) {console.log(err);}
@@ -207,7 +190,6 @@
        			 contentType : 'application/x-www-form-urlencoded;charset=utf-8',
        			 data : {'replynum' : $('.replynum').val()},
        			 success : function (result){
-						alert(result);
        			 },
        			 error : function (err) {console.log(err);}
    			});
@@ -223,7 +205,6 @@
        				 dataType : JSON,
        				 success : function (rep){
           				 for(var i=0;i<rep.length;i++){
-              			 alert(rep[0].title);
          			 	 }
       				  },
      			   error : function (err) {console.log(err);}

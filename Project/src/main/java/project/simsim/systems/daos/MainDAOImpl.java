@@ -134,4 +134,10 @@ public class MainDAOImpl implements MainDAO{
 		return mybatis.selectOne("MainMAP.getOneAd",vo);
 	}
 
+	@Override
+	//해당 게시글의 베스트 댓글 가져오기 (3개)
+	public List<Map> getBestReply(ContentVO vo) {
+		return mybatis.selectList("MainMAP.getBestReply", vo);
+	}
+
 }

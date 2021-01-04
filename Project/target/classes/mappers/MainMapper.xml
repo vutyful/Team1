@@ -106,6 +106,21 @@
 		FROM ad
 		WHERE adnum = #{adnum}
 	</select>
+	
+	
+	<select id="getBestReply" parameterType="content" resultType="map">
+		<![CDATA[
+		SELECT *
+		FROM (SELECT  id, pic, member.memnum memnum, replynum , redate, rcontent,
+		rreco, connum
+		FROM member  INNER JOIN reply 
+		ON member.memnum = reply.memnum
+		WHERE connum = #{connum} and rreco !=0
+		ORDER BY rreco DESC)
+		WHERE rownum <=3
+		]]>
+	</select>
+	
 </mapper>
 
 

@@ -61,7 +61,8 @@ public class MemberController {
 			//session에 로그인한 맴버 넘버 저장
 			session.setAttribute("loginNo", result.getMemnum());
 			//session에 사진 이름 저장
-			session.setAttribute("member", vo);
+			session.setAttribute("gender", result.getGender());
+			session.setAttribute("birth", result.getBirth());
 			session.setAttribute("pic", result.getPic());
 			session.setAttribute("auth", result.getAuth());
 			return"성공";

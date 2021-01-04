@@ -6,9 +6,45 @@
  
  <insert id="insertManager" parameterType="manager">
   INSERT INTO AD 
-  (adnum,adname,adimg,adlink,click10,click20,click30,click40,click50ov,clickm,clickf,startdate,enddate) 
-  VALUES(seq_AD_adnum.NEXTVAL,#{adname},#{adimg},#{adlink},0,0,0,0,0,0,0,sysdate,sysdate+30)
+  (adnum,adname,adimg,adlink,click10,click20,click30,click40,click50ov,clickm,clickf, totalclick,startdate,enddate) 
+  VALUES(seq_AD_adnum.NEXTVAL,#{adname},#{adimg},#{adlink},0,0,0,0,0,0,0,0,sysdate,sysdate+30)
  </insert>
+ 
+<update id="click" parameterType="string">
+	update ad set totalclick=totalclick+1 where adnum=#{adnum}
+</update>
+
+<update id="clickLogin" parameterType="manager">
+	update ad set 
+	<choose>
+		<when test="click10 != null">
+			click10 = click10+1
+		</when>
+		<when test="click20 != null">
+			click20 = click20+1
+		</when>
+		<when test="click30 != null">
+			click30 = click30+1
+		</when>
+		<when test="click40 != null">
+			click40 = click40+1
+		</when>
+		<when test="click50ov != null">
+			click50ov = click50ov+1
+		</when>
+	</choose>
+	
+	<choose>
+		<when test="clickm != null">
+			, clickm = clickm+1
+		</when>
+		<when test="clickf != null">
+			, clickf = clickf+1
+		</when>
+	</choose>
+	
+	where adnum=#{adnum}
+</update>
 
 <!-- 광고목록 sql -->
 <select id="getManagerList" resultType="manager">
